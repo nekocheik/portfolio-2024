@@ -7,9 +7,10 @@ import Projet from '@/views/projet.vue'
 const route = useRoute()
 const router = useRouter()
 
-const isMode3 = computed(() => route.path.startsWith('/projets/') && !!route.params.id)
+const isMode3 = computed(() => route.path === '/projets/1')
 
 const toggleMode = () => {
+  console.log(route.path)
   if (!route.path.includes('default')) {
     router.push({
       name: 'projet',
@@ -19,8 +20,12 @@ const toggleMode = () => {
     })
   } else {
     router.push({
-      name: 'projets'
+      name: 'projets',
+      params: {
+        id: "1"
+      }
     })
+
   }
 }
 

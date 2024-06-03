@@ -10,15 +10,16 @@
         ref="transitionContainer"
         class="w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
         :class="{
-          'w-[90vw] lg:max-w-[1300px] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[70vh] lg:max-h-[626px] transition-all':
+          'w-[90vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[70vh] transition-all':
             isMode2,
-          '!h-[100vh]': isMode3
+          '!h-[100vh] !w-[100vw]': isMode3
         }"
       >
         <div
           id="secondCanvasContainer"
           ref="secondCanvasContainer"
           class="second-canvas-container opacity-20 w-full h-full"
+          :class="{'absolute top-0 left-0 w-full h-full': isMode3}"
         ></div>
       </div>
     </section>
@@ -36,8 +37,10 @@ import * as THREE from 'three'
 const route = useRoute()
 
 const isMode1 = computed(() => route.path === '/')
-const isMode2 = computed(() => route.path === '/projets' && !route.params.id)
-const isMode3 = computed(() => route.path === '/projets' && route.params.id)
+const isMode2 = computed(() => route.path === '/projets/default')
+const isMode3 = computed(() => route.path === '/projets/1')
+
+console.log(route.path, 'ici')
 
 const canvasContainer = ref<HTMLDivElement | null>(null)
 const secondCanvasContainer = ref<HTMLDivElement | null>(null)
@@ -192,9 +195,9 @@ const initSecondCanvas = () => {
 const animateTransition = () => {
   if (transitionContainer.value) {
     if (isMode2.value) {
-      gsap.to(transitionContainer.value, { width: '90vw', maxWidth: '1300px', height: '70vh', maxHeight: '626px', duration: 0.5 })
+      gsap.to(transitionContainer.value, { width: '90vw', height: '70vh', duration: 0.5 })
     } else if (isMode3.value) {
-      gsap.to(transitionContainer.value, { height: '100vh', duration: 0.5 })
+      gsap.to(transitionContainer.value, { width: '100vw', height: '100vh', duration: 0.5 })
     } else {
       gsap.to(transitionContainer.value, { width: '100vw', height: '88vh', duration: 0.5 })
     }
@@ -251,6 +254,7 @@ onBeforeUnmount(() => {
   window.removeEventListener('mousemove', onMouseMove)
 })
 </script>
+
 
 <style>
 /* Ensure the container takes up the full available space */
@@ -317,4 +321,15 @@ canvas.second-canvas {
   width: 100%;
   height: 100%;
 }
+
+/* Additional style for full-screen mode */
+.second-canvas-container.absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 </style>
+
+
