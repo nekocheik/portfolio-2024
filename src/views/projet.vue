@@ -1,15 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
-const isFullMode = ref(false);
-
-const toggleMode = () => {
-  isFullMode.value = !isFullMode.value;
-};
+import { ref } from 'vue'
 </script>
 
 <template>
-  <div class="lg:pt-40 h-[400vh] w-[100vw]">
+  <div class="lg:pt-40 h-[400vh] w-[100vw]" >
     <section class="text-white pt-50 sm:pt-80 lg:pt-32 px-6 sm:px-28">
       <h1 class="font-kiona text-2xl lg:text-[55px] leading-snug">
         How we build<br />
@@ -31,7 +25,7 @@ const toggleMode = () => {
         </p>
       </div>
       <div class="flex justify-center pt-36">
-        <AButton class="mx-auto" @click="toggleMode"> En voir plus </AButton>
+        <AButton class="mx-auto"> En voir plus </AButton>
       </div>
 
       <div class="pt-16">
@@ -46,13 +40,15 @@ const toggleMode = () => {
         </ul>
       </div>
 
-      <div v-if="isFullMode">
-        <h2 class="font-kiona text-2xl lg:text-[40px] leading-snug pt-40">
-          Galerie
-        </h2>
+      <div>
+        <h2 class="font-kiona text-2xl lg:text-[40px] leading-snug pt-40">Galerie</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-8">
           <div v-for="n in 6" :key="n" class="relative pb-[75%] overflow-hidden">
-            <img :src="`https://picsum.photos/600/400?random=${n}`" class="absolute top-0 left-0 w-full h-full object-cover" alt="gallery image" />
+            <img
+              :src="`https://picsum.photos/600/400?random=${n}`"
+              class="absolute top-0 left-0 w-full h-full object-cover"
+              alt="gallery image"
+            />
           </div>
         </div>
       </div>
@@ -60,5 +56,4 @@ const toggleMode = () => {
   </div>
 </template>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

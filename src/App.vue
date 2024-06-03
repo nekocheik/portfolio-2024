@@ -19,7 +19,7 @@
           id="secondCanvasContainer"
           ref="secondCanvasContainer"
           class="second-canvas-container opacity-20 w-full h-full"
-          :class="{'absolute top-0 left-0 w-full h-full': isMode3}"
+          :class="{ 'absolute top-0 left-0 w-full h-full': isMode3 }"
         ></div>
       </div>
     </section>
@@ -38,7 +38,7 @@ const route = useRoute()
 
 const isMode1 = computed(() => route.path === '/')
 const isMode2 = computed(() => route.path === '/projets/default')
-const isMode3 = computed(() => route.path === '/projets/1')
+const isMode3 = computed(() => route.path === '/projets/one')
 
 console.log(route.path, 'ici')
 
@@ -255,7 +255,6 @@ onBeforeUnmount(() => {
 })
 </script>
 
-
 <style>
 /* Ensure the container takes up the full available space */
 .canvas-container {
@@ -331,5 +330,3 @@ canvas.second-canvas {
   height: 100%;
 }
 </style>
-
-

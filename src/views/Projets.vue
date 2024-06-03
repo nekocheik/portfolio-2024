@@ -1,31 +1,29 @@
 <script setup lang="ts">
+import Projet from '@/views/Projet.vue'
 import { ref, watch, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { gsap } from 'gsap'
-import Projet from '@/views/projet.vue'
 
 const route = useRoute()
 const router = useRouter()
 
-const isMode3 = computed(() => route.path === '/projets/1')
+const isMode3 = computed(() => route.path === '/projets/one')
 
 const toggleMode = () => {
-  console.log(route.path)
-  if (!route.path.includes('default')) {
-    router.push({
-      name: 'projet',
+  if (isMode3.value) {
+    router.replace({
+      name: 'projets',
       params: {
-        id: "default"
+        id: 'default'
       }
     })
   } else {
-    router.push({
+    router.replace({
       name: 'projets',
       params: {
-        id: "1"
+        id: 'one'
       }
     })
-
   }
 }
 
@@ -42,11 +40,16 @@ const animateTransition = () => {
   } else {
     gsap.to(imgRef.value, { width: '100%', duration: 0.5 })
     gsap.to(textRef.value, { translateX: '0px', scale: 1, duration: 0.5 })
-    gsap.to(containerRef.value, { width: '448px', height: '96px', duration: 0.5 })
+    gsap.to(containerRef.value, { width: '448px', height: '396px', duration: 0.5 })
   }
 }
 
-watch(isMode3, animateTransition)
+watch(
+  () => route.path,
+  () => {
+    animateTransition()
+  }
+)
 
 onMounted(() => {
   animateTransition()
@@ -107,8 +110,8 @@ onMounted(() => {
         </AButton>
       </div>
     </div>
-    <RouterView />
   </div>
+  <Projet v-if="isMode3" />
 </template>
 
 <style lang="scss" scoped>
