@@ -212,7 +212,7 @@ const changeProject = (index) => {
       </div>
     </div>
   </div>
-  <div v-show="isMode3" @click="scrollDown">
+  <div v-show="isMode3" @click="scrollDown" class="h-11">
     <div ref="arrowRef" class="hidden lg:flex justify-center pt-8 arrow-down-animation">
       <ArrowDown />
     </div>
@@ -230,11 +230,11 @@ const changeProject = (index) => {
 @keyframes arrow-bounce {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(-20px);
     opacity: 1;
   }
   50% {
-    transform: translateY(20px);
+    transform: translateY(0px);
     opacity: 0.5;
   }
 }
