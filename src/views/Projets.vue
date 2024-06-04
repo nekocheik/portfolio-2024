@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import ArrowDown from '@/components/icons/ArrowDown.vue'
 import Projet from '@/views/Projet.vue'
 import { ref, watch, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { gsap } from 'gsap'
 
 const route = useRoute()
 const router = useRouter()
@@ -31,16 +31,19 @@ const toggleMode = () => {
 const imgRef = ref(null)
 const textRef = ref(null)
 const containerRef = ref(null)
+const arrowRef = ref(null) // Référence pour ArrowDown
 
 const animateTransition = () => {
   if (isMode3.value) {
-    gsap.to(imgRef.value, { width: '120%', duration: 0.5 })
-    gsap.to(textRef.value, { translateX: '40px', scale: 1.1, duration: 0.5 })
-    gsap.to(containerRef.value, { width: '80vw', height: '509px', duration: 0.5 })
+    imgRef.value.style.width = '120%'
+    textRef.value.style.transform = 'translateX(40px) scale(1.1)'
+    containerRef.value.style.width = '80vw'
+    containerRef.value.style.height = '509px'
   } else {
-    gsap.to(imgRef.value, { width: '100%', duration: 0.5 })
-    gsap.to(textRef.value, { translateX: '0px', scale: 1, duration: 0.5 })
-    gsap.to(containerRef.value, { width: '448px', height: '396px', duration: 0.5 })
+    imgRef.value.style.width = '100%'
+    textRef.value.style.transform = 'translateX(0px) scale(1)'
+    containerRef.value.style.width = '448px'
+    containerRef.value.style.height = '396px'
   }
 }
 
@@ -54,6 +57,11 @@ watch(
 onMounted(() => {
   animateTransition()
 })
+
+// Fonction de défilement
+const scrollDown = () => {
+  window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })
+}
 
 // Projets mock
 const projects = ref([
@@ -118,8 +126,7 @@ const changeProject = (index) => {
 </script>
 
 <template>
-  <div>
-    <font-awesome-icon :icon="['fas', 'arrow-left']" />
+  <div class="relative">
     <h1
       class="hidden lg:block z-30 pt-24 pl-24 text-tertiary text-5xl font-thin font-display italic"
     >
@@ -187,9 +194,26 @@ const changeProject = (index) => {
       </div>
     </div>
   </div>
+  <div ref="arrowRef" @click="scrollDown" class="hidden lg:flex justify-center pt-8 arrow-down-animation z-40" v-show="isMode3">
+    <ArrowDown />
+  </div>
   <Projet v-if="isMode3" :project="currentProject" />
 </template>
 
 <style lang="scss" scoped>
-/* Les styles sont inchangés, GSAP prend en charge les transitions */
+.arrow-down-animation {
+  animation: arrow-bounce 1s infinite;
+  cursor: pointer;
+}
+
+@keyframes arrow-bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(20px);
+    opacity: 0.5;
+  }
+}
 </style>
