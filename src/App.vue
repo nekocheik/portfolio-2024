@@ -1,43 +1,63 @@
 <template>
-  <header>
-    <nav class="hidden lg:flex fixed top-10 right-20 z-30 w-96 justify-around">
-      <button @click="navigateTo('projets')" :class="['text-white font-normal text-lg cursor-pointer', { 'underline': isCurrentRoute('projets') }]">
-        Projets
-      </button>
-      <button @click="navigateTo('whoiam')" :class="['text-white font-normal text-lg cursor-pointer', { 'underline': isCurrentRoute('whoiam') }]">
-        Who I Am
-      </button>
-      <button @click="navigateTo('contact')" :class="['text-white font-normal text-lg cursor-pointer', { 'underline': isCurrentRoute('contact') }]">
-        Contact
-      </button>
-    </nav>
-  </header>
-  <main
-    class="relative font-body bg-100-auto w-[99vw] overflow-x-hidden min-h-[100vh]"
-    :style="{ 'background-image': isMode2 || isMode3 ? `url(/background-desktop.jpg)` : '' }"
-  >
-    <section class="h-[100vh] w-[100vw] absolute top-0">
-      <div ref="canvasContainer" class="canvas-container fixed top-0"></div>
-      <div
-        ref="transitionContainer"
-        class="w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
-        :class="{
-          'w-[90vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[70vh] transition-all':
-            isMode2,
-          '!h-[100vh] !w-[100vw]': isMode3
-        }"
-      >
+  <div class="relative">
+    <header>
+      <nav class="hidden lg:flex fixed top-10 right-20 z-[100] w-96 justify-around">
+        <button
+          @click="navigateTo('projets')"
+          :class="[
+            'text-white font-normal text-lg cursor-pointer',
+            { underline: isCurrentRoute('projets') }
+          ]"
+        >
+          Projets
+        </button>
+        <button
+          @click="navigateTo('whoiam')"
+          :class="[
+            'text-white font-normal text-lg cursor-pointer',
+            { underline: isCurrentRoute('whoiam') }
+          ]"
+        >
+          Who I Am
+        </button>
+        <button
+          @click="navigateTo('contact')"
+          :class="[
+            'text-white font-normal text-lg cursor-pointer',
+            { underline: isCurrentRoute('contact') }
+          ]"
+        >
+          Contact
+        </button>
+      </nav>
+    </header>
+    <main
+      class="relative font-body bg-100-auto w-[99vw] overflow-x-hidden min-h-[100vh]"
+      :style="{ 'background-image': isMode2 || isMode3 ? `url(/background-desktop.jpg)` : '' }"
+    >
+      <section class="h-[100vh] w-[100vw] absolute top-0">
+        <div ref="canvasContainer" class="canvas-container fixed top-0"></div>
         <div
-          id="secondCanvasContainer"
-          ref="secondCanvasContainer"
-          class="second-canvas-container opacity-20 w-full h-full"
-          :class="{ 'absolute top-0 left-0 w-full h-full': isMode3 }"
-        ></div>
-      </div>
-    </section>
+          ref="transitionContainer"
+          class="w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
+          :class="{
+            'w-[90vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[70vh] transition-all':
+              isMode2,
+            '!h-[100vh] !w-[100vw]': isMode3
+          }"
+        >
+          <div
+            id="secondCanvasContainer"
+            ref="secondCanvasContainer"
+            class="second-canvas-container opacity-20 w-full h-full"
+            :class="{ 'absolute top-0 left-0 w-full h-full': isMode3 }"
+          ></div>
+        </div>
+      </section>
 
-    <RouterView />
-  </main>
+      <RouterView />
+    </main>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -217,9 +237,9 @@ const animateTransition = () => {
     if (isMode2.value) {
       gsap.to(transitionContainer.value, { width: '1300px', height: '70vh', duration: 0.5 })
     } else if (isMode3.value) {
-      gsap.to(transitionContainer.value, { width: '100vw', height: '100vh', duration: 0.5 })
+      gsap.to(transitionContainer.value, { width: '100vw', height: '100vh', duration: 1 })
     } else {
-      gsap.to(transitionContainer.value, { width: '100vw', height: '88vh', duration: 0.5 })
+      gsap.to(transitionContainer.value, { width: '100vw', height: '88vh', duration: 1.3 })
     }
   }
 }

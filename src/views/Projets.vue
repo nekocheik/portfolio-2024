@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ArrowDown from '@/components/icons/ArrowDown.vue'
 import Projet from '@/views/Projet.vue'
-import { ref, watch, computed, onMounted } from 'vue'
+import { ref, watch, computed, onMounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
@@ -32,6 +32,7 @@ const imgRef = ref(null)
 const textRef = ref(null)
 const containerRef = ref(null)
 const arrowRef = ref(null) // Référence pour ArrowDown
+const highlightRef = ref(null) // Référence pour l'indicateur highlight
 
 const animateTransition = () => {
   if (isMode3.value) {
@@ -56,11 +57,26 @@ watch(
 
 onMounted(() => {
   animateTransition()
+  nextTick(() => moveHighlight(currentProjectIndex.value)) // Positionne l'indicateur au chargement
 })
 
 // Fonction de défilement
 const scrollDown = () => {
   window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })
+}
+
+// Fonction pour déplacer l'indicateur highlight
+const moveHighlight = (index) => {
+  const highlight = highlightRef.value
+  const indicators = document.querySelectorAll('.indicator')
+  const target = indicators[index]
+
+  if (highlight && target) {
+    const rect = target.getBoundingClientRect()
+    const containerRect = target.parentElement.getBoundingClientRect()
+    const translateX = rect.left - containerRect.left
+    highlight.style.transform = `translateX(${translateX}px)`
+  }
 }
 
 // Projets mock
@@ -122,6 +138,7 @@ const currentProject = computed(() => projects.value[currentProjectIndex.value])
 
 const changeProject = (index) => {
   currentProjectIndex.value = index
+  moveHighlight(index)
 }
 </script>
 
@@ -177,26 +194,30 @@ const changeProject = (index) => {
         </AButton>
       </div>
     </div>
-    <div ref="projetIndicator" class="pl-10 flex justify-center pt-8">
-      <div class="flex w-60 justify-around">
+    <div ref="projetIndicator" v-show="!isMode3" class="pl-10 flex justify-center pt-8">
+      <div class="relative flex w-60 justify-around">
         <div
           v-for="(project, index) in projects"
           :key="project.id"
           @click="changeProject(index)"
-          class="w-5 h-5 bg-primary rounded-md flex items-center cursor-pointer transition-all duration-300"
+          class="indicator w-5 h-5 bg-primary rounded-md flex items-center cursor-pointer transition-all duration-300"
           :class="{ 'bg-secondary': currentProjectIndex === index }"
         >
           <span
-            v-if="currentProjectIndex === index"
-            class="w-5/6 h-5/6 bg-white block m-auto rounded-sm"
+            class="indicator-square w-5/6 h-5/6 block m-auto rounded-sm"
+            :class="{ active: currentProjectIndex === index }"
           ></span>
         </div>
+        <div ref="highlightRef" class="indicator-highlight absolute bg-white rounded-sm"></div>
       </div>
     </div>
   </div>
-  <div ref="arrowRef" @click="scrollDown" class="hidden lg:flex justify-center pt-8 arrow-down-animation z-40" v-show="isMode3">
-    <ArrowDown />
+  <div v-show="isMode3" @click="scrollDown">
+    <div ref="arrowRef" class="hidden lg:flex justify-center pt-8 arrow-down-animation">
+      <ArrowDown />
+    </div>
   </div>
+
   <Projet v-if="isMode3" :project="currentProject" />
 </template>
 
@@ -207,7 +228,8 @@ const changeProject = (index) => {
 }
 
 @keyframes arrow-bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
     opacity: 1;
   }
@@ -215,5 +237,30 @@ const changeProject = (index) => {
     transform: translateY(20px);
     opacity: 0.5;
   }
+}
+
+.indicator {
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.indicator-square {
+  background-color: transparent;
+  transition: background-color 0.3s;
+}
+
+.indicator-square.active {
+  background-color: white;
+}
+
+.indicator:hover .indicator-square {
+  background-color: white;
+}
+
+.indicator-highlight {
+  width: 24px; /* Ajusté en fonction de la taille de vos indicateurs */
+  height: 24px; /* Ajusté en fonction de la taille de vos indicateurs */
+  transition: transform 0.3s;
+  z-index: -1; /* Place derrière les indicateurs */
 }
 </style>
