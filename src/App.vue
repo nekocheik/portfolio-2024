@@ -1,5 +1,17 @@
 <template>
-  <header></header>
+  <header>
+    <nav class="hidden lg:flex fixed top-10 right-20 z-30 w-96 justify-around">
+      <button @click="navigateTo('projets')" :class="['text-white font-normal text-lg cursor-pointer', { 'underline': isCurrentRoute('projets') }]">
+        Projets
+      </button>
+      <button @click="navigateTo('whoiam')" :class="['text-white font-normal text-lg cursor-pointer', { 'underline': isCurrentRoute('whoiam') }]">
+        Who I Am
+      </button>
+      <button @click="navigateTo('contact')" :class="['text-white font-normal text-lg cursor-pointer', { 'underline': isCurrentRoute('contact') }]">
+        Contact
+      </button>
+    </nav>
+  </header>
   <main
     class="relative font-body bg-100-auto w-[99vw] overflow-x-hidden min-h-[100vh]"
     :style="{ 'background-image': isMode2 || isMode3 ? `url(/background-desktop.jpg)` : '' }"
@@ -30,17 +42,25 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { gsap } from 'gsap'
 import * as THREE from 'three'
 
 const route = useRoute()
+const router = useRouter()
 
 const isMode1 = computed(() => route.path === '/')
 const isMode2 = computed(() => route.path === '/projets/default')
 const isMode3 = computed(() => route.path === '/projets/one')
 
-console.log(route.path, 'ici')
+// Check if the current route matches the given route name
+const isCurrentRoute = (routeName: string) => {
+  return route.name === routeName
+}
+
+const navigateTo = (route: string) => {
+  router.push({ name: route })
+}
 
 const canvasContainer = ref<HTMLDivElement | null>(null)
 const secondCanvasContainer = ref<HTMLDivElement | null>(null)
@@ -195,7 +215,7 @@ const initSecondCanvas = () => {
 const animateTransition = () => {
   if (transitionContainer.value) {
     if (isMode2.value) {
-      gsap.to(transitionContainer.value, { width: '80vw', height: '70vh', duration: 0.5 })
+      gsap.to(transitionContainer.value, { width: '1300px', height: '70vh', duration: 0.5 })
     } else if (isMode3.value) {
       gsap.to(transitionContainer.value, { width: '100vw', height: '100vh', duration: 0.5 })
     } else {
@@ -328,5 +348,10 @@ canvas.second-canvas {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+/* Style for underline */
+.underline {
+  text-decoration: underline;
 }
 </style>

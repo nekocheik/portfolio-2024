@@ -28,6 +28,8 @@
     "help": "node src/scripts/log-help.js"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "daisyui": "^2.51.5",
     "gsap": "^3.12.5",
     "three": "^0.164.1",
