@@ -195,7 +195,7 @@ const initSecondCanvas = () => {
 const animateTransition = () => {
   if (transitionContainer.value) {
     if (isMode2.value) {
-      gsap.to(transitionContainer.value, { width: '90vw', height: '70vh', duration: 0.5 })
+      gsap.to(transitionContainer.value, { width: '80vw', height: '70vh', duration: 0.5 })
     } else if (isMode3.value) {
       gsap.to(transitionContainer.value, { width: '100vw', height: '100vh', duration: 0.5 })
     } else {
