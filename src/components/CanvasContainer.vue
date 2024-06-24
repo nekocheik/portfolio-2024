@@ -20,7 +20,6 @@ const initFirstCanvas = () => {
   const renderer = new THREE.WebGLRenderer({ alpha: true })
   renderer.setSize(width, height)
   renderer.domElement.classList.add('fluctuating-opacity')
-  renderer.domElement.classList.add('mode2')
   container.appendChild(renderer.domElement)
 
   const geometry = new THREE.PlaneGeometry(2, 2)
@@ -95,10 +94,6 @@ canvas.fluctuating-opacity {
   left: 0;
   width: 100%;
   height: 100%;
-  animation: fluctuateOpacity2 10s infinite;
-}
-
-canvas.fluctuating-opacity.mode2 {
   animation: fluctuateOpacity2 10s infinite;
 }
 

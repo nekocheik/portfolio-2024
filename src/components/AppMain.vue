@@ -12,7 +12,9 @@
           class="w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
           :class="{
             'w-[90vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[70vh] transition-all': isMode2,
-            '!h-[100vh] !w-[100vw]': isMode3
+            '!h-[100vh] !w-[100vw]': isMode3,
+            '!hidden': isMode4
+
           }"
         >
           <SecondCanvasContainer ref="secondCanvasContainer" />
@@ -35,11 +37,12 @@ const route = useRoute()
 
 const isMode2 = computed(() => route.path === '/projets/default')
 const isMode3 = computed(() => route.path === '/projets/one')
+const isMode4 = computed(() => route.path === "/who-i-am")
 
 const transitionContainer = ref(null)
 
 const mainStyle = computed(() => ({
-  'background-image': isMode2.value || isMode3.value ? 'url(/background-desktop.jpg)' : ''
+  'background-image': isMode2.value || isMode3.value || isMode4.value ? 'url(/background-desktop.jpg)' : ''
 }))
 
 const animateTransition = () => {
@@ -61,7 +64,7 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style>
 .relative {
   position: relative;
 }

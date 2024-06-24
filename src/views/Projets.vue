@@ -34,29 +34,14 @@ const containerRef = ref(null)
 const arrowRef = ref(null) // Référence pour ArrowDown
 const highlightRef = ref(null) // Référence pour l'indicateur highlight
 
-const animateTransition = () => {
-  if (isMode3.value) {
-    imgRef.value.style.width = '120%'
-    textRef.value.style.transform = 'translateX(40px) scale(1.1)'
-    containerRef.value.style.width = '80vw'
-    containerRef.value.style.height = '509px'
-  } else {
-    imgRef.value.style.width = '100%'
-    textRef.value.style.transform = 'translateX(0px) scale(1)'
-    containerRef.value.style.width = '448px'
-    containerRef.value.style.height = '396px'
-  }
-}
-
 watch(
   () => route.path,
   () => {
-    animateTransition()
+    nextTick(() => moveHighlight(currentProjectIndex.value)) // Positionne l'indicateur au changement de route
   }
 )
 
 onMounted(() => {
-  animateTransition()
   nextTick(() => moveHighlight(currentProjectIndex.value)) // Positionne l'indicateur au chargement
 })
 
@@ -153,18 +138,27 @@ const changeProject = (index) => {
       <div
         @click="() => !isMode3 || toggleMode()"
         ref="containerRef"
-        class="lg:z-50 w-[88vw] h-[60vh] bg-white absolute top-0 left-0 right-0 mx-auto my-auto bottom-0 rounded-lg transition-container duration-500 lg:h-96 lg:w-[448px] lg:ml-40 cursor-pointer overflow-hidden"
+        :class="[
+          'lg:z-50 bg-white absolute top-0 left-0 right-0 mx-auto my-auto bottom-0 rounded-lg transition-all duration-500 cursor-pointer overflow-hidden',
+          isMode3 ? 'w-[80vw] h-[509px]' : 'w-[88vw] h-[60vh] lg:h-96 lg:w-[448px] lg:ml-40'
+        ]"
       >
         <div class="relative h-full w-full">
           <img
             ref="imgRef"
             :src="currentProject.imgSrc"
-            class="h-[100%] object-cover absolute left-0 right-0 mx-auto transition-img"
+            :class="[
+              'h-[100%] object-cover absolute left-0 right-0 mx-auto transition-all duration-500',
+              isMode3 ? 'w-[120%]' : 'w-[100%]'
+            ]"
             alt=""
           />
           <div
             ref="textRef"
-            class="text-white text-5xl z-40 font-display uppercase absolute top-0 bottom-0 my-auto flex flex-col justify-center transition-all duration-500"
+            :class="[
+              'text-white text-5xl z-40 font-display uppercase absolute top-0 bottom-0 my-auto flex flex-col justify-center transition-all duration-500',
+              isMode3 ? 'translate-x-[40px] scale-[1.1]' : 'translate-x-0 scale-100'
+            ]"
           >
             <p class="font-bold">{{ currentProject.title }}</p>
           </div>
@@ -194,7 +188,7 @@ const changeProject = (index) => {
         </AButton>
       </div>
     </div>
-    <div ref="projetIndicator" v-show="!isMode3" class="pl-10 flex justify-center pt-8">
+    <div ref="projetIndicator" v-show="!isMode3" class="lg:pl-10 flex justify-center pt-40 lg:pt-8">
       <div class="relative flex w-60 justify-around">
         <div
           v-for="(project, index) in projects"
@@ -223,44 +217,29 @@ const changeProject = (index) => {
 
 <style lang="scss" scoped>
 .arrow-down-animation {
-  animation: arrow-bounce 1s infinite;
-  cursor: pointer;
-}
-
-@keyframes arrow-bounce {
-  0%,
-  100% {
-    transform: translateY(-20px);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(0px);
-    opacity: 0.5;
-  }
+  @apply animate-bounce cursor-pointer;
 }
 
 .indicator {
-  position: relative;
-  transition: transform 0.3s;
+  @apply relative transition-transform duration-300;
 }
 
 .indicator-square {
-  background-color: transparent;
-  transition: background-color 0.3s;
+  @apply bg-transparent transition-colors duration-300;
 }
 
 .indicator-square.active {
-  background-color: white;
+  @apply bg-white;
 }
 
 .indicator:hover .indicator-square {
-  background-color: white;
+  @apply bg-white;
 }
 
 .indicator-highlight {
+  @apply absolute bg-white rounded-sm transition-transform duration-300;
   width: 24px; /* Ajusté en fonction de la taille de vos indicateurs */
   height: 24px; /* Ajusté en fonction de la taille de vos indicateurs */
-  transition: transform 0.3s;
   z-index: -1; /* Place derrière les indicateurs */
 }
 </style>

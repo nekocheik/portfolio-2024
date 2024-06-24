@@ -114,7 +114,7 @@ onBeforeUnmount(() => {
 })
 </script>
 
-<style >
+<style scoped>
 .second-canvas-container {
   overflow: hidden;
   position: absolute;
