@@ -9,9 +9,9 @@
         <CanvasContainer ref="canvasContainer" />
         <div
           ref="transitionContainer"
-          class="w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
+          class="transition-all w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
           :class="{
-            'w-[90vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[70vh] transition-all': isMode2,
+            'w-[90vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[70vh]': isMode2,
             '!h-[100vh] !w-[100vw]': isMode3,
             '!hidden': isMode4
 
@@ -45,19 +45,19 @@ const mainStyle = computed(() => ({
   'background-image': isMode2.value || isMode3.value || isMode4.value ? 'url(/background-desktop.jpg)' : ''
 }))
 
-const animateTransition = () => {
-  if (transitionContainer.value) {
-    if (isMode2.value) {
-      gsap.to(transitionContainer.value, { width: '1300px', height: '70vh', duration: 0.5 })
-    } else if (isMode3.value) {
-      gsap.to(transitionContainer.value, { width: '100vw', height: '100vh', duration: 1 })
-    } else {
-      gsap.to(transitionContainer.value, { width: '100vw', height: '88vh', duration: 1.3 })
-    }
-  }
-}
+// const animateTransition = () => {
+//   if (transitionContainer.value) {
+//     if (isMode2.value) {
+//       gsap.to(transitionContainer.value, { width: '1300px', height: '70vh', duration: 0.5 })
+//     } else if (isMode3.value) {
+//       gsap.to(transitionContainer.value, { width: '100vw', height: '100vh', duration: 1 })
+//     } else {
+//       gsap.to(transitionContainer.value, { width: '100vw', height: '88vh', duration: 1.3 })
+//     }
+//   }
+// }
 
-watch([isMode2, isMode3], animateTransition)
+// watch([isMode2, isMode3], animateTransition)
 
 onMounted(() => {
   animateTransition()
@@ -91,7 +91,7 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  transition: all 0.5s ease;
+  transition: all 1.5s ease;
 }
 
 .transition-container.mode2 {

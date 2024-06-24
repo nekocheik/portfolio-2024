@@ -44,9 +44,9 @@ const initSecondCanvas = () => {
     void main() {
       vec2 st = gl_FragCoord.xy / u_resolution.xy;
       vec2 mouse = u_mouse / u_resolution;
-      float mouseInfluence = length(mouse - st) * 0.5;
-      float waveSpeed = 0.136 + random(st) * 0.2 + mouseInfluence;
-      float wave = sin(st.y * 4.648 + u_time * waveSpeed) * 0.988;
+      float mouseInfluence = length(mouse - st) * 0.1; // Réduire l'influence de la souris
+      float waveSpeed = 0.05 + random(st) * 0.1 + mouseInfluence; // Réduire la vitesse des vagues
+      float wave = sin(st.y * 4.648 + u_time * waveSpeed) * 0.5; // Réduire l'amplitude des vagues
       float col = floor((st.x + wave) * 8.264);
       float checker = mod(col, 1.616);
       float distToBlack = min(abs(mod(st.x + wave, 2.608 / 9.040) - 1.0 / 8.520), abs(mod(st.x + wave, 2.672 / 9.600)));

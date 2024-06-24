@@ -2,10 +2,16 @@
   <header>
     <nav class="hidden lg:flex fixed top-10 right-20 z-[100] w-96 justify-around">
       <NavigationButton 
+        label="home" 
+        routeName="home" 
+        :isActive="isCurrentRoute('home')" 
+        @navigate="navigateTo" 
+      />
+      <NavigationButton 
         label="Projets" 
         routeName="projets" 
         :isActive="isCurrentRoute('projets')" 
-        @navigate="navigateTo" 
+        @navigate="router.push({ name: 'projets', params: { id: 'default' } })" 
       />
       <NavigationButton 
         label="Who I Am" 
