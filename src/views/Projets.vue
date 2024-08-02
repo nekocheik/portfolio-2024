@@ -68,17 +68,19 @@ const moveHighlight = (index) => {
 const projects = ref([
   {
     id: 'one',
-    title: 'How we build the world together',
-    role: 'Back-end',
+    title: 'The aquaverse',
+    role: 'Lead Front',
+    link: "https://656bf3d4.frontend-preproduction-29946.pages.dev/",
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit convallis massa vel porta amet, in tincidunt venenatis...',
-    imgSrc: 'https://picsum.photos/600/400?random=1',
+      'Lead tech au sein d’une jeune start-up dans le domaine de la cryptomonnaie. À la tête d’une équipe technique de cinq développeurs et d’un chef de projet technique. Ma mission était de définir, maintenir et faire évoluer la partie tech de l’entreprise en définissant les objectifs cours, moyens, long term des différentes briques techniques de notre écosystème.',
+    imgSrc: 'https://656bf3d4.frontend-preproduction-29946.pages.dev/assets/background_hader_home_desktop.ac559061.jpg',
     year: 2019,
     technologies: ['Vue.js', 'mongodb', 'Node.js']
   },
   {
     id: 'two',
     title: 'Creating Digital Landscapes',
+    link: "https://656bf3d4.frontend-preproduction-29946.pages.dev/",
     role: 'UI/UX Designer',
     description:
       'Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec id elit non mi porta gravida at eget metus...',
@@ -90,6 +92,7 @@ const projects = ref([
     id: 'three',
     title: 'Innovating for the future',
     role: 'Front-end',
+    link: "https://656bf3d4.frontend-preproduction-29946.pages.dev/",
     description:
       'Aliquam erat volutpat. Nullam ac diam at lacus euismod fermentum. Etiam pharetra augue non turpis vehicula, nec malesuada...',
     imgSrc: 'https://picsum.photos/600/400?random=3',
@@ -100,6 +103,7 @@ const projects = ref([
     id: 'four',
     title: 'AI and Machine Learning',
     role: 'Data Scientist',
+    link: "https://656bf3d4.frontend-preproduction-29946.pages.dev/",
     description:
       'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum...',
     imgSrc: 'https://picsum.photos/600/400?random=4',
@@ -110,6 +114,7 @@ const projects = ref([
     id: 'five',
     title: 'Developing Mobile Solutions',
     role: 'Mobile Developer',
+    link: "https://656bf3d4.frontend-preproduction-29946.pages.dev/",
     description:
       'Vestibulum id ligula porta felis euismod semper. Donec ullamcorper nulla non metus auctor fringilla...',
     imgSrc: 'https://picsum.photos/600/400?random=5',
@@ -125,16 +130,20 @@ const changeProject = (index) => {
   currentProjectIndex.value = index
   moveHighlight(index)
 }
+
+const openLink = (index) => {
+  window.open(projects.value[index].link) 
+}
 </script>
 
 <template>
   <div class="relative">
     <h1
-      class="hidden lg:block z-30 pt-24 pl-24 text-tertiary text-5xl font-thin font-display italic"
+      class="hidden lg:block z-30 pt-24 pl-24 text-tertiary text-5xl lg:text-[80px] font-thin font-display italic"
     >
       Projets
     </h1>
-    <div class="relative h-[70vh] top-[15vh] lg:top-0">
+    <div class="relative h-[70vh] top-[15vh] lg:top-10">
       <div
         @click="() => !isMode3 || toggleMode()"
         ref="containerRef"
@@ -143,7 +152,7 @@ const changeProject = (index) => {
           isMode3 ? 'w-[80vw] h-[509px]' : 'w-[88vw] h-[60vh] lg:h-96 lg:w-[448px] lg:ml-40'
         ]"
       >
-        <div class="relative h-full w-full">
+        <div class="relative h-full w-full flex justify-center">
           <img
             ref="imgRef"
             :src="currentProject.imgSrc"
@@ -156,7 +165,7 @@ const changeProject = (index) => {
           <div
             ref="textRef"
             :class="[
-              'text-white text-5xl z-40 font-display uppercase absolute top-0 bottom-0 my-auto flex flex-col justify-center transition-all duration-500',
+              'text-white text-5xl z-40 font-display uppercase absolute top-0 bottom-0 my-auto flex flex-col justify-center transition-all duration-500 mx-auto',
               isMode3 ? 'translate-x-[40px] scale-[1.1]' : 'translate-x-0 scale-100'
             ]"
           >
@@ -177,13 +186,13 @@ const changeProject = (index) => {
         </section>
         <p class="hidden lg:block pt-32"><strong>Role</strong> / {{ currentProject.role }}</p>
 
-        <div class="hidden lg:block w-[400px] text-right pt-20 lg:text-xl">
+        <div class="hidden lg:block w-[400px] text-right pt-10 lg:text-xl">
           <p>
             {{ currentProject.description }}
           </p>
         </div>
 
-        <AButton @click="toggleMode" class="mx-auto mt-[60vh] lg:relative lg:mt-20 lg:mr-32">
+        <AButton @click="toggleMode() && openLink(currentProjectIndex)" class="mx-auto mt-[60vh] lg:relative lg:mt-20 lg:mr-32">
           En voir plus
         </AButton>
       </div>

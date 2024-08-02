@@ -1,6 +1,5 @@
 <template>
   <div class="relative">
-    <AppHeader />
     <main
       class="relative font-body bg-100-auto w-[99vw] overflow-x-hidden min-h-[100vh]"
       :style="mainStyle"
@@ -11,7 +10,7 @@
           ref="transitionContainer"
           class="transition-all w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
           :class="{
-            'w-[90vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[70vh]': isMode2,
+            'w-[82vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[62vh] lg:max-w-[1300px]': isMode2,
             '!h-[100vh] !w-[100vw]': isMode3,
             '!hidden': isMode4
 
@@ -28,8 +27,6 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { gsap } from 'gsap'
-import AppHeader from '@/components/AppHeader.vue'
 import CanvasContainer from '@/components/CanvasContainer.vue'
 import SecondCanvasContainer from '@/components/SecondCanvasContainer.vue'
 
@@ -45,23 +42,6 @@ const mainStyle = computed(() => ({
   'background-image': isMode2.value || isMode3.value || isMode4.value ? 'url(/background-desktop.jpg)' : ''
 }))
 
-// const animateTransition = () => {
-//   if (transitionContainer.value) {
-//     if (isMode2.value) {
-//       gsap.to(transitionContainer.value, { width: '1300px', height: '70vh', duration: 0.5 })
-//     } else if (isMode3.value) {
-//       gsap.to(transitionContainer.value, { width: '100vw', height: '100vh', duration: 1 })
-//     } else {
-//       gsap.to(transitionContainer.value, { width: '100vw', height: '88vh', duration: 1.3 })
-//     }
-//   }
-// }
-
-// watch([isMode2, isMode3], animateTransition)
-
-onMounted(() => {
-  animateTransition()
-})
 </script>
 
 <style>
