@@ -1,36 +1,59 @@
 <template>
   <header>
-    <div class="back-button fixed top-10 left-10 z-50 cursor-pointer" @click="goBack">
-      <svg class="back-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <circle class="progress-ring__circle"
-                stroke="white"
-                stroke-width="2"
-                fill="transparent"
-                r="10"
-                cx="12"
-                cy="12"/>
-        <path d="M14 18l-6-6 6-6" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+    <div
+      class="back-button fixed top-10 left-10 z-50 cursor-pointer"
+      @click="router.push({ name: 'projets', params: { id: 'default' } })"
+    >
+      <div class="relative">
+        <svg class="back-arrow absolute" viewBox="0 0 24 23" xmlns="http://www.w3.org/2000/svg">
+          <circle
+            class="progress-ring__circle"
+            :stroke-dashoffset="circleOffset"
+            stroke="white"
+            stroke-width="1.5"
+            fill="transparent"
+            r="10"
+            cx="12"
+            cy="12"
+          />
+        </svg>
+        <svg class="back-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M14 18l-6-6 6-6"
+            stroke="white"
+            stroke-width="1"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
     </div>
     <nav class="hidden lg:flex fixed top-10 right-20 z-[100] w-96 justify-around">
       <NavigationButton
-        label="home"
+        :label="$t('nav.home')"
         routeName="home"
         :isActive="isCurrentRoute('home')"
         @navigate="navigateTo"
       />
       <NavigationButton
-        label="Projets"
+        :label="$t('nav.projets')"
         routeName="projets"
         :isActive="isCurrentRoute('projets')"
         @navigate="router.push({ name: 'projets', params: { id: 'default' } })"
       />
       <NavigationButton
-        label="Who I Am"
+        :label="$t('nav.who_i_am')"
         routeName="whoiam"
         :isActive="isCurrentRoute('whoiam')"
         @navigate="navigateTo"
       />
+      <button
+        class="language-button"
+        @click="toggleLanguage"
+      >
+        {{ $t('nav.change_language') }}
+      </button>
     </nav>
   </header>
 </template>
@@ -51,6 +74,14 @@ const updateScrollProgress = () => {
   progress.value = scrollY / scrollTotal * 100
 }
 
+const toggleLanguage = () => {
+  const currentLocal = localStorage.getItem('locale')
+  window.log(currentLocal)
+  const newVal = currentLocal == "fr" ? 'en' : 'fr';
+  localStorage.setItem('locale', newVal);
+  location.reload();
+}
+
 onMounted(() => {
   window.addEventListener('scroll', updateScrollProgress)
 })
@@ -66,8 +97,8 @@ const navigateTo = (route: string) => router.push({ name: route })
 
 <style scoped>
 .back-button {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,8 +110,7 @@ const navigateTo = (route: string) => router.push({ name: route })
 }
 
 .progress-ring__circle {
-  transition: stroke-dasharray 0.3s;
-  transform: rotate(-90deg);
-  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 0.3s; /* Smooth transition for the dash offset */
+  stroke-dasharray: 62.8319; /* Circumference of the circle, C = 2πr, r = 10 */
 }
 </style>

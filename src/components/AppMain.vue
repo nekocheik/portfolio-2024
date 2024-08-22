@@ -8,7 +8,7 @@
         <CanvasContainer ref="canvasContainer" />
         <div
           ref="transitionContainer"
-          class="transition-all w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
+          class="transition-all duration-700 w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
           :class="{
             'w-[82vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[62vh] lg:max-w-[1300px]': isMode2,
             '!h-[100vh] !w-[100vw]': isMode3,

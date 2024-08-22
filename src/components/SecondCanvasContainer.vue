@@ -15,7 +15,7 @@ const initSecondCanvas = () => {
 
   const container = secondCanvasContainer.value
   const width = container.clientWidth
-  const height = container.clientHeight
+  const height = screen.height
   const scene = new THREE.Scene()
   const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
   const renderer = new THREE.WebGLRenderer({ alpha: true })
@@ -88,7 +88,7 @@ const onWindowResize = () => {
     const canvas = container.querySelector('canvas')
     if (canvas) {
       canvas.style.width = `${width}px`
-      canvas.style.height = `${height}px`
+      canvas.style.height = `${screen.height}px`
     }
     const material = canvas.material
     if (material) {

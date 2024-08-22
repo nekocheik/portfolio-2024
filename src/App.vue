@@ -1,6 +1,6 @@
 <template>
   <div class="relative">
-    <AppHeader />
+    <AppHeader v-if="$route.name != 'home'"/>
     <AppMain />
   </div>
 </template>
