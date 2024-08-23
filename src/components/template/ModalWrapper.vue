@@ -1,5 +1,5 @@
 <template>
-  <div data-cy="modal" :class="{ 'modal w-[100vw] h-[100vh] bg-[#00000057] backdrop-blur-lg fixed top-0 left-0 z-[9999999] cursor-pointer': defaultStyle }">
+  <div  :class="{ 'modal w-[100vw] h-[100vh] bg-[#00000057] backdrop-blur-lg fixed top-0 left-0 z-[9999999] cursor-pointer': defaultStyle }">
     <div ref="modal" :class="{ 'flex justify-center items-center h-full modalWrapper': defaultStyle }">
       <div :class="{ 'table cursor-default': defaultStyle }" class="modal-wrapper-content">
         <slot :close-modal="close"></slot>
@@ -9,10 +9,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onBeforeMount, onUnmounted, defineProps, watchEffect, computed } from 'vue';
-import { useRoute } from 'vue-router';
 
-import useModal from '@/hooks/useModal';
+import useModal from '@/composable/useModal';
 
 const ModalEvent = ref();
 const modal = ref();

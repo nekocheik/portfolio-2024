@@ -30,6 +30,7 @@ import { useRoute } from 'vue-router'
 import CanvasContainer from '@/components/CanvasContainer.vue'
 import SecondCanvasContainer from '@/components/SecondCanvasContainer.vue'
 
+
 const route = useRoute()
 
 const isMode2 = computed(() => route.path === '/projets/default')

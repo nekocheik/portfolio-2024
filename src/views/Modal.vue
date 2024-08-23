@@ -1,8 +1,8 @@
 <template>
   <div>
     <TransitionGroup name="fade">
-      <ModalGalerie v-if="modalOpen == 'ModalGalerie'" />
-			{{ modalOpen }}
+      <ModalGalerie />
+      {{ modalOpen }}
     </TransitionGroup>
   </div>
 </template>
@@ -26,6 +26,9 @@ $busEvent.on('modalOpen', (data: any) => {
 })
 
 const route = useRoute()
+setInterval(() => {
+  console.log(route.query.modalOpen)
+}, 10000)
 const modalOpen = computed(() => route.query.modalOpen?.toLocaleString())
 </script>
 

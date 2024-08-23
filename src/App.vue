@@ -1,8 +1,8 @@
 <template>
   <div class="relative">
-    <AppHeader v-if="$route.name != 'home'"/>
-    <AppMain />
     <Modal />
+    <AppHeader v-if="$route.name != 'home'"/>
+    <AppMain @click="open('ModalGalerie')" />
   </div>
 </template>
 
