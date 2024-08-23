@@ -1,5 +1,5 @@
 <template>
-  <div ref="secondCanvasContainer" class="second-canvas-container opacity-20 w-full h-full"></div>
+  <div ref="secondCanvasContainer" class="second-canvas-container opacity-50 w-full h-full animate-hue-rotate"></div>
 </template>
 
 <script setup lang="ts">
@@ -125,5 +125,21 @@ canvas.second-canvas {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+@keyframes hue-rotate-animation {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.animate-hue-rotate {
+  animation: hue-rotate-animation 30s linear infinite;
 }
 </style>

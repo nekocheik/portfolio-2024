@@ -185,7 +185,7 @@ const openLink = (index: string) => {
     >
       Projets
     </h1>
-    <div class="relative h-[70vh] top-[15vh] lg:top-10">
+    <div class="relative h-[70vh] top-[15vh] lg:top-10 z-50">
       <div
         @click="() => !isMode3 || toggleMode()"
         ref="containerRef"
@@ -208,7 +208,7 @@ const openLink = (index: string) => {
           <div
             ref="textRef"
             :class="[
-              'text-white text-5xl z-40 font-display uppercase absolute top-0 bottom-0 my-auto flex flex-col justify-center transition-all delay-1000 duration-1000 mx-auto',
+              'text-white text-5xl z-40 font-display uppercase absolute top-0 bottom-0 my-auto flex flex-col justify-center transition-all delay-1000 duration-1000 mx-auto pointer-events-none',
               isMode3 ? 'translate-x-[40px] scale-[1.1]' : 'translate-x-0 scale-100'
             ]"
           >

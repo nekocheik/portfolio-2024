@@ -39,6 +39,16 @@ export default {
         cta: '16.5px', // CTA font size
         joly: '44px' // Joly special font size
       },
+      animation: {
+        'hue-rotate-canvas': 'hue-rotate 5s linear infinite',
+      },
+      keyframes: {
+        'hue-rotate': {
+          '0%': { filter: 'hue-rotate(0deg)' },
+          '50%': { filter: 'hue-rotate(180deg)' },
+          '100%': { filter: 'hue-rotate(0deg)' },
+        },
+      },
       boxShadow: {
         'few-shadow': '0 4px 0 #00000040', // Few shadow
         'ultra-light-shadow': '0 4px 0 #0000000f' // Ultra light shadow

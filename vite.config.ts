@@ -6,6 +6,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import { VitePWA } from 'vite-plugin-pwa'
 import Inspect from 'vite-plugin-inspect'
 import { visualizer } from 'rollup-plugin-visualizer'
+import AutoImport from 'unplugin-auto-import/vite';
+
 const path = require('path')
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -14,6 +16,21 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vue(),
       vueJsx(),
+      AutoImport({
+        include: ['./src/**/*.ts', './src/**/*.vue'],
+        /* options */
+        imports: [
+          'vue',
+          'pinia',
+          'vue-router',
+          {
+            '@/modules/busEvent/index': ['$busEvent'],
+          },
+        ],
+        vueTemplate: true,
+        dts: 'src/auto-imports.d.ts',
+        resolvers: [],
+      }),
       Inspect({
         build: true,
         outputDir: '.vite-inspect'

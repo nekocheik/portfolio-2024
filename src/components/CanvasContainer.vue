@@ -94,12 +94,13 @@ canvas.fluctuating-opacity {
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: black;
   animation: fluctuateOpacity2 10s infinite;
 }
 
 @keyframes fluctuateOpacity2 {
   0%, 100% {
-    opacity: 0.08;
+    opacity: 0.2;
   }
   50% {
     opacity: 0.03;

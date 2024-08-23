@@ -7,7 +7,7 @@
         'lg:flex-row-reverse': 'row-reverse' == direction
       }"
     >
-      <div class="w-[50vw] px-8 lg:pt-16">
+      <div class="lg:w-[50vw] px-8 lg:pt-16">
         <h2 class="text-3xl font font-kiona lg:pb-16">
           <slot name="text">{{ title }}</slot>
         </h2>
