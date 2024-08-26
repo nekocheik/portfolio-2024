@@ -9,6 +9,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { createI18n } from 'vue-i18n'
+import 'primeicons/primeicons.css'
+import PrimeVue from 'primevue/config'
+import { MotionPlugin } from '@vueuse/motion'
+import Aura from '@primevue/themes/aura'
 
 library.add(faUserSecret)
 
@@ -50,6 +54,12 @@ const app = createApp(App)
   .component('AButton', Button)
   .use(router)
   .use(i18n)
+  .use(MotionPlugin)
   .use(createThemeManager({ light: 'breeze', dark: 'storm', watchSystemTheme: true }))
+  .use(PrimeVue, {
+    theme: {
+      preset: Aura
+    }
+  })
 
 app.mount('#app')

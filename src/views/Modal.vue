@@ -1,8 +1,7 @@
 <template>
   <div>
     <TransitionGroup name="fade">
-      <ModalGalerie />
-      {{ modalOpen }}
+      <ModalGalerie v-if="modalOpen == 'ModalGalerie'" />
     </TransitionGroup>
   </div>
 </template>

@@ -30,9 +30,13 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
+    "@primevue/themes": "^4.0.5",
     "@vueuse/core": "^10.11.0",
+    "@vueuse/motion": "^2.2.3",
     "daisyui": "^2.51.5",
     "gsap": "^3.12.5",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.0.5",
     "three": "^0.164.1",
     "vite-plugin-pwa": "^0.14.7",
     "vue": "^3.2.47",
