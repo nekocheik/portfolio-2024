@@ -2,7 +2,7 @@
   <button
     @click="navigate"
     :class="[
-      'text-white font-normal text-lg cursor-pointer',
+      'text-white font-normal text-lg cursor-pointer text-body',
       { underline: isActive }
     ]"
   >

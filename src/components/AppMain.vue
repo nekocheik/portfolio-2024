@@ -4,16 +4,43 @@
       class="relative font-body bg-100-auto w-[99vw] overflow-x-hidden min-h-[100vh]"
       :style="mainStyle"
     >
+      <svg class="absolute">
+        <filter id="wavyBackground">
+          <feTurbulence
+            id="turbulence1"
+            type="turbulence"
+            numOctaves="5"
+            result="NOISE1"
+          ></feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="NOISE1" scale="100"></feDisplacementMap>
+          <animate
+            xlink:href="#turbulence1"
+            attributeName="baseFrequency"
+            dur="60s"
+            keyTimes="0;0.2;1"
+            values="0.01 0.02;0.02 0.01;0.04 0.02"
+            repeatCount="indefinite"
+          ></animate>
+        </filter>
+      </svg>
+
+      <img
+        style="filter: url(#wavyBackground)"
+        src="/background-image.jpg"
+        :class="{ 'opacity-100': isMode3 || isMode2 }"
+        class="w-full fixed scale-110 transition-all duration-700 opacity-0"
+        alt=""
+      />
       <section class="h-[100vh] w-[100vw] absolute top-0">
         <CanvasContainer ref="canvasContainer" />
         <div
           ref="transitionContainer"
           class="transition-all duration-700 w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
           :class="{
-            'w-[82vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[62vh] lg:max-w-[1300px]': isMode2,
+            'w-[82vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[64vh] lg:max-w-[1300px]':
+              isMode2,
             '!h-[100vh] !w-[100vw]': isMode3,
             '!hidden': isMode4
-
           }"
         >
           <SecondCanvasContainer ref="secondCanvasContainer" />
@@ -30,19 +57,17 @@ import { useRoute } from 'vue-router'
 import CanvasContainer from '@/components/CanvasContainer.vue'
 import SecondCanvasContainer from '@/components/SecondCanvasContainer.vue'
 
-
 const route = useRoute()
 
 const isMode2 = computed(() => route.path === '/projets/default')
-const isMode3 = computed(() =>  /\/projets\/[{0-9}]+/.test(route.path))
-const isMode4 = computed(() => route.path === "/who-i-am")
+const isMode3 = computed(() => /\/projets\/[{0-9}]+/.test(route.path))
+const isMode4 = computed(() => route.path === '/who-i-am')
 
 const transitionContainer = ref(null)
 
 const mainStyle = computed(() => ({
-  'background-image': isMode2.value || isMode3.value || isMode4.value ? 'url(/background-desktop.jpg)' : ''
+  'background-image': isMode2.value || isMode3.value || isMode4.value ? '' : ''
 }))
-
 </script>
 
 <style>

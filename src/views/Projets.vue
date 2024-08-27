@@ -2,12 +2,12 @@
 import ArrowDown from '@/components/icons/ArrowDown.vue'
 import Projet from '@/views/Projet.vue'
 import { useRoute, useRouter } from 'vue-router'
-import projetInformations from "@/helpers/projetInformation.js";
+import projetInformations from '@/helpers/projetInformation.js'
 
 const route = useRoute()
 const router = useRouter()
 
-const isMode3 = computed(() =>  /\/projets\/[{0-9}]+/.test(route.path))
+const isMode3 = computed(() => /\/projets\/[{0-9}]+/.test(route.path))
 
 const toggleMode = () => {
   if (isMode3.value) {
@@ -71,7 +71,7 @@ const openLink = (index: string) => {
 <template>
   <div class="relative">
     <h1
-      class="hidden lg:block z-30 pt-24 pl-24 text-tertiary text-5xl lg:text-[80px] font-thin font-display italic"
+      class="hidden lg:block z-30 pt-16 pl-32 text-tertiary text-5xl lg:text-[80px] font-thin font-display italic"
     >
       Projets
     </h1>
@@ -113,13 +113,13 @@ const openLink = (index: string) => {
         class="text-white w-[88vw] lg:max-w-[1300px] absolute top-0 right-0 lg:right-auto my-auto bottom-0 flex flex-col items-end pr-14 transition-all duration-1000"
         :class="{ 'translate-x-[100vw]': isMode3 }"
       >
-        <section class="hidden lg:block absolute top-[-50px] text-5xl font-bold">
+        <section class="hidden lg:block absolute top-[-75px] text-5xl font-bold right-12">
           <p>{{ currentProjectIndex + 1 }}</p>
           <p class="pt-4">{{ projects.length }}</p>
         </section>
         <p class="hidden lg:block pt-32"><strong>Role</strong> / {{ currentProject.role }}</p>
 
-        <div class="hidden lg:block w-[500px] text-right pt-10 lg:text-xl lg:min-h-[130px]">
+        <div class="hidden lg:block w-[500px] text-right pt-10 lg:text-base lg:min-h-[250px]">
           <p>
             {{ currentProject.description }}
           </p>
@@ -143,11 +143,11 @@ const openLink = (index: string) => {
             v-for="(project, index) in projects"
             :key="project.id"
             @click="changeProject(index)"
-            :class="{ 'scale-110' : currentProjectIndex == index}"
+            :class="{ 'scale-110': currentProjectIndex == index }"
             class="w-5 h-5 bg-primary rounded-md flex items-center cursor-pointer transition-all duration-300"
           ></div>
           <div
-            class="left-[14px] absolute w-60 pointer-events-none transition-transform duration-1000"
+            class="left-[30px] absolute w-60 pointer-events-none transition-transform duration-1000"
             :style="{ transform: `translateX(${(100 / projects.length) * currentProjectIndex}%)` }"
           >
             <div

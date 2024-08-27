@@ -48,12 +48,12 @@
         :isActive="isCurrentRoute('whoiam')"
         @navigate="navigateTo"
       />
-      <button
+      <!-- <button
         class="language-button"
         @click="toggleLanguage"
       >
         {{ $t('nav.change_language') }}
-      </button>
+      </button> -->
     </nav>
   </header>
 </template>

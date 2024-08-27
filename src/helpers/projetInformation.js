@@ -86,30 +86,6 @@ export const projetInformations = [
     imgSrc: 'https://picsum.photos/600/400?random=3',
     year: 2021,
     technologies: ['React', 'Redux', 'TypeScript']
-  },
-  {
-    id: 'four',
-    title: 'AI and Machine Learning',
-    role: 'Data Scientist',
-    link: 'https://656bf3d4.frontend-preproduction-29946.pages.dev/',
-    description:
-      'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum...',
-    bigDescription: '',
-    imgSrc: 'https://picsum.photos/600/400?random=4',
-    year: 2022,
-    technologies: ['Python', 'TensorFlow', 'Keras']
-  },
-  {
-    id: 'five',
-    title: 'Developing Mobile Solutions',
-    role: 'Mobile Developer',
-    link: 'https://656bf3d4.frontend-preproduction-29946.pages.dev/',
-    description:
-      'Vestibulum id ligula porta felis euismod semper. Donec ullamcorper nulla non metus auctor fringilla...',
-    bigDescription: '',
-    imgSrc: 'https://picsum.photos/600/400?random=5',
-    year: 2023,
-    technologies: ['Flutter', 'Dart', 'Firebase']
   }
 ]
 
