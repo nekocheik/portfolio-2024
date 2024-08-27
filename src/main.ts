@@ -17,7 +17,7 @@ import Aura from '@primevue/themes/aura'
 library.add(faUserSecret)
 
 window.log = (text) => {
-  console.log(text + '---- ici --- app')
+  console.log(text , '---- ici --- app')
 }
 ;(() => {
   const local = localStorage.getItem('locale')

@@ -7,7 +7,7 @@ import projetInformations from "@/helpers/projetInformation.js";
 const route = useRoute()
 const router = useRouter()
 
-const isMode3 = computed(() => route.path === '/projets/one')
+const isMode3 = computed(() =>  /\/projets\/[{0-9}]+/.test(route.path))
 
 const toggleMode = () => {
   if (isMode3.value) {
@@ -21,7 +21,7 @@ const toggleMode = () => {
     router.replace({
       name: 'projets',
       params: {
-        id: 'one'
+        id: `${currentProjectIndex.value}`
       }
     })
   }
@@ -42,7 +42,6 @@ const scrollDown = () => {
 
 // Projets mock
 const projects = ref(projetInformations)
-
 const currentProjectIndex = ref(0)
 const currentProject = computed(() => projects.value[currentProjectIndex.value])
 const indicatorOnTransion = ref(false)
@@ -53,7 +52,7 @@ const changeProject = (index: Number) => {
 
   setTimeout(() => {
     currentProjectIndex.value = index
-  }, 450);
+  }, 450)
 
   if (interIndicator) {
     clearInterval(interIndicator)

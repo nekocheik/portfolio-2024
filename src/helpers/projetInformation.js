@@ -1,4 +1,4 @@
-export const projet = [
+export const projetInformations = [
   {
     id: 'one',
     title: 'The aquaverse',
@@ -39,22 +39,26 @@ export const projet = [
       {
         title: 'Développement du site internet',
         text: 'Création de la leanding page pour le site aquaverse site qui moder design avec de belle animation et des call api avec divers services backend, blockchaine et micros service interne.',
-        img: '/team-product.png'
+        img: '/team-product.png',
+        thumbnail: '/team-product.png'
       },
       {
         title: 'Création d’animation en css',
         text: 'Création d’un animation dans le but de claim son guardians v2, le but était de faire en sorte de convertir une version de son nft afin d’obtenir une version améliorer. ma mission a été d’animer une partie du claim afin de rendre l’experience imersive pour nos utilisateur. nous avons fin une animation de cart qui vient se jeter dans un portail en css.',
-        video: '/claime_guardian.mp4'
+        video: '/claime_guardian.mp4',
+        thumbnail: '/team-product.png'
       },
       {
         title: 'interface interactif et fluide',
         text: 'Pour récompensé nos older de guardians nous avons offert des lootbox qui pouvait être ouvrir, nous avons du mettre un sytème complex d’ouverture de lootboox avex la blockchaine elrond qui suivait par une animation de card qui flip',
-        video: '/oppening_loot_box.mp4'
+        video: '/oppening_loot_box.mp4',
+        thumbnail: '/team-product.png'
       },
       {
         title: 'espace client',
         text: 'Création d’un espace client afin de permettre au utilsateurs de gerer le compte utilisateur :',
-        video: '/account_page_the_aquaverse.mp4'
+        video: '/account_page_the_aquaverse.mp4',
+        thumbnail: '/team-product.png'
       }
     ],
     technologies: ['Vue.js', 'React', 'pinia', 'docker', 'mongodb', 'Node.js']
@@ -109,5 +113,4 @@ export const projet = [
   }
 ]
 
-
-export default projet;
+export default projetInformations

@@ -34,7 +34,7 @@ import SecondCanvasContainer from '@/components/SecondCanvasContainer.vue'
 const route = useRoute()
 
 const isMode2 = computed(() => route.path === '/projets/default')
-const isMode3 = computed(() => route.path === '/projets/one')
+const isMode3 = computed(() =>  /\/projets\/[{0-9}]+/.test(route.path))
 const isMode4 = computed(() => route.path === "/who-i-am")
 
 const transitionContainer = ref(null)
