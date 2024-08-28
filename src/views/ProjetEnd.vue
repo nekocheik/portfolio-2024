@@ -70,12 +70,7 @@ const openLink = (index: string) => {
 
 <template>
   <div class="relative">
-    <h1
-      class="hidden lg:block z-30 pt-16 pl-32 text-tertiary text-5xl lg:text-[80px] font-thin font-display italic"
-    >
-      Projets
-    </h1>
-    <div class="relative h-[70vh] max-h-[600px] top-[15vh] lg:top-10 z-50 2xl:top-[80px]">
+    <div class="relative h-[70vh] max-h-[600px]">
       <div
         @click="() => toggleMode()"
         ref="containerRef"
@@ -158,13 +153,6 @@ const openLink = (index: string) => {
       </div>
     </section>
   </div>
-  <div v-show="isMode3" @click="scrollDown" class="h-11">
-    <div ref="arrowRef" class="hidden lg:flex justify-center pt-8 arrow-down-animation">
-      <ArrowDown />
-    </div>
-  </div>
-
-  <Projet v-if="isMode3" :project="currentProject" />
 </template>
 
 <style lang="scss" scoped>

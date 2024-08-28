@@ -1,7 +1,7 @@
 <template>
   <div class="relative">
     <main
-      class="relative font-body bg-100-auto w-[99vw] overflow-x-hidden min-h-[100vh]"
+      class="relative font-body bg-100-auto max-w-[100vw] overflow-x-hidden min-h-[100vh]"
       :style="mainStyle"
     >
       <svg class="absolute">
@@ -31,23 +31,23 @@
         class="w-full absolute scale-110 transition-all duration-700 opacity-0"
         alt=""
       />
-      <img
+      <!-- <img
         style="filter: url(#wavyBackground)"
         src="/background-image.jpg"
-        :class="{ 'opacity-100': isMode3 || isMode2 || isMode4}"
+        :class="{ 'opacity-100': isMode3 || isMode2 || isMode4 }"
         class="w-full absolute scale-110 transition-all duration-700 opacity-0 top-[200vh]"
         alt=""
-      />
+      /> -->
       <section class="h-[100vh] w-[100vw] absolute top-0">
         <CanvasContainer ref="canvasContainer" />
         <div
           ref="transitionContainer"
-          class="transition-all duration-700 w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
+          class="transition-all duration-1000 w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
           :class="{
-            'w-[82vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[64vh] lg:max-h-[600px] lg:max-w-[1200px]':
+            'w-[82vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:min-w-[1140px] lg:h-[64vh] lg:max-h-[600px] lg:max-w-[1200px]':
               isMode2,
             '!h-[100vh] !w-[100vw]': isMode3,
-            '!hidden': isMode4
+            'translate-x-[-150vw]': isMode4
           }"
         >
           <SecondCanvasContainer ref="secondCanvasContainer" />

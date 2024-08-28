@@ -1,5 +1,8 @@
 <template>
-  <div ref="secondCanvasContainer" class="second-canvas-container opacity-50 w-full h-full grayscale"></div>
+  <div
+    ref="secondCanvasContainer"
+    class="second-canvas-container opacity-50 w-full h-full grayscale"
+  ></div>
 </template>
 
 <script setup lang="ts">
@@ -81,20 +84,22 @@ const initSecondCanvas = () => {
 }
 
 const onWindowResize = () => {
-  if (secondCanvasContainer.value) {
-    const container = secondCanvasContainer.value
-    const width = container.clientWidth
-    const height = container.clientHeight
-    const canvas = container.querySelector('canvas')
-    if (canvas) {
-      canvas.style.width = `${width}px`
-      canvas.style.height = `${screen.height}px`
+  setTimeout(() => {
+    if (secondCanvasContainer.value) {
+      const container = secondCanvasContainer.value
+      const width = container.clientWidth
+      const height = container.clientHeight
+      const canvas = container.querySelector('canvas')
+      if (canvas) {
+        canvas.style.width = `${width}px`
+        canvas.style.height = `${screen.height}px`
+      }
+      const material = canvas.material
+      if (material) {
+        material.uniforms.u_resolution.value.set(width, height)
+      }
     }
-    const material = canvas.material
-    if (material) {
-      material.uniforms.u_resolution.value.set(width, height)
-    }
-  }
+  }, 1000)
 }
 
 const onMouseMove = (event: MouseEvent) => {

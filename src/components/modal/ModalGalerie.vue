@@ -2,7 +2,7 @@
   <ModalWrapper name="ModalGalerie" class="">
     <template #default>
       <div class="relative w-[100vw] h-[100vh] max-w-[100vw]">
-        <section class="h-[70vh] w-[100vw]">
+        <section class="h-[70vh] w-[100vw] lg:h-[80vh]">
           <div
             class="table absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] mx-auto"
           >
@@ -17,7 +17,7 @@
               <!-- Gestion de l'image ou vidéo précédente -->
               <img
                 v-if="projetMedia[prevIndex]?.isImage"
-                class="h-[50vh] lg:max-w-[100vh] lg:max-h-[60vh] scale-90 transition-all duration-1000 lg:mx-[500px] blur-lg"
+                class="h-[50vh] max-w-[1000px] lg:max-w-[100vh] lg:max-h-[60vh] scale-90 transition-all duration-1000 lg:mx-[500px] blur-lg"
                 :class="{ '!scale-100': isPrevious, 'blur-none': onTransition }"
                 :style="{ 'max-height': 'inherit' }"
                 @click="pervious"
@@ -26,7 +26,7 @@
               />
               <video
                 v-else-if="projetMedia[prevIndex]?.isVideo"
-                class="h-[50vh] lg:max-w-[100vh] lg:max-h-[60vh] scale-90 transition-all duration-1000 lg:mx-[500px] blur-lg"
+                class="h-[50vh] max-w-[1000px] lg:max-w-[100vh] lg:max-h-[60vh] scale-90 transition-all duration-1000 lg:mx-[500px] blur-lg"
                 :class="{ '!scale-100': isPrevious, 'blur-none': onTransition }"
                 @click="pervious"
                 :src="videoLinks[prevIndex]"
@@ -36,7 +36,7 @@
               <!-- Gestion de l'image ou vidéo actuelle -->
               <img
                 v-if="projetMedia[currentImgage]?.isImage"
-                class="h-[50vh] lg:max-w-[100vh] lg:max-h-[60vh] lg:mx-[500px]"
+                class="h-[50vh] max-w-[1000px] lg:max-w-[100vh] lg:max-h-[60vh] lg:mx-[500px]"
                 :class="{ 'transition-transform duration-1000': onTransition }"
                 :style="{ 'max-height': 'inherit' }"
                 :src="NewImageCurrent"
@@ -44,7 +44,7 @@
               />
               <video
                 v-else-if="projetMedia[currentImgage]?.isVideo"
-                class="h-[50vh] lg:max-w-[100vh] lg:max-h-[60vh] lg:mx-[500px]"
+                class="h-[50vh] max-w-[1000px] lg:max-w-[100vh] lg:max-h-[60vh] lg:mx-[500px]"
                 controls
                 :src="videoLinks[currentImgage]"
               ></video>
@@ -52,7 +52,7 @@
               <!-- Gestion de l'image ou vidéo suivante -->
               <img
                 v-if="projetMedia[nextIndex]?.isImage"
-                class="h-[50vh] lg:max-w-[100vh] lg:max-h-[60vh] scale-90 lg:mx-[500px] blur-lg duration-1000 transition-all"
+                class="h-[50vh] max-w-[1000px] lg:max-w-[100vh] lg:max-h-[60vh] scale-90 lg:mx-[500px] blur-lg duration-1000 transition-all"
                 :class="{ '!scale-100': isNext, 'blur-none': onTransition }"
                 :style="{ 'max-height': 'inherit' }"
                 @click="next"
@@ -61,7 +61,7 @@
               />
               <video
                 v-else-if="projetMedia[nextIndex]?.isVideo"
-                class="h-[50vh] lg:max-w-[100vh] lg:max-h-[60vh] scale-90 lg:mx-[500px] blur-lg duration-1000 transition-all"
+                class="h-[50vh] max-w-[1000px] lg:max-w-[100vh] lg:max-h-[60vh] scale-90 lg:mx-[500px] blur-lg duration-1000 transition-all"
                 :class="{ '!scale-100': isNext, 'blur-none': onTransition }"
                 @click="next"
                 :src="videoLinks[nextIndex]"
@@ -76,7 +76,8 @@
           <img
             v-for="(media, index) in projetMedia"
             :key="index"
-            class="max-w-[200px] lgm: mr-10 cursor-pointer"
+            class="max-w-[200px] lgm: mr-10 cursor-pointer transition-transform"
+            :class="{ '-translate-y-20' : index == currentImgage}"
             @click="switchImage(index)"
             :src="media.isImage ? media.img : media.thumbnail"
             alt=""
