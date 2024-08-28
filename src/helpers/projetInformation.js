@@ -61,7 +61,13 @@ export const projetInformations = [
         thumbnail: '/team-product.png'
       }
     ],
-    technologies: ['Vue.js', 'React', 'pinia', 'docker', 'mongodb', 'Node.js']
+    technologies: [
+      { img: '/vue.js-logo-2.svg', name: 'Vue.js' },
+      { img: '/pinialogo.svg', name: 'pinia' },
+      { img: '/docker.svg', name: 'docker' },
+      { img: '/mongodb.svg', name: 'Mongodb' },
+      { img: '/node.js-logo.svg', name: 'Node.js' }
+    ]
   },
   {
     id: 'two',
@@ -73,7 +79,7 @@ export const projetInformations = [
     bigDescription: '',
     imgSrc: 'https://picsum.photos/600/400?random=2',
     year: 2020,
-    technologies: ['Adobe XD', 'Figma', 'Sketch']
+    technologies: []
   },
   {
     id: 'three',
@@ -85,7 +91,7 @@ export const projetInformations = [
     bigDescription: '',
     imgSrc: 'https://picsum.photos/600/400?random=3',
     year: 2021,
-    technologies: ['React', 'Redux', 'TypeScript']
+    technologies: []
   }
 ]
 

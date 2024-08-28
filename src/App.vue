@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="relative bg-black">
     <Modal />
     <AppHeader v-if="$route.name != 'home'"/>
     <AppMain  />

@@ -75,14 +75,14 @@ const openLink = (index: string) => {
     >
       Projets
     </h1>
-    <div class="relative h-[70vh] top-[15vh] lg:top-10 z-50">
+    <div class="relative h-[70vh] max-h-[600px] top-[15vh] lg:top-10 z-50">
       <div
-        @click="() => !isMode3 || toggleMode()"
+        @click="() => toggleMode()"
         ref="containerRef"
         :class="[
           'lg:z-50 bg-white absolute top-0 left-0 right-0 mx-auto my-auto bottom-0 rounded-lg transition-all duration-1000 cursor-pointer overflow-hidden',
           indicatorOnTransion ? 'lg:-translate-x-[200%]' : '',
-          isMode3 ? 'w-[80vw] h-[509px]' : 'w-[88vw] h-[60vh] lg:h-96 lg:w-[448px] lg:ml-40'
+          isMode3 ? 'w-[80vw] h-[509px]' : 'w-[88vw] h-[60vh] lg:h-72 lg:w-[400px] lg:ml-32'
         ]"
       >
         <div class="relative h-full w-full flex justify-center">
@@ -98,8 +98,8 @@ const openLink = (index: string) => {
           <div
             ref="textRef"
             :class="[
-              'text-white text-5xl z-40 font-display uppercase absolute top-0 bottom-0 my-auto flex flex-col justify-center transition-all delay-1000 duration-1000 mx-auto pointer-events-none',
-              isMode3 ? 'translate-x-[40px] scale-[1.1]' : 'translate-x-0 scale-100'
+              'text-white lg:text-3xl z-40 font-display uppercase absolute top-0 bottom-0 my-auto flex flex-col justify-center transition-all delay-1000 duration-1000 mx-auto pointer-events-none',
+              isMode3 ? 'translate-x-[40px] scale-[1.8]' : 'translate-x-0 scale-100'
             ]"
           >
             <p class="font-bold">{{ currentProject.title }}</p>
@@ -109,28 +109,27 @@ const openLink = (index: string) => {
           ></div>
         </div>
       </div>
-      <div
-        class="text-white w-[88vw] lg:max-w-[1300px] absolute top-0 right-0 lg:right-auto my-auto bottom-0 flex flex-col items-end pr-14 transition-all duration-1000"
-        :class="{ 'translate-x-[100vw]': isMode3 }"
-      >
-        <section class="hidden lg:block absolute top-[-75px] text-5xl font-bold right-12">
-          <p>{{ currentProjectIndex + 1 }}</p>
-          <p class="pt-4">{{ projects.length }}</p>
-        </section>
-        <p class="hidden lg:block pt-32"><strong>Role</strong> / {{ currentProject.role }}</p>
-
-        <div class="hidden lg:block w-[500px] text-right pt-10 lg:text-base lg:min-h-[250px]">
-          <p>
-            {{ currentProject.description }}
-          </p>
-        </div>
-
-        <AButton
-          @click="toggleMode() && openLink(currentProjectIndex)"
-          class="mx-auto mt-[60vh] lg:relative lg:mt-10 lg:mr-32"
+      <div class="relative">
+        <div
+          class="text-white w-[88vw] lg:max-w-[1150px] absolute top-0 right-0 lg:right-auto my-auto bottom-0 flex flex-col items-end pr-14 transition-all duration-1000"
+          :class="{ 'translate-x-[100vw]': isMode3 }"
         >
-          En voir plus
-        </AButton>
+          <section class="hidden lg:block absolute bottom-[-21px] text-5xl font-bold right-12">
+            <p>{{ currentProjectIndex + 1 }}</p>
+            <p class="pt-4">{{ projects.length }}</p>
+          </section>
+          <p class="hidden lg:block pt-32"><strong>Role</strong> / {{ currentProject.role }}</p>
+
+          <div class="hidden lg:block w-[500px] text-right pt-10 lg:text-base lg:min-h-[230px]">
+            <p>
+              {{ currentProject.description }}
+            </p>
+          </div>
+
+          <AButton @click="toggleMode()" class="mx-auto mt-[60vh] lg:relative lg:mt-10 lg:mr-32">
+            En voir plus
+          </AButton>
+        </div>
       </div>
     </div>
     <section

@@ -1,5 +1,5 @@
 <template>
-  <div ref="secondCanvasContainer" class="second-canvas-container opacity-50 w-full h-full animate-hue-rotate"></div>
+  <div ref="secondCanvasContainer" class="second-canvas-container opacity-50 w-full h-full grayscale"></div>
 </template>
 
 <script setup lang="ts">

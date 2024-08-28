@@ -26,17 +26,17 @@
 
     <div class="font-display text-4xl tracking-[10px]">
       <Motion :preset="'slideVisibleLeft'" :duration="2000">
-        <h1 class="font-bold pt-20 text-xl lg:text-[88px] uppercase italic text text-tertiary">
+        <h1 class="font-bold pt-20 text-xl lg:text-[50px] uppercase italic text text-tertiary">
           welcome !
         </h1>
       </Motion>
       <Motion :preset="'slideVisibleLeft'" :duration="2000" delay="1000">
-        <h1 class="font-bold pt-20 text-xl lg:text-[88px] uppercase text text-primary">
+        <h1 class="font-bold pt-20 text-xl lg:text-[60px] uppercase text text-primary">
           kone Cheik
         </h1>
       </Motion>
       <div
-        class="lg:pt-40 pb-20 transition-all duration-1000"
+        class="lg:pt-32 pb-20 transition-all duration-1000"
         :class="{ 'blur-[2px]': onTransition }"
       >
         <h1
@@ -117,9 +117,9 @@ onMounted(() => {
       }
       setTimeout(() => {
         onTransition.value = false
-      }, 1200)
-    }, 300)
-  }, 2500)
+      }, 1300)
+    }, 400)
+  }, 2800)
 })
 
 onUnmounted(() => {

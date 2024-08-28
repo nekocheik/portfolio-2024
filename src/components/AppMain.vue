@@ -9,7 +9,7 @@
           <feTurbulence
             id="turbulence1"
             type="turbulence"
-            numOctaves="5"
+            numOctaves="2"
             result="NOISE1"
           ></feTurbulence>
           <feDisplacementMap in="SourceGraphic" in2="NOISE1" scale="100"></feDisplacementMap>
@@ -27,8 +27,15 @@
       <img
         style="filter: url(#wavyBackground)"
         src="/background-image.jpg"
-        :class="{ 'opacity-100': isMode3 || isMode2 }"
-        class="w-full fixed scale-110 transition-all duration-700 opacity-0"
+        :class="{ 'opacity-100': isMode3 || isMode2 || isMode4 }"
+        class="w-full absolute scale-110 transition-all duration-700 opacity-0"
+        alt=""
+      />
+      <img
+        style="filter: url(#wavyBackground)"
+        src="/background-image.jpg"
+        :class="{ 'opacity-100': isMode3 || isMode2 || isMode4}"
+        class="w-full absolute scale-110 transition-all duration-700 opacity-0 top-[200vh]"
         alt=""
       />
       <section class="h-[100vh] w-[100vw] absolute top-0">
@@ -37,7 +44,7 @@
           ref="transitionContainer"
           class="transition-all duration-700 w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
           :class="{
-            'w-[82vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[64vh] lg:max-w-[1300px]':
+            'w-[82vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:h-[64vh] lg:max-h-[600px] lg:max-w-[1200px]':
               isMode2,
             '!h-[100vh] !w-[100vw]': isMode3,
             '!hidden': isMode4
