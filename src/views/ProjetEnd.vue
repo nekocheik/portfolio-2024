@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import ArrowDown from '@/components/icons/ArrowDown.vue'
-import Projet from '@/views/Projet.vue'
 import { useRoute, useRouter } from 'vue-router'
 import projetInformations from '@/helpers/projetInformation.js'
 
 const route = useRoute()
 const router = useRouter()
 
-const isMode3 = computed(() => /\/projets\/[{0-9}]+/.test(route.path))
+const isMode3 = computed(() => false)
 
 const toggleMode = () => {
   if (isMode3.value) {
@@ -31,14 +29,6 @@ const toggleMode = () => {
 const imgRef = ref(null)
 const textRef = ref(null)
 const containerRef = ref(null)
-const arrowRef = ref(null) // Référence pour ArrowDown
-const transitionXIndicator = ref(null)
-const indicators = ref()
-
-// Fonction de défilement
-const scrollDown = () => {
-  window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })
-}
 
 // Projets mock
 const projects = ref(projetInformations)
@@ -69,7 +59,7 @@ const openLink = (index: string) => {
 </script>
 
 <template>
-  <div class="relative">
+  <div class="relative bg-black">
     <div class="relative h-[70vh] max-h-[600px]">
       <div
         @click="() => toggleMode()"
@@ -109,10 +99,10 @@ const openLink = (index: string) => {
           class="text-white w-[88vw] lg:max-w-[1150px] absolute top-0 right-0 lg:right-auto my-auto bottom-0 flex flex-col items-end pr-14 transition-all duration-1000"
           :class="{ 'translate-x-[100vw]': isMode3 }"
         >
-          <section class="hidden lg:block absolute bottom-[-21px] text-5xl font-bold right-12">
+          <!-- <section class="hidden lg:block absolute bottom-[-21px] text-5xl font-bold right-12">
             <p>{{ currentProjectIndex + 1 }}</p>
             <p class="pt-4">{{ projects.length }}</p>
-          </section>
+          </section> -->
           <p class="hidden lg:block pt-32"><strong>Role</strong> / {{ currentProject.role }}</p>
 
           <div class="hidden lg:block w-[500px] text-right pt-10 lg:text-base lg:min-h-[230px]">
@@ -127,31 +117,7 @@ const openLink = (index: string) => {
         </div>
       </div>
     </div>
-    <section
-      :class="{ 'translate-y-96 opacity-0': isMode3 }"
-      class="transition-[translate opacity] duration-1000"
-    >
-      <div class="lg:pl-10 flex justify-center pt-40 lg:pt-8 2xl:pt-40">
-        <div class="relative flex w-60 justify-around">
-          <div
-            v-for="(project, index) in projects"
-            :key="project.id"
-            @click="changeProject(index)"
-            :class="{ 'scale-110': currentProjectIndex == index }"
-            class="w-5 h-5 bg-primary rounded-md flex items-center cursor-pointer transition-all duration-300"
-          ></div>
-          <div
-            class="left-[30px] absolute w-60 pointer-events-none transition-transform duration-1000"
-            :style="{ transform: `translateX(${(100 / projects.length) * currentProjectIndex}%)` }"
-          >
-            <div
-              :class="{ 'opacity-30 blur-lg': indicatorOnTransion }"
-              class="h-5 w-5 bg-white rounded-lg transition-all duration-1000"
-            ></div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
   </div>
 </template>
 

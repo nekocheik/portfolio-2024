@@ -1,6 +1,25 @@
 <template>
   <div class="text-white mx-4">
-    <section class="lg:pl-20">
+    <svg class="absolute">
+      <filter id="wavyGenerique">
+        <feTurbulence
+          id="turbulence2"
+          type="turbulence"
+          numOctaves="10"
+          result="NOISE1"
+        ></feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="NOISE1" scale="100"></feDisplacementMap>
+        <animate
+          xlink:href="#turbulence2"
+          attributeName="baseFrequency"
+          dur="50s"
+          keyTimes="0;0.2;1"
+          values="0.01 0.02;0.02 0.01;0.04 0.02"
+          repeatCount="indefinite"
+        ></animate>
+      </filter>
+    </svg>
+    <section style="filter: url(#filter)" class="lg:pl-20">
       <section>
         <div class="max-w-[500px] lg:max-w-[1300px] 2xl:max-w-[1500px] 2xl:pb-80">
           <h1 class="pt-28 text-4xl font-kiona lg:pt-40 lg:text-[50px] py-8">Qui je suis ?</h1>
@@ -19,12 +38,22 @@
               </p>
               <div class="h-[300px] relative hidden lg:block">
                 <div
-                  class="w-[380px] h-[380px] 2xl:w-[500px] 2xl:h-[500px] bg-primary absolute rounded-full top-[-30px] left-[-30px]"
+                  :duration="1200"
+                  v-motion-fade
+                  style="filter: url(#wavyGenerique)"
+                  class="w-[380px] h-[380px] 2xl:w-[500px] 2xl:h-[500px] bg-primary-medium absolute rounded-full top-[-30px] left-[-30px]"
                 ></div>
                 <div
+                  :duration="1200"
+                  v-motion-fade
+                  style="filter: url(#wavyGenerique)"
                   class="w-[380px] h-[380px] 2xl:w-[500px] 2xl:h-[500px] bg-tertiary absolute rounded-full top-[30px] left-[30px]"
                 ></div>
                 <img
+                  :enter="{ x: 900 }"
+                  :duration="1200"
+                  :delay="1000"
+                  v-motion-slide-visible-right
                   class="min-w-[380px] 2xl:min-w-[500px] z-20"
                   src="/photo-cheik-kone.png"
                   alt=""
@@ -116,7 +145,11 @@
               <img src="/github-logo.svg" alt="" />
               <p class="pt-4">Github</p>
             </div>
-            <div class="cursor-pointer" role="a" @click="openLink('https://www.linkedin.com/in/cheik-kone')">
+            <div
+              class="cursor-pointer"
+              role="a"
+              @click="openLink('https://www.linkedin.com/in/cheik-kone')"
+            >
               <img src="/linkedin-logo.svg" alt="" />
               <p class="pt-4">Linkedin</p>
             </div>

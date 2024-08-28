@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ArrowDown from '@/components/icons/ArrowDown.vue'
 import Projet from '@/views/Projet.vue'
+import ProjetEnd from '@/views/ProjetEnd.vue'
 import { useRoute, useRouter } from 'vue-router'
 import projetInformations from '@/helpers/projetInformation.js'
 
@@ -72,6 +73,7 @@ const openLink = (index: string) => {
   <div class="relative">
     <h1
       class="hidden lg:block z-30 pt-16 pl-32 text-tertiary text-5xl lg:text-[80px] font-thin font-display italic"
+      :class="{ isMode3 : 'translate-x-20' }"
     >
       Projets
     </h1>
@@ -99,7 +101,7 @@ const openLink = (index: string) => {
             ref="textRef"
             :class="[
               'text-white lg:text-3xl z-40 font-display uppercase absolute top-0 bottom-0 my-auto flex flex-col justify-center transition-all delay-1000 duration-1000 mx-auto pointer-events-none',
-              isMode3 ? 'translate-x-[40px] scale-[1.8]' : 'translate-x-0 scale-100'
+              isMode3 ? '' : 'translate-x-0 scale-100'
             ]"
           >
             <p class="font-bold">{{ currentProject.title }}</p>
@@ -136,7 +138,7 @@ const openLink = (index: string) => {
       :class="{ 'translate-y-96 opacity-0': isMode3 }"
       class="transition-[translate opacity] duration-1000"
     >
-      <div class="lg:pl-10 flex justify-center pt-40 lg:pt-8 2xl:pt-40">
+      <div class="lg:pl-10 flex justify-center pt-40 lg:pt-8 2xl:pt-20">
         <div class="relative flex w-60 justify-around">
           <div
             v-for="(project, index) in projects"
@@ -165,6 +167,7 @@ const openLink = (index: string) => {
   </div>
 
   <Projet v-if="isMode3" :project="currentProject" />
+  <!-- <ProjetEnd v-if="isMode3" :project="currentProject" /> -->
 </template>
 
 <style lang="scss" scoped>

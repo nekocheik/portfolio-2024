@@ -1,9 +1,6 @@
 <template>
   <div class="relative">
-    <main
-      class="relative font-body bg-100-auto max-w-[100vw] overflow-x-hidden min-h-[100vh]"
-      :style="mainStyle"
-    >
+    <main class="relative font-body bg-100-auto overflow-y-hidden" :style="mainStyle">
       <svg class="absolute">
         <filter id="wavyBackground">
           <feTurbulence
@@ -25,56 +22,77 @@
       </svg>
 
       <img
-        style="filter: url(#wavyBackground)"
+        :style="{
+          filter: 'url(#wavyBackground)',
+          transform: `translateY(${Math.round(windowTop / 1.5)}px)`
+        }"
         src="/background-image.jpg"
         :class="{ 'opacity-100': isMode3 || isMode2 || isMode4 }"
-        class="w-full absolute scale-110 transition-all duration-700 opacity-0"
+        class="w-full absolute scale-110 transition-opacity duration-700 opacity-0"
         alt=""
       />
-      <!-- <img
-        style="filter: url(#wavyBackground)"
-        src="/background-image.jpg"
-        :class="{ 'opacity-100': isMode3 || isMode2 || isMode4 }"
-        class="w-full absolute scale-110 transition-all duration-700 opacity-0 top-[200vh]"
-        alt=""
-      /> -->
       <section class="h-[100vh] w-[100vw] absolute top-0">
         <CanvasContainer ref="canvasContainer" />
         <div
           ref="transitionContainer"
-          class="transition-all duration-1000 w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
+          class="transition-all duration-[1400ms] w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
           :class="{
             'w-[82vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:min-w-[1140px] lg:h-[64vh] lg:max-h-[600px] lg:max-w-[1200px]':
               isMode2,
             '!h-[100vh] !w-[100vw]': isMode3,
-            'translate-x-[-150vw]': isMode4
+            'translate-x-[-100vw]': isMode4
           }"
         >
           <SecondCanvasContainer ref="secondCanvasContainer" />
         </div>
       </section>
-      <RouterView />
+      <div ref="view" class="min-w-[100%] max-w-[100vw] overflow-hidden min-h-[100vh] table">
+        <RouterView />
+      </div>
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import CanvasContainer from '@/components/CanvasContainer.vue'
 import SecondCanvasContainer from '@/components/SecondCanvasContainer.vue'
 
 const route = useRoute()
+const view = ref<HTMLDivElement>()
+const viewSize = ref(0)
 
 const isMode2 = computed(() => route.path === '/projets/default')
 const isMode3 = computed(() => /\/projets\/[{0-9}]+/.test(route.path))
 const isMode4 = computed(() => route.path === '/who-i-am')
+const windowTop = ref(0)
 
 const transitionContainer = ref(null)
 
 const mainStyle = computed(() => ({
-  'background-image': isMode2.value || isMode3.value || isMode4.value ? '' : ''
+  'background-image': isMode2.value || isMode3.value || isMode4.value ? '' : '',
+  height: `${viewSize.value}px`
 }))
+
+const onScroll = () => {
+  windowTop.value = window.top.scrollY
+}
+
+let invervalWatchClient: any
+
+onMounted(() => {
+  invervalWatchClient = setInterval(() => {
+    if (view.value) {
+      viewSize.value = view.value.clientHeight
+    }
+  }, 100)
+  window.addEventListener('scroll', onScroll)
+})
+
+onUnmounted(() => {
+  clearInterval(invervalWatchClient)
+  window.removeEventListener('scroll', onScroll)
+})
 </script>
 
 <style>
