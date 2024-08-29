@@ -71,13 +71,13 @@ export const projetInformations = [
   },
   {
     id: 'two',
-    title: 'Creating Digital Landscapes',
-    link: 'https://656bf3d4.frontend-preproduction-29946.pages.dev/',
+    title: 'Delta',
+    link: 'https://delta-fraternite.vercel.app/',
     role: 'UI/UX Designer',
     description:
       'Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec id elit non mi porta gravida at eget metus...',
     bigDescription: '',
-    imgSrc: 'https://picsum.photos/600/400?random=2',
+    imgSrc: `https://frequent-tomato-c8c.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F408df6d2-2c5a-460a-a1fe-1e60d97fd7f9%2F7132f48e-ef9c-44a0-819d-7258badcd39c%2Fdelta-image.png?id=4f76c198-178b-47a0-bfe8-493eb7f0aa13&table=block&spaceId=408df6d2-2c5a-460a-a1fe-1e60d97fd7f9&width=2000&userId=&cache=v2`,
     year: 2020,
     technologies: []
   },

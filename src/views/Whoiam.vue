@@ -2,62 +2,53 @@
   <div class="text-white mx-4">
     <svg class="absolute">
       <filter id="wavyGenerique">
-        <feTurbulence
-          id="turbulence2"
-          type="turbulence"
-          numOctaves="10"
-          result="NOISE1"
-        ></feTurbulence>
+        <feTurbulence id="turbulence2" type="turbulence" numOctaves="10" result="NOISE1"></feTurbulence>
         <feDisplacementMap in="SourceGraphic" in2="NOISE1" scale="100"></feDisplacementMap>
-        <animate
-          xlink:href="#turbulence2"
-          attributeName="baseFrequency"
-          dur="50s"
-          keyTimes="0;0.2;1"
-          values="0.01 0.02;0.02 0.01;0.04 0.02"
-          repeatCount="indefinite"
-        ></animate>
+        <animate xlink:href="#turbulence2" attributeName="baseFrequency" dur="50s" keyTimes="0;0.2;1"
+          values="0.01 0.02;0.02 0.01;0.04 0.02" repeatCount="indefinite"></animate>
       </filter>
     </svg>
     <section style="filter: url(#filter)" class="lg:pl-20">
       <section>
         <div class="max-w-[500px] lg:max-w-[1300px] 2xl:max-w-[1500px] 2xl:pb-80">
           <h1 class="pt-28 text-4xl font-kiona lg:pt-40 lg:text-[50px] py-8">Qui je suis ?</h1>
-          <p class="pt-2 text-4xl font-kiona text-tertiary lg:text-[80px] font-bold py-10">
+          <p class="pt-2 text-4xl font-kiona text-tertiary lg:text-[80px] font-bold py-10 xl:top-16">
             Hello !!
           </p>
-          <section class="lg:text-xl">
+          <section class="lg:text-base leading-8">
             <div class="relative flex items-center">
-              <p class="pt-4 lg:pr-20">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Euismod id lectus amet,
-                pretium vulputate. Lobortis vitae nisl, augue ullamcorper venenatis imperdiet
-                faucibus id sapien. Eu quis leo, lectus placerat pulvinar. Suspendisse in ut lectus
-                amet suspendisse id quis vel. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Euismod id lectus amet, pretium vulputate. Lobortis vitae nisl, augue
-                ullamcorper venenatis imperdiet faucibus id sapien. Eu quis leo, lectus placerat
+              <p class="pt-4 lg:pt-20 lg:pr-20">
+                Je suis un développeur <span class="text-tertiary">multi-casquette</span>, <span
+                  class="text-primary">développeur <span class="text-primary-ligh text-bold">Vue.js</span> depuis 5
+                  ans</span> et
+                ayant une bonne connaissance en React.<br /> Mon expertise s'étend également au <span
+                  class="text-tertiary">back-end</span>
+                et au <span class="text-primary">design</span>, ce qui me permet de <span class="text-tertiary">gérer
+                  des projets</span> de bout en bout. En tant que
+                <span class="text-primary-ligh font-bold">Tech Lead</span>, j'ai <span class="text-tertiary">guidé une
+                  équipes</span> et assuré une communication fluide et efficace.
+                <span class="text-primary">Curieux de nature</span>, je suis constamment à la recherche de nouvelles
+                technologies et
+                méthodes pour améliorer mes compétences. <span class="text-tertiary">J'utilise régulièrement
+                  Figma</span> pour
+                collaborer avec les designers et garantir une cohérence visuelle parfaite, Ou moi même designer mes
+                propre interfaces.
+                J'ai également une <span class="text-primary">bonne connaissance des outils de DevOps</span> comme <span
+                  class="text-primary">Docker</span> et <span class="text-primary">Kubernetes</span>, ce qui me
+                permet de gérer efficacement le déploiement et la gestion des applications. Au cours
+                de ma carrière, j'ai travaillé sur une variété de projets et pour différents types
+                d'entreprises, ce qui m'a permis de développer une <span class="text-primary">polyvalence</span> et une <span class="text-tertiary">adaptabilité</span> 
+                précieuses.
               </p>
-              <div class="h-[300px] relative hidden lg:block">
-                <div
-                  :duration="1200"
-                  v-motion-fade
-                  style="filter: url(#wavyGenerique)"
-                  class="w-[380px] h-[380px] 2xl:w-[500px] 2xl:h-[500px] bg-primary-medium absolute rounded-full top-[-30px] left-[-30px]"
-                ></div>
-                <div
-                  :duration="1200"
-                  v-motion-fade
-                  style="filter: url(#wavyGenerique)"
-                  class="w-[380px] h-[380px] 2xl:w-[500px] 2xl:h-[500px] bg-tertiary absolute rounded-full top-[30px] left-[30px]"
-                ></div>
-                <img
-                  :enter="{ x: 900 }"
-                  :duration="1200"
-                  :delay="1000"
-                  v-motion-slide-visible-right
-                  class="min-w-[380px] 2xl:min-w-[500px] z-20"
-                  src="/photo-cheik-kone.png"
-                  alt=""
-                />
+              <div class="h-[300px] relative hidden lg:block -top-24">
+                <div :duration="1200" v-motion-fade style="filter: url(#wavyGenerique)"
+                  class="w-[380px] h-[380px] 2xl:w-[500px] 2xl:h-[500px] bg-primary-medium absolute rounded-full top-[-30px] left-[-30px]">
+                </div>
+                <div :duration="1200" v-motion-fade style="filter: url(#wavyGenerique)"
+                  class="w-[380px] h-[380px] 2xl:w-[500px] 2xl:h-[500px] bg-tertiary absolute rounded-full top-[30px] left-[30px]">
+                </div>
+                <img :enter="{ x: 900 }" :duration="1200" :delay="1000" v-motion-slide-visible-right
+                  class="min-w-[380px] 2xl:min-w-[500px] z-20" src="/photo-cheik-kone.png" alt="" />
               </div>
             </div>
           </section>
@@ -74,21 +65,12 @@
               </ul>
               <ul class="list-disc pl-8 pt-3">
                 <div class="pl-4">
-                  <li class="text-base">UX</li>
+                  <li class="text-base">UX/UI</li>
                   <p class="max-w-[400px] text-base lg:pb-10">
-                    augue ullamcorper venenatis imperdiet faucibus id sapien. Eu quis leo, lectus
-                    placerat pulvinar. Suspendisse in ut lectus amet suspendisse id quis vel.augue
-                    ullamcorper venenatis imperdiet faucibus id sapien. Eu quis leo, lectus
-                    placerat.
-                  </p>
-                </div>
-                <div class="pl-4">
-                  <li class="text-base">UI</li>
-                  <p class="max-w-[600px] 2xl:max-w-[900px] text-base">
-                    augue ullamcorper venenatis imperdiet faucibus id sapien. Eu quis leo, lectus
-                    placerat pulvinar. Suspendisse in ut lectus amet suspendisse id quis vel.augue
-                    ullamcorper venenatis imperdiet faucibus id sapien. Eu quis leo, lectus
-                    placerat.
+                    Utilisation régulière des outils de design, avec une maîtrise de niveau
+                    intermédiaire de Figma. Mes connaissances des règles de base en UX/UI me
+                    permettent de communiquer efficacement avec les designers et même de réaliser
+                    moi-même des designs complet lorsque qu'il es nécessaire
                   </p>
                 </div>
               </ul>
@@ -99,23 +81,65 @@
               </ul>
               <ul class="list-disc pl-10 max-w-[600px] 2xl:max-w-[900px]">
                 <li class="uppercase py-3 text-xl">Front-end</li>
-                <p class="text-base">
-                  augue ullamcorper venenatis imperdiet faucibus id sapien. Eu quis leo, lectus
-                  placerat pulvinar. Suspendisse in ut lectus amet suspendisse id quis vel.augue
-                  ullamcorper venenatis imperdiet faucibus id sapien. Eu quis leo, lectus placerat.
-                </p>
+                <div class="text-base">
+                  <p class="pb-1">
+                    Je suis passionné par Vue.js, que j'utilise depuis mes débuts en tant que développeur. J'apprécie
+                    particulièrement son approche user-friendly, qui permet de créer des solutions accessibles, même
+                    pour des développeurs juniors. J'ai également une solide maîtrise de JavaScript et TypeScript.
+                  </p>
+                  <br>
+                  <p class="pb-1">J'ai une bonne connaissance des frameworks SSR comme Next.js et Next.js, que j'utilise
+                    avec React
+                    et Vue.js. Je mets un point d'honneur à respecter les bonnes pratiques en matière
+                    d'accessibilité et de sémantique HTML.
+                  </p>
+                  <br>
+                  <p class="pb-1">J'optimise les animations CSS et JavaScript
+                    pour garantir une expérience utilisateur fluide et sans bug.
+                    Pour documenter et tester les composants de manière isolée, j'utilise Storybook. En matière de
+                    tests,
+                    je maîtrise les tests unitaires et end-to-end avec Jest et Cypress, assurant ainsi
+                    la robustesse et la qualité de mes projets.
+                  </p>
+                  <br>
+                </div>
                 <div class="flex text-base py-6">
-                  <p class="pr-4">Vue.js</p>
-                  <p class="pr-4">Nuxt.js</p>
-                  <p class="pr-4">React.js</p>
+                  <p class="pr-4">Vue</p>
+                  <p class="pr-4">Nuxt</p>
+                  <p class="pr-4">React</p>
+                  <p class="pr-4">Next</p>
+                  <p class="pr-4">Cypress</p>
+                  <p class="pr-4">Jest</p>
                   <p>Next.js</p>
                 </div>
                 <li class="uppercase py-3 text-xl">back-end</li>
-                <p class="text-base">
-                  augue ullamcorper venenatis imperdiet faucibus id sapien. Eu quis leo, lectus
-                  placerat pulvinar. Suspendisse in ut lectus amet suspendisse id quis vel.augue
-                  ullamcorper venenatis imperdiet faucibus id sapien. Eu quis leo, lectus placerat.
-                </p>
+                <div class="text-base">
+                  <p>
+                    Je suis à l'aise avec Node.js et Express.js pour le développement de serveurs
+                    robustes et performants. <br />J'ai une bonne connaissance des bases de données,
+                    notamment MongoDB, SQL et MySQL, ce qui me permet de gérer efficacement les
+                    données dans divers projets.
+                  </p>
+                  <br />
+                  <p class="pb-1">
+                    Je suis également familier avec les architectures serverless, ce qui me permet
+                    de créer des applications scalables et flexibles.<br />
+                    J'utilise des outils comme Notion pour la gestion de projets et Make pour
+                    l'automatisation des tâches.
+                  </p>
+                  <br />
+                  <p class="pb-1">
+                    Pour la gestion de contenu, j'ai de l'expérience avec Strapi, un CMS headless
+                    qui s'intègre parfaitement avec les applications modernes.
+                    <p /><br />
+                  </p>
+
+                  <p class="pb-1">
+                    En matière d'hébergement et de services cloud, j'utilise Google Cloud Platform
+                    (GCP) pour le hosting et l'utilisation des services GCP, ce qui me permet de
+                    déployer et de gérer des applications de manière efficace et sécurisée.
+                  </p>
+                </div>
               </ul>
             </div>
           </div>
@@ -137,19 +161,11 @@
             Ou me suivre ?
           </h2>
           <section class="flex items-end justify-center pt-5">
-            <div
-              class="pr-20 cursor-pointer"
-              role="a"
-              @click="openLink('https://github.com/nekocheik')"
-            >
+            <div class="pr-20 cursor-pointer" role="a" @click="openLink('https://github.com/nekocheik')">
               <img src="/github-logo.svg" alt="" />
               <p class="pt-4">Github</p>
             </div>
-            <div
-              class="cursor-pointer"
-              role="a"
-              @click="openLink('https://www.linkedin.com/in/cheik-kone')"
-            >
+            <div class="cursor-pointer" role="a" @click="openLink('https://www.linkedin.com/in/cheik-kone')">
               <img src="/linkedin-logo.svg" alt="" />
               <p class="pt-4">Linkedin</p>
             </div>

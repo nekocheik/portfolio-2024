@@ -38,8 +38,28 @@ const openLink = (url: string) => {
       </div>
 
       <div class="pt-16">
-        <h2 class="font-kiona text-2xl lg:text-[40px] leading-snug"><span class="text-tertiary">Mise</span> <span class="text-primary-ligh">en</span> contexte /</h2>
-        <div class="w-[90%] lg:max-w-[1200px] pt-4 lg:text-base" v-html="project.bigDescription" />
+        <h2 class="font-kiona text-2xl lg:text-[40px] leading-snug">
+          <span class="text-tertiary">Mise</span> <span class="text-primary-ligh">en</span> contexte
+          /
+        </h2>
+        <div class="w-[90%] flex">
+          <p class="lg:max-w-[770px] pt-4 lg:text-base" v-html="project.bigDescription" />
+          <div class="relative">
+            <div
+              :duration="1200"
+              v-motion-fade
+              v-prlx
+              style="filter: url(#wavyGenerique)"
+              class="w-[380px] h-[380px] 2xl:w-[500px] 2xl:h-[500px] bg-primary-medium absolute rounded-full top-[-100px] left-[280px]"
+            ></div>
+            <img
+              v-prlx="{ speed: 0.7 }"
+              class="hidden lg:block absolute min-w-[837px] min-h-fit left-36"
+              src="/computer-aquaverse.png"
+              alt=""
+            />
+          </div>
+        </div>
       </div>
 
       <div class="pt-16">

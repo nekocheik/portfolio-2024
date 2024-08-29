@@ -72,17 +72,19 @@ const openLink = (index: string) => {
 <template>
   <div class="relative">
     <h1
-      class="hidden lg:block z-30 pt-16 pl-32 text-tertiary text-5xl lg:text-[80px] font-thin font-display italic"
-      :class="{ isMode3 : 'translate-x-20' }"
+      class="hidden lg:block z-30 pt-16 pl-32 text-tertiary text-5xl lg:text-[80px] font-thin font-display italic duration-1000 transition-generericAnimation -translate-x-96 opacity-0"
+      v-intersect="{ delay: 600, true: ['!-translate-x-0', '!opacity-100'] }"
+      :class="{ isMode3: 'translate-x-20' }"
     >
       Projets
     </h1>
-    <div class="relative h-[70vh] max-h-[600px] top-[15vh] lg:top-10 z-50 2xl:top-[80px]">
+    <div class="relative h-[70vh] max-h-[600px] top-[15vh] lg:h-[63vh] lg:top-10 z-50 2xl:top-[80px]">
       <div
         @click="() => toggleMode()"
         ref="containerRef"
+        v-intersect="{ delay: 1000, true: ['-translate-x-0', 'opacity-100'], false: ['-translate-x-96', 'opacity-0'] }"
         :class="[
-          'lg:z-50 bg-white absolute top-0 left-0 right-0 mx-auto my-auto bottom-0 rounded-lg transition-all duration-1000 cursor-pointer overflow-hidden',
+          'lg:z-50 bg-white absolute top-0 left-0 right-0 mx-auto my-auto bottom-0 rounded-lg transition-all duration-700 cursor-pointer overflow-hidden',
           indicatorOnTransion ? 'lg:-translate-x-[200%]' : '',
           isMode3 ? 'w-[80vw] h-[509px]' : 'w-[88vw] h-[60vh] lg:h-72 lg:w-[400px] lg:ml-32'
         ]"
@@ -120,7 +122,7 @@ const openLink = (index: string) => {
             <p>{{ currentProjectIndex + 1 }}</p>
             <p class="pt-4">{{ projects.length }}</p>
           </section>
-          <p class="hidden lg:block pt-32"><strong>Role</strong> / {{ currentProject.role }}</p>
+          <p class="hidden lg:block pt-32"><strong class="text-primary">Role</strong> / {{ currentProject.role }}</p>
 
           <div class="hidden lg:block w-[500px] text-right pt-10 lg:text-base lg:min-h-[230px]">
             <p>
@@ -138,7 +140,7 @@ const openLink = (index: string) => {
       :class="{ 'translate-y-96 opacity-0': isMode3 }"
       class="transition-[translate opacity] duration-1000"
     >
-      <div class="lg:pl-10 flex justify-center pt-40 lg:pt-8 2xl:pt-20">
+      <div class="lg:pl-10 flex justify-center pt-40 lg:pt-14 2xl:pt-20">
         <div class="relative flex w-60 justify-around">
           <div
             v-for="(project, index) in projects"

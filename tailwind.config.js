@@ -9,7 +9,8 @@ export default {
     },
     extend: {
       transitionProperty: {
-        size: 'width, height'
+        size: 'width, height',
+        generericAnimation: 'transform, opacity'
       },
       colors: {
         primary: '#7781d3ff', // primary-color

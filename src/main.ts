@@ -13,11 +13,12 @@ import 'primeicons/primeicons.css'
 import PrimeVue from 'primevue/config'
 import { MotionPlugin } from '@vueuse/motion'
 import Aura from '@primevue/themes/aura'
+import VueIntersect from '@/directives/intersect.ts'
 
 library.add(faUserSecret)
 
 window.log = (text) => {
-  console.log(text , '---- ici --- app')
+  console.log(text, '---- ici --- app')
 }
 ;(() => {
   const local = localStorage.getItem('locale')
@@ -55,6 +56,7 @@ const app = createApp(App)
   .use(router)
   .use(i18n)
   .use(MotionPlugin)
+  .directive('intersect', VueIntersect)
   .use(createThemeManager({ light: 'breeze', dark: 'storm', watchSystemTheme: true }))
   .use(PrimeVue, {
     theme: {
