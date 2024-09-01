@@ -43,7 +43,7 @@ const scrollDown = () => {
 
 // Projets mock
 const projects = ref(projetInformations)
-const currentProjectIndex = ref(0)
+const currentProjectIndex = ref( route.params.id !== 'default' ? route.params.id : 0)
 const currentProject = computed(() => projects.value[currentProjectIndex.value])
 const indicatorOnTransion = ref(false)
 let interIndicator = null
@@ -169,7 +169,7 @@ const openLink = (index: string) => {
   </div>
 
   <Projet v-if="isMode3" :project="currentProject" />
-  <!-- <ProjetEnd v-if="isMode3" :project="currentProject" /> -->
+  <ProjetEnd v-if="isMode3" :project="currentProject" />
 </template>
 
 <style lang="scss" scoped>

@@ -20,7 +20,7 @@
           ></animate>
         </filter>
       </svg>
-<!-- 
+
       <img
         :style="{
           filter: 'url(#wavyBackground)',
@@ -30,9 +30,9 @@
         :class="{ 'opacity-100': isMode3 || isMode2 || isMode4 }"
         class="w-full absolute scale-110 transition-opacity duration-700 opacity-0"
         alt=""
-      /> -->
+      />
       <section class="h-[100vh] w-[100vw] absolute top-0">
-        <!-- <CanvasContainer ref="canvasContainer" /> -->
+        <CanvasContainer ref="canvasContainer" />
         <div
           ref="transitionContainer"
           class="transition-all duration-[1400ms] w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"

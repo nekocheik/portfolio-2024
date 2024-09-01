@@ -12,7 +12,7 @@
       <section>
         <div class="max-w-[500px] lg:max-w-[1300px] 2xl:max-w-[1500px] 2xl:pb-80">
           <h1 class="pt-28 text-4xl font-kiona lg:pt-40 lg:text-[50px] py-8">Qui je suis ?</h1>
-          <p class="pt-2 text-4xl font-kiona text-tertiary lg:text-[80px] font-bold py-10 xl:top-16">
+          <p class="pt-2 text-4xl font-kiona text-primary-light lg:text-[80px] font-bold py-10 xl:top-16">
             Hello !!
           </p>
           <section class="lg:text-base leading-8">
@@ -37,7 +37,7 @@
                   class="text-primary">Docker</span> et <span class="text-primary">Kubernetes</span>, ce qui me
                 permet de gérer efficacement le déploiement et la gestion des applications. Au cours
                 de ma carrière, j'ai travaillé sur une variété de projets et pour différents types
-                d'entreprises, ce qui m'a permis de développer une <span class="text-primary">polyvalence</span> et une <span class="text-tertiary">adaptabilité</span> 
+                d'entreprises, ce qui m'a permis de développer une <span class="text-primary">polyvalence</span> et une <span class="text-tertiary">adaptabilité</span>
                 précieuses.
               </p>
               <div class="h-[300px] relative hidden lg:block -top-24">
@@ -70,7 +70,7 @@
                     Utilisation régulière des outils de design, avec une maîtrise de niveau
                     intermédiaire de Figma. Mes connaissances des règles de base en UX/UI me
                     permettent de communiquer efficacement avec les designers et même de réaliser
-                    moi-même des designs complet lorsque qu'il es nécessaire
+                    moi-même des designs complets lorsque c'est nécessaire.
                   </p>
                 </div>
               </ul>
@@ -88,13 +88,14 @@
                     pour des développeurs juniors. J'ai également une solide maîtrise de JavaScript et TypeScript.
                   </p>
                   <br>
-                  <p class="pb-1">J'ai une bonne connaissance des frameworks SSR comme Next.js et Next.js, que j'utilise
-                    avec React
+                  <p class="pb-1">
+                    J'ai une bonne connaissance des frameworks SSR comme Next.js et Nest.js, que j'utilise avec React
                     et Vue.js. Je mets un point d'honneur à respecter les bonnes pratiques en matière
                     d'accessibilité et de sémantique HTML.
                   </p>
                   <br>
-                  <p class="pb-1">J'optimise les animations CSS et JavaScript
+                  <p class="pb-1">
+                    J'optimise les animations CSS et JavaScript
                     pour garantir une expérience utilisateur fluide et sans bug.
                     Pour documenter et tester les composants de manière isolée, j'utilise Storybook. En matière de
                     tests,
@@ -115,28 +116,28 @@
                 <li class="uppercase py-3 text-xl">back-end</li>
                 <div class="text-base">
                   <p>
-                    Je suis à l'aise avec Node.js et Express.js pour le développement de serveurs
+                    Je suis à l'aise avec <span class="text-primary">Node.js</span> et <span class="text-primary">Express.js</span> pour le développement de serveurs
                     robustes et performants. <br />J'ai une bonne connaissance des bases de données,
-                    notamment MongoDB, SQL et MySQL, ce qui me permet de gérer efficacement les
+                    notamment <span class="text-primary">MongoDB</span>, <span class="text-primary">SQL</span> et <span class="text-primary">MySQL</span>, ce qui me permet de gérer efficacement les
                     données dans divers projets.
                   </p>
                   <br />
                   <p class="pb-1">
-                    Je suis également familier avec les architectures serverless, ce qui me permet
+                    Je suis également familier avec les architectures <span class="text-primary">serverless</span>, ce qui me permet
                     de créer des applications scalables et flexibles.<br />
-                    J'utilise des outils comme Notion pour la gestion de projets et Make pour
+                    J'utilise des outils comme <span class="text-primary">Notion</span> pour la gestion de projets et <span class="text-primary">Make</span> pour
                     l'automatisation des tâches.
                   </p>
                   <br />
                   <p class="pb-1">
-                    Pour la gestion de contenu, j'ai de l'expérience avec Strapi, un CMS headless
+                    Pour la gestion de contenu, j'ai de l'expérience avec <span class="text-primary">Strapi</span>, un CMS headless
                     qui s'intègre parfaitement avec les applications modernes.
                     <p /><br />
                   </p>
 
                   <p class="pb-1">
-                    En matière d'hébergement et de services cloud, j'utilise Google Cloud Platform
-                    (GCP) pour le hosting et l'utilisation des services GCP, ce qui me permet de
+                    En matière d'hébergement et de services cloud, j'utilise <span class="text-primary">Google Cloud Platform
+                    (GCP)</span> pour le hosting et l'utilisation des services GCP, ce qui me permet de
                     déployer et de gérer des applications de manière efficace et sécurisée.
                   </p>
                 </div>

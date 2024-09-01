@@ -48,14 +48,12 @@ const openLink = (url: string) => {
             <div
               :duration="1200"
               v-motion-fade
-              v-prlx
               style="filter: url(#wavyGenerique)"
               class="w-[380px] h-[380px] 2xl:w-[500px] 2xl:h-[500px] bg-primary-medium absolute rounded-full top-[-100px] left-[280px]"
             ></div>
             <img
-              v-prlx="{ speed: 0.7 }"
               class="hidden lg:block absolute min-w-[837px] min-h-fit left-36"
-              src="/computer-aquaverse.png"
+              :src="project.computerImg"
               alt=""
             />
           </div>
