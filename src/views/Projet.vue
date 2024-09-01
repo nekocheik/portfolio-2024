@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import Picture from '../components/galerie/Picture.vue'
+import GalerieImages from "@/components/projet/GalerieImages.vue";
 
 const props = defineProps({
   project: {
@@ -15,6 +16,56 @@ const openLink = (url: string) => {
 </script>
 
 <template>
+  <svg
+    viewBox="0 0 1400 1400"
+    width="1400"
+    height="1400"
+    aria-hidden="true"
+    style="position: absolute; width: 0; height: 0; visibility: hidden"
+  >
+    <defs>
+      <filter
+        id="nnnoise-filter-img"
+        x="-20%"
+        y="-20%"
+        width="140%"
+        height="140%"
+        filterUnits="objectBoundingBox"
+        primitiveUnits="userSpaceOnUse"
+        color-interpolation-filters="linearRGB"
+      >
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.144"
+          numOctaves="4"
+          seed="15"
+          stitchTiles="stitch"
+          x="0%"
+          y="0%"
+          width="100%"
+          height="100%"
+          result="turbulence"
+        ></feTurbulence>
+        <feSpecularLighting
+          surfaceScale="15"
+          specularConstant="0.75"
+          specularExponent="20"
+          lighting-color="#7957A8"
+          x="0%"
+          y="0%"
+          width="100%"
+          height="100%"
+          in="turbulence"
+          result="specularLighting"
+        >
+          <feDistantLight azimuth="3" elevation="100"></feDistantLight>
+        </feSpecularLighting>
+      </filter>
+    </defs>
+    <rect width="700" height="700" fill="transparent"></rect>
+    <rect width="700" height="700" fill="#7957a8" filter="url(#nnnoise-filter-img)"></rect>
+  </svg>
+
   <div class="lg:pt-40">
     <div
       class="h-[300px] w-[100vw] top-0 absolute"
@@ -80,12 +131,17 @@ const openLink = (url: string) => {
         </ul>
       </div>
 
-      <div class="flex justify-center pt-24 cursor-pointer">
-        <AButton @click="openLink(project.link)">Voir le site</AButton>
+      <div class="flex justify-center pt-24">
+        <AButton v-mouse @click="openLink(project.link)">Voir le site</AButton>
       </div>
 
       <div>
-        <div v-for="(n, x) in project.medias" :key="n" class="relative pb-32">
+        <div
+          v-if="project.viewMode === 'galerie-white-text'"
+          v-for="(n, x) in project.medias"
+          :key="n"
+          class="relative pb-32"
+        >
           <Picture
             :direction="x % 2 == 0 ? 'row' : 'row-reverse'"
             :text="n.text"
@@ -94,9 +150,48 @@ const openLink = (url: string) => {
             :video="n.video"
           ></Picture>
         </div>
+        <div class="lg:pt-32" v-if="project.viewMode === 'galerie-images'">
+          <section class="flex flex-col items-center">
+            <div
+              v-for="media in project.medias"
+              class="flex flex-col w-full items-center lg:py-2 lg:max-w-[80%]"
+            >
+              <div class="w-full"> <h2 class="pb-20 lg:text-[66px] uppercase font-thin">{{ media.title }}</h2> </div>
+              <!-- hover:bg-[#0600005c] transition-colors -->
+               <GalerieImages :img="media.img" />
+            </div>
+          </section>
+        </div>
       </div>
     </section>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@keyframes squiggly-anim {
+  0% {
+    -webkit-filter: url('#squiggly-0');
+    filter: url('#squiggly-0');
+  }
+  25% {
+    -webkit-filter: url('#squiggly-1');
+    filter: url('#squiggly-1');
+  }
+  50% {
+    -webkit-filter: url('#squiggly-2');
+    filter: url('#squiggly-2');
+  }
+  75% {
+    -webkit-filter: url('#squiggly-3');
+    filter: url('#squiggly-3');
+  }
+  100% {
+    -webkit-filter: url('#squiggly-4');
+    filter: url('#squiggly-4');
+  }
+}
+
+.test-anim {
+  animation: 3s linear 0.1s infinite running squiggly-anim;
+}
+</style>

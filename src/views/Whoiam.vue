@@ -162,11 +162,11 @@
             Ou me suivre ?
           </h2>
           <section class="flex items-end justify-center pt-5">
-            <div class="pr-20 cursor-pointer" role="a" @click="openLink('https://github.com/nekocheik')">
+            <div class="pr-20" v-mouse role="a" @click="openLink('https://github.com/nekocheik')">
               <img src="/github-logo.svg" alt="" />
               <p class="pt-4">Github</p>
             </div>
-            <div class="cursor-pointer" role="a" @click="openLink('https://www.linkedin.com/in/cheik-kone')">
+            <div class="" role="a" v-mouse @click="openLink('https://www.linkedin.com/in/cheik-kone')">
               <img src="/linkedin-logo.svg" alt="" />
               <p class="pt-4">Linkedin</p>
             </div>

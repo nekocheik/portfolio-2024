@@ -1,6 +1,10 @@
 @import './base.css';
 @import './google-material.css';
 
+* {
+	cursor: none !important;
+}
+
 @font-face {
 	font-family: 'Kiona';
 	src: url('/fonts/Kiona-BoldItallic.woff2') format('woff2'),

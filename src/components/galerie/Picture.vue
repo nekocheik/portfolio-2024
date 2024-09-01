@@ -31,13 +31,13 @@
             v-intersect="{ delay: 500, false: ['opacity-0'] }"
             class="flex justify-center pt-4 lg:pt-16 lg:grayscale lg:hover:grayscale-0 lg:transition-all lg:duration-700 lg:delay-300"
           >
-            <video v-if="video" class="lg:w-[800px] cursor-pointer" controls>
+            <video v-if="video" class="lg:w-[800px]" controls>
               <source :src="video" type="video/mp4" />
             </video>
             <img
               @click="open('ModalGalerie')"
               v-if="img"
-              class="lg:w-[800px] cursor-pointer"
+              class="lg:w-[800px]"
               :src="img"
               alt=""
             />

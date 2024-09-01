@@ -4,7 +4,7 @@ interface IntersectOptions {
   false?: string[] | { [prop: string]: any };
   onChange?: (isIntersecting: boolean, el: HTMLElement, options: IntersectOptions) => void;
   disposeWhen?: boolean;
-  delay?: number; // Champ pour le délai en millisecondes
+  delay?: number;
 }
 
 class Intersect {
@@ -12,7 +12,7 @@ class Intersect {
   private el!: HTMLElement;
   private options!: IntersectOptions;
   private callback!: (isIntersecting: boolean, el: HTMLElement, options: IntersectOptions) => void;
-  private timeoutId?: number; // Identifiant pour le délai
+  private timeoutId?: number;
 
   constructor(private vm: any) {}
 
@@ -29,7 +29,7 @@ class Intersect {
       true: binding.value.true,
       false: binding.value.false,
       disposeWhen: binding.value.disposeWhen,
-      delay: binding.value.delay || 0, // Par défaut, pas de délai
+      delay: binding.value.delay || 0,
     };
     this.callback = binding.value.onChange;
   }
@@ -49,7 +49,6 @@ class Intersect {
 
     const isIntersecting = entry.isIntersecting;
 
-    // Gère le délai avant d'ajouter ou de retirer les classes/styles
     if (this.options.delay) {
       if (this.timeoutId) {
         clearTimeout(this.timeoutId);

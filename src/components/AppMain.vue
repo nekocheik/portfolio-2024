@@ -1,6 +1,9 @@
 <template>
   <div class="relative">
-    <main class="relative font-body bg-100-auto overflow-y-hidden" :style="mainStyle">
+    <main
+      class="relative font-body bg-100-auto overflow-y-hidden max-w-[100vw] overflow-hidden cursor-none"
+      :style="mainStyle"
+    >
       <svg class="absolute">
         <filter id="wavyBackground">
           <feTurbulence
@@ -46,9 +49,19 @@
           <SecondCanvasContainer ref="secondCanvasContainer" />
         </div>
       </section>
-      <div ref="view" class="min-w-[100%] max-w-[100vw] overflow-hidden min-h-[100vh] table">
-        <RouterView />
-      </div>
+      <ScrollView root :duration="1.4">
+        <div
+          ref="view"
+          class="min-w-[100%] max-w-[100vw] overflow-hidden min-h-[100vh] table"
+        >
+          <div :class="{ 'w-[90px] h-[90px]' : mouse.isHover}" class="cursor z-[1000]"></div>
+          <div class="cursor2 z-[1000]"></div>
+          <ScrollComponent>
+            <RouterView :speed="0.2" />
+            {{ mouse.isHover }}
+          </ScrollComponent>
+        </div>
+      </ScrollView>
     </main>
   </div>
 </template>
@@ -57,10 +70,13 @@
 import { useRoute } from 'vue-router'
 import CanvasContainer from '@/components/CanvasContainer.vue'
 import SecondCanvasContainer from '@/components/SecondCanvasContainer.vue'
+import { ScrollView, ScrollComponent } from 'potiah'
+import useMouse from '@/store/mouse.ts'
 
 const route = useRoute()
 const view = ref<HTMLDivElement>()
 const viewSize = ref(0)
+const mouse = useMouse()
 
 const isMode2 = computed(() => route.path === '/projets/default')
 const isMode3 = computed(() => /\/projets\/[{0-9}]+/.test(route.path))
@@ -87,15 +103,70 @@ onMounted(() => {
     }
   }, 100)
   window.addEventListener('scroll', onScroll)
+
+  var cursor = document.querySelector('.cursor')
+  var cursorinner = document.querySelector('.cursor2')
+  var a = document.querySelectorAll('a')
+
+  document.addEventListener('mousemove', function (e) {
+    cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
+    cursorinner.style.left = e.clientX + 'px'
+    cursorinner.style.top = e.clientY + 'px'
+  })
+
+  document.addEventListener('mousedown', function () {
+    cursor.classList.add('click')
+    cursorinner.classList.add('cursorinnerhover')
+  })
+
+  document.addEventListener('mouseup', function () {
+    cursor.classList.remove('click')
+    cursorinner.classList.remove('cursorinnerhover')
+  })
+
+  a.forEach((item) => {
+    item.addEventListener('mouseover', () => {
+      cursor.classList.add('hover')
+    })
+    item.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover')
+    })
+  })
 })
 
 onUnmounted(() => {
+  clearInterval(checkCursorInterval)
   clearInterval(invervalWatchClient)
   window.removeEventListener('scroll', onScroll)
 })
 </script>
 
 <style>
+.cursor {
+  width: 68px;
+  height: 68px;
+  border-radius: 100%;
+  border: 1px solid rgba(253, 235, 206, 0.748);
+  transition: all 400ms ease-out;
+  position: fixed;
+  pointer-events: none;
+  left: 0;
+  top: 0;
+  transform: translate(calc(-50% + 15px), -50%);
+}
+
+.cursor2 {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  background-color: rgb(206, 180, 255);
+  opacity: 0.3;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: width 0.3s, height 0.3s, opacity 0.3s;
+}
+
 .relative {
   position: relative;
 }

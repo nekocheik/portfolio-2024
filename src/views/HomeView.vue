@@ -54,19 +54,24 @@
         développeur
       </h1>
       <div class="text-2xl pt-16 lg:pt-18 text-white lg:text-lg">
-        <a target="_blank" class="font-bold" href="https://www.linkedin.com/in/cheik-kone/">In</a> /
-        <a target="_blank" class="font-bold" href="https://github.com/nekocheik">Git</a>
+        <a target="_blank" v-mouse class="font-bold" href="https://www.linkedin.com/in/cheik-kone/">In</a> /
+        <a target="_blank" v-mouse class="font-bold" href="https://github.com/nekocheik">Git</a>
       </div>
     </div>
     <div class="flex pt-8 lg:pt-10 justify-between w-60">
       <button
         class="text-white font-normal text-lg"
+        v-mouse
         @click="router.push({ name: 'projets', params: { id: 'default' } })"
       >
         Projets
       </button>
-      <button class="text-white font-normal text-lg" @click="navigateTo('whoiam')">Who I Am</button>
-      <button class="text-white font-normal text-lg" @click="navigateTo('contact')">Contact</button>
+      <button class="text-white font-normal text-lg" v-mouse @click="navigateTo('whoiam')">
+        Who I Am
+      </button>
+      <button class="text-white font-normal text-lg" v-mouse @click="navigateTo('contact')">
+        Contact
+      </button>
     </div>
   </div>
 </template>

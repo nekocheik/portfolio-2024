@@ -1,10 +1,8 @@
 <template>
   <button
+    v-mouse
     @click="navigate"
-    :class="[
-      'text-white font-normal text-lg cursor-pointer text-body',
-      { underline: isActive }
-    ]"
+    :class="['text-white font-normal text-lg text-body', { underline: isActive }]"
   >
     {{ label }}
   </button>

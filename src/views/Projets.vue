@@ -147,6 +147,7 @@ const openLink = (index: string) => {
             :key="project.id"
             @click="changeProject(index)"
             :class="{ 'scale-110': currentProjectIndex == index }"
+            v-mouse
             class="w-5 h-5 bg-primary rounded-md flex items-center cursor-pointer transition-all duration-300"
           ></div>
           <div

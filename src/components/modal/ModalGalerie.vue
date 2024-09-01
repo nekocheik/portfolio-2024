@@ -77,7 +77,7 @@
             v-for="(media, index) in projetMedia"
             :key="index"
             class="max-w-[200px] lgm: mr-10 cursor-pointer transition-transform"
-            :class="{ '-translate-y-20' : index == currentImgage}"
+            :class="{ '-translate-y-20': index == currentImgage }"
             @click="switchImage(index)"
             :src="media.isImage ? media.img : media.thumbnail"
             alt=""
@@ -86,21 +86,19 @@
 
         <!-- Flèches de navigation -->
         <ArrowRight
-          class="absolute top-[50%] right-[10%] translate-y-[-50%] cursor-pointer"
+          class="absolute top-[50%] right-[10%] translate-y-[-50%]"
+          v-mouse
           @click="next"
         />
         <ArrowLeft
-          class="absolute top-[50%] left-[10%] translate-y-[-50%] cursor-pointer"
+          v-mouse
+          class="absolute top-[50%] left-[10%] translate-y-[-50%]"
           @click="pervious"
         />
       </div>
     </template>
   </ModalWrapper>
 </template>
-
-
-
-
 
 <script lang="ts" setup>
 import ModalWrapper from '../template/ModalWrapper.vue'
@@ -119,96 +117,94 @@ const currentImgage = ref(0)
 // Initialisation du projetMedia avec vérification du type
 const projetMedia = computed(() =>
   projetInformations[route.params.id].medias.map((media: any) => {
-    const { isImage, isVideo } = checkType(media.img || media.video || '');
-    return { ...media, isImage, isVideo };
+    const { isImage, isVideo } = checkType(media.img || media.video || '')
+    return { ...media, isImage, isVideo }
   })
-);
+)
 
 // Extraction des images et vidéos
-const images = projetMedia.value.map(media => media.isImage ? media.img : media.thumbnail);
-const videoLinks = projetMedia.value.map(media => media.isVideo ? media.video : null);
+const images = projetMedia.value.map((media) => (media.isImage ? media.img : media.thumbnail))
+const videoLinks = projetMedia.value.map((media) => (media.isVideo ? media.video : null))
 
 // Calcul des index précédents et suivants
-const prevIndex = computed(() => (currentImgage.value - 1 + images.length) % images.length);
-const nextIndex = computed(() => (currentImgage.value + 1) % images.length);
+const prevIndex = computed(() => (currentImgage.value - 1 + images.length) % images.length)
+const nextIndex = computed(() => (currentImgage.value + 1) % images.length)
 
 // Initialisation des images du carrousel
-const NewImageCurrent = ref(images[currentImgage.value]);
-const NewImageNext = ref(images[nextIndex.value]);
-const NewImagePrev = ref(images[prevIndex.value]);
+const NewImageCurrent = ref(images[currentImgage.value])
+const NewImageNext = ref(images[nextIndex.value])
+const NewImagePrev = ref(images[prevIndex.value])
 
 // Fonction de mise à jour des images affichées dans le carrousel
 const updateImages = (index: number) => {
-  NewImageCurrent.value = images[index];
-  NewImageNext.value = images[(index + 1) % images.length];
-  NewImagePrev.value = images[(index - 1 + images.length) % images.length];
+  NewImageCurrent.value = images[index]
+  NewImageNext.value = images[(index + 1) % images.length]
+  NewImagePrev.value = images[(index - 1 + images.length) % images.length]
 }
 
 // Fonction de gestion de changement d'image
 const switchImage = (index: number) => {
   if (!onTransition.value && currentImgage.value !== index) {
-    onTransition.value = true;
+    onTransition.value = true
 
     if (index > currentImgage.value) {
-      isNext.value = true;
+      isNext.value = true
     } else {
-      isPrevious.value = true;
+      isPrevious.value = true
     }
 
     setTimeout(() => {
-      updateImages(index);
-      currentImgage.value = index;
-    }, 1000);
+      updateImages(index)
+      currentImgage.value = index
+    }, 1000)
 
     setTimeout(() => {
-      onTransition.value = false;
-      isNext.value = false;
-      isPrevious.value = false;
-    }, 1100);
+      onTransition.value = false
+      isNext.value = false
+      isPrevious.value = false
+    }, 1100)
   }
 }
 
 const next = () => {
   if (!onTransition.value) {
-    onTransition.value = true;
-    isNext.value = true;
+    onTransition.value = true
+    isNext.value = true
 
     setTimeout(() => {
-      currentImgage.value = nextIndex.value;
-      updateImages(currentImgage.value);
-    }, 1000);
+      currentImgage.value = nextIndex.value
+      updateImages(currentImgage.value)
+    }, 1000)
 
     setTimeout(() => {
-      onTransition.value = false;
-      isNext.value = false;
-    }, 1100);
+      onTransition.value = false
+      isNext.value = false
+    }, 1100)
   }
 }
 
 const pervious = () => {
   if (!onTransition.value) {
-    onTransition.value = true;
-    isPrevious.value = true;
+    onTransition.value = true
+    isPrevious.value = true
 
     setTimeout(() => {
-      currentImgage.value = prevIndex.value;
-      updateImages(currentImgage.value);
-    }, 1000);
+      currentImgage.value = prevIndex.value
+      updateImages(currentImgage.value)
+    }, 1000)
 
     setTimeout(() => {
-      onTransition.value = false;
-      isPrevious.value = false;
-    }, 1100);
+      onTransition.value = false
+      isPrevious.value = false
+    }, 1100)
   }
 }
 
 // Initialisation des images au chargement
-updateImages(currentImgage.value);
+updateImages(currentImgage.value)
 </script>
 
-
 <style lang="scss" scoped>
-
 .SelectStakingGuardian {
 }
 </style>

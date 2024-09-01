@@ -14,9 +14,16 @@ import PrimeVue from 'primevue/config'
 import { MotionPlugin } from '@vueuse/motion'
 import Aura from '@primevue/themes/aura'
 import VueIntersect from '@/directives/intersect.ts'
+import { createPinia } from 'pinia'
+import { VuePrlxDirective } from 'vue-prlx'
+import { createPotiah } from 'potiah'
+import MouseHoverDirective from './directives/hoverMouse.ts';
+import 'locomotive-scroll/locomotive-scroll.css'
+
+const potiah = createPotiah()
+const pinia = createPinia()
 
 library.add(faUserSecret)
-
 window.log = (text) => {
   console.log(text, '---- ici --- app')
 }
@@ -55,8 +62,12 @@ const app = createApp(App)
   .component('AButton', Button)
   .use(router)
   .use(i18n)
+  .use(potiah)
   .use(MotionPlugin)
+  .use(pinia)
   .directive('intersect', VueIntersect)
+  .directive('mouse', MouseHoverDirective)
+  .directive('prlx', VuePrlxDirective)
   .use(createThemeManager({ light: 'breeze', dark: 'storm', watchSystemTheme: true }))
   .use(PrimeVue, {
     theme: {
@@ -65,3 +76,7 @@ const app = createApp(App)
   })
 
 app.mount('#app')
+
+window.log(VuePrlxDirective)
+
+// UPDATE: I was able to get this working again... Enjoy!

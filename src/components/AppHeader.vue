@@ -1,7 +1,7 @@
 <template>
   <header>
     <div
-      class="back-button fixed top-10 left-10 z-50 cursor-pointer"
+      class="back-button fixed top-10 left-10 z-50"
       @click="router.push({ name: 'projets', params: { id: 'default' } })"
     >
       <div class="relative">
@@ -31,18 +31,21 @@
     </div>
     <nav class="hidden lg:flex fixed top-10 right-20 z-[100] w-96 justify-around">
       <NavigationButton
+        v-mouse
         :label="$t('nav.home')"
         routeName="home"
         :isActive="isCurrentRoute('home')"
         @navigate="navigateTo"
       />
       <NavigationButton
+        v-mouse
         :label="$t('nav.projets')"
         routeName="projets"
         :isActive="isCurrentRoute('projets')"
         @navigate="router.push({ name: 'projets', params: { id: 'default' } })"
       />
       <NavigationButton
+        v-mouse
         :label="$t('nav.who_i_am')"
         routeName="whoiam"
         :isActive="isCurrentRoute('whoiam')"
@@ -71,15 +74,15 @@ const progress = ref(0)
 const updateScrollProgress = () => {
   const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight
   const scrollY = window.scrollY
-  progress.value = scrollY / scrollTotal * 100
+  progress.value = (scrollY / scrollTotal) * 100
 }
 
 const toggleLanguage = () => {
   const currentLocal = localStorage.getItem('locale')
   window.log(currentLocal)
-  const newVal = currentLocal == "fr" ? 'en' : 'fr';
-  localStorage.setItem('locale', newVal);
-  location.reload();
+  const newVal = currentLocal == 'fr' ? 'en' : 'fr'
+  localStorage.setItem('locale', newVal)
+  location.reload()
 }
 
 onMounted(() => {
@@ -89,7 +92,6 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', updateScrollProgress)
 })
-
 
 const isCurrentRoute = (routeName: string) => route.name === routeName
 const navigateTo = (route: string) => router.push({ name: route })
