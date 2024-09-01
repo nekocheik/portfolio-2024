@@ -73,7 +73,8 @@ const openLink = (index: string) => {
   <div class="relative">
     <h1
       class="hidden lg:block z-30 pt-16 pl-32 text-tertiary text-5xl lg:text-[80px] font-thin font-display italic duration-1000 transition-generericAnimation -translate-x-96 opacity-0"
-      v-intersect="{ delay: 600, true: ['!-translate-x-0', '!opacity-100'] }"
+      
+      v-intersect="{ delay: 600, onTrue: true,true: ['!-translate-x-0', '!opacity-100'] }"
       :class="{ isMode3: 'translate-x-20' }"
     >
       Projets
@@ -86,7 +87,7 @@ const openLink = (index: string) => {
         :class="[
           'lg:z-50 bg-white absolute top-0 left-0 right-0 mx-auto my-auto bottom-0 rounded-lg transition-all duration-700 cursor-pointer overflow-hidden',
           indicatorOnTransion ? 'lg:-translate-x-[200%]' : '',
-          isMode3 ? 'w-[80vw] h-[509px]' : 'w-[88vw] h-[60vh] lg:h-72 lg:w-[400px] lg:ml-32'
+          isMode3 ? 'w-[80vw] h-[509px]' : 'w-[74vw] h-[60vh] lg:h-72 lg:w-[400px] lg:ml-32'
         ]"
       >
         <div class="relative h-full w-full flex justify-center">
@@ -115,7 +116,7 @@ const openLink = (index: string) => {
       </div>
       <div class="relative">
         <div
-          class="text-white w-[88vw] lg:max-w-[1150px] absolute top-0 right-0 lg:right-auto my-auto bottom-0 flex flex-col items-end pr-14 transition-all duration-1000"
+          class="text-white lg:w-[77vw] w-[88vw] lg:max-w-[1150px] absolute top-0 right-0 lg:right-auto my-auto bottom-0 flex flex-col items-end pr-14 transition-all duration-1000"
           :class="{ 'translate-x-[100vw]': isMode3 }"
         >
           <section class="hidden lg:block absolute bottom-[-21px] text-5xl font-bold right-12">
@@ -130,7 +131,7 @@ const openLink = (index: string) => {
             </p>
           </div>
 
-          <AButton @click="toggleMode()" class="mx-auto mt-[60vh] lg:relative lg:mt-10 lg:mr-32">
+          <AButton @click="toggleMode()" class="mx-auto mt-[70vh] lg:relative lg:mt-10 lg:mr-32">
             En voir plus
           </AButton>
         </div>

@@ -16,8 +16,8 @@
       ></section>
       <img
         v-prlx="{ speed: 4 }"
-        v-intersect="{ delay: 800, true: ['!bg-[#898989b0]'] }"
-        class="py-10 w-full min-h-[50vh] bg-white duration-700"
+        v-intersect="{ delay: 800, true: ['!bg-[#898989b0]', '!opacity-100'] }"
+        class="py-10 w-full min-h-[50vh] bg-white duration-700 opacity-75"
         :src="props.img"
         alt=""
         srcset=""

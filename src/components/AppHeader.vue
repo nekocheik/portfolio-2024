@@ -1,6 +1,17 @@
 <template>
   <header>
     <div
+      class="hidden lg:block fixed w-screen h-24 bg-black top-0 z-[100]"
+      style="
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(22, 0, 31, 0.3253676470588235) 49%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      "
+    ></div>
+    <div
       class="back-button fixed top-10 left-10 z-50"
       @click="router.push({ name: 'projets', params: { id: 'default' } })"
     >
@@ -29,7 +40,7 @@
         </svg>
       </div>
     </div>
-    <nav class="hidden lg:flex fixed top-10 right-20 z-[100] w-96 justify-around">
+    <nav class="hidden lg:flex fixed top-10 right-20 z-[100] w-4/12 justify-around">
       <NavigationButton
         v-mouse
         :label="$t('nav.home')"

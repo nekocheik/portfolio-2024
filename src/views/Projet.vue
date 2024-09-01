@@ -66,7 +66,7 @@ const openLink = (url: string) => {
     <rect width="700" height="700" fill="#7957a8" filter="url(#nnnoise-filter-img)"></rect>
   </svg>
 
-  <div class="lg:pt-40">
+  <div class="lg:pt-40 pt-40">
     <div
       class="h-[300px] w-[100vw] top-0 absolute"
       style="
@@ -116,8 +116,8 @@ const openLink = (url: string) => {
           Techno<br />
           <span class="text-primary">utilisées /</span>
         </h2>
-        <ul class="w-[90%] pt-4 pl-6 list-disc lg:text-2xl flex justify-around lg:pt-20">
-          <li class="py-4 flex flex-col" v-for="tech in project.technologies" :key="tech">
+        <ul class="w-[90%] pt-20 sm:pl-6 list-disc lg:text-2xl flex justify-around flex-wrap lg:flex-nowrap lg:pt-40">
+          <li class="py-4 flex flex-col w-6/12 lg:w-fit" v-for="tech in project.technologies" :key="tech">
             <div class="relative pb-8">
               <img
                 class="h-14 absolute left-[50%] translate-x-[-50%] mx-auto min-w-[160px]"

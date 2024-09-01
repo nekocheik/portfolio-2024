@@ -5,6 +5,8 @@ interface IntersectOptions {
   onChange?: (isIntersecting: boolean, el: HTMLElement, options: IntersectOptions) => void;
   disposeWhen?: boolean;
   delay?: number;
+  onTrue?: () => void; // Nouveau paramètre pour déclencher une animation une seule fois à l'entrée
+  onFalse?: () => void; // Nouveau paramètre pour déclencher une animation une seule fois à la sortie
 }
 
 class Intersect {
@@ -13,6 +15,8 @@ class Intersect {
   private options!: IntersectOptions;
   private callback!: (isIntersecting: boolean, el: HTMLElement, options: IntersectOptions) => void;
   private timeoutId?: number;
+  private hasTriggeredTrue: boolean = false; // Indicateur pour onTrue
+  private hasTriggeredFalse: boolean = false; // Indicateur pour onFalse
 
   constructor(private vm: any) {}
 
@@ -30,6 +34,8 @@ class Intersect {
       false: binding.value.false,
       disposeWhen: binding.value.disposeWhen,
       delay: binding.value.delay || 0,
+      onTrue: binding.value.onTrue,
+      onFalse: binding.value.onFalse,
     };
     this.callback = binding.value.onChange;
   }
@@ -49,6 +55,7 @@ class Intersect {
 
     const isIntersecting = entry.isIntersecting;
 
+    // Gère le délai avant d'ajouter ou de retirer les classes/styles
     if (this.options.delay) {
       if (this.timeoutId) {
         clearTimeout(this.timeoutId);
@@ -58,6 +65,15 @@ class Intersect {
       }, this.options.delay);
     } else {
       this.applyChanges(isIntersecting);
+    }
+
+    // Gestion des animations one-time
+    if (isIntersecting && this.options.onTrue && !this.hasTriggeredTrue) {
+      this.options.onTrue();
+      this.hasTriggeredTrue = true;
+    } else if (!isIntersecting && this.options.onFalse && !this.hasTriggeredFalse) {
+      this.options.onFalse();
+      this.hasTriggeredFalse = true;
     }
 
     if (this.callback) {

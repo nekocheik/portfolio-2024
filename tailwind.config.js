@@ -16,6 +16,7 @@ export default {
         primary: '#7781d3ff', // primary-color
         secondary: '#f6f6f6ff', // secondary-color
         tertiary: '#ed420dff', // tertiary-color
+        'tertiary-light': '#f46336', // tertiary-color
         quinary: '#141414ff', // quinary-color
         'primary-light': '#5e4ae3bf', // primary light
         'primary-medium': '#342583ff', // primary medium

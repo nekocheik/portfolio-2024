@@ -50,7 +50,7 @@ const i18n = createI18n({
       nav: {
         home: 'Accueil',
         projets: 'Projets',
-        who_i_am: 'Qui je suis',
+        who_i_am: 'Qui je suis ?',
         change_language: 'Changer la langue'
       }
     }

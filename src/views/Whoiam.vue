@@ -1,5 +1,5 @@
 <template>
-  <div class="text-white mx-4">
+  <div class="text-white mx-4 max-w-[96vw]">
     <svg class="absolute">
       <filter id="wavyGenerique">
         <feTurbulence id="turbulence2" type="turbulence" numOctaves="10" result="NOISE1"></feTurbulence>
@@ -15,7 +15,7 @@
           <p class="pt-2 text-4xl font-kiona text-primary-light lg:text-[80px] font-bold py-10 xl:top-16">
             Hello !!
           </p>
-          <section class="lg:text-base leading-8">
+          <section class="text-sm lg:text-base leading-8">
             <div class="relative flex items-center">
               <p class="pt-4 lg:pt-20 lg:pr-20">
                 Je suis un développeur <span class="text-tertiary">multi-casquette</span>, <span

@@ -50,15 +50,13 @@
         </div>
       </section>
       <ScrollView root :duration="1.4">
-        <div
-          ref="view"
-          class="min-w-[100%] max-w-[100vw] overflow-hidden min-h-[100vh] table"
-        >
-          <div :class="{ 'w-[90px] h-[90px]' : mouse.isHover}" class="cursor z-[1000]"></div>
-          <div class="cursor2 z-[1000]"></div>
-          <ScrollComponent>
-            <RouterView :speed="0.2" />
-            {{ mouse.isHover }}
+        <div ref="view" class="min-w-[100%] max-w-[100vw] overflow-hidden min-h-[100vh] table">
+          <section class="hidden lg:block">
+            <div :class="{ 'w-[90px] h-[90px]': mouse.isHover }" class="cursor z-[1000]"></div>
+            <div class="cursor2 z-[1000]"></div>
+          </section>
+          <ScrollComponent :speed="0.1">
+            <RouterView />
           </ScrollComponent>
         </div>
       </ScrollView>
@@ -147,7 +145,7 @@ onUnmounted(() => {
   height: 68px;
   border-radius: 100%;
   border: 1px solid rgba(253, 235, 206, 0.748);
-  transition: all 400ms ease-out;
+  transition: all 200ms ease-out;
   position: fixed;
   pointer-events: none;
   left: 0;
