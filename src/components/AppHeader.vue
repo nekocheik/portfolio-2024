@@ -41,16 +41,22 @@
       </div>
     </div> -->
     <div class="text-white fixed top-8 left-8 z-[200] text-xl">
-      <p z-mouses>< Retour</p>
+      <button
+        @click="router.push({ name: 'projets', params: { id: 'default' } })"
+        v-if="$route.name == 'projets' && $route.params.id != 'default'"
+        z-mouses
+      >
+        < Retour
+      </button>
     </div>
     <img
       src="/white-logo-cheik-kone.svg"
       alt="logo"
       @click="router.push({ name: 'home' })"
       z-mouse
-      class="fixed z-[200] w-40 top-10 left-0 right-0 mx-auto opacity-80 hover:opacity-100 transition-all"
+      class="fixed z-[200] w-40 top-8 left-0 right-0 mx-auto opacity-80 hover:opacity-100 transition-all"
     />
-    <nav class="hidden lg:flex fixed top-10 right-20 z-[100] w-4/12 justify-around">
+    <nav class="bottom-6 w-10/12 justify-around fixed flex sm:bottom-[initial] sm:top-10 lg:right-20 z-[100] lg:w-4/12">
       <NavigationButton
         v-mouse
         :label="$t('nav.home')"

@@ -2,7 +2,7 @@
   <button
     v-mouse
     @click="navigate"
-    :class="['text-white font-normal text-lg text-body', { underline: isActive }]"
+    :class="['text-sm text-white font-normal lg:text-lg text-body font-kiona', { underline: isActive }]"
   >
     {{ label }}
   </button>

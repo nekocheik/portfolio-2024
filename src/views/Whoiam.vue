@@ -158,7 +158,7 @@
           </div>
         </div>
         <div>
-          <h2 class="text-primary text-4xl uppercase font-thin lg:pt-40 2xl:pt-8">
+          <h2 class="pt-20 text-primary text-4xl uppercase font-thin lg:pt-40 2xl:pt-8">
             Ou me suivre ?
           </h2>
           <section class="flex items-end justify-center pt-5">

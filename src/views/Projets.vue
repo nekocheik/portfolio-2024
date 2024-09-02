@@ -133,7 +133,7 @@ const openLink = (index: string) => {
               </p>
             </div>
 
-            <AButton @click="toggleMode()" class="mx-auto mt-[70vh] lg:relative lg:mt-10 lg:mr-32">
+            <AButton @click="toggleMode()" class="mx-auto mt-[60vh] lg:relative lg:mt-10 lg:mr-32">
               En voir plus
             </AButton>
           </div>
@@ -143,7 +143,7 @@ const openLink = (index: string) => {
         :class="{ 'translate-y-96 opacity-0': isMode3 }"
         class="transition-[translate opacity] duration-1000"
       >
-        <div class="lg:pl-10 flex justify-center pt-40 lg:pt-14 2xl:pt-20">
+        <div class="lg:pl-10 flex justify-center pt-28 lg:pt-14 2xl:pt-20">
           <div class="relative flex w-60 justify-around">
             <div
               v-for="(project, index) in projects"
