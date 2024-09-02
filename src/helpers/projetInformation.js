@@ -109,22 +109,22 @@ export const projetInformations = [
     viewMode: 'galerie-images',
     medias: [
       {
-        title: 'page Article',
+        title: 'Page Article',
         img: '/delta-visuel-1.png',
         thumbnail: '/team-product.png'
       },
       {
-        title: 'Visuel Carrouselle',
+        title: 'Page recherche',
         img: '/delta-visuel-2.png',
         thumbnail: '/team-product.png'
       },
       {
-        title: ``,
+        title: 'Création de visuel',
         img: '/delta-visuel-3.png',
         thumbnail: '/team-product.png'
       },
       {
-        title: `Page recherche d'articles`,
+        title: 'Définition de la charte',
         img: '/delta-visuel-4.png',
         thumbnail: '/team-product.png'
       }
@@ -138,69 +138,37 @@ export const projetInformations = [
     ]
   },
   {
-    id: 'tree',
+    id: 'three',
     title: 'Portfolio',
-    link: 'https://delta-fraternite.vercel.app/',
-    role: 'UI/UX Designer & Développeur front-end',
-    description: `J'ai réalisé la refonte d'un site e-commerce dans le cadre d'une mission en freelance. Pour cette mission, j'ai dû endosser une double casquette de développeur front-end et de designer, afin de refondre graphiquement et d'intégrer un site e-commerce.`,
+    role: 'UX/UI Designer & Développeur front-end',
+    link: '',
+    description: `En 2024, j’ai entrepris la création de mon propre portfolio pour mettre en avant mon expertise en design UX/UI et en développement front-end.`,
     bigDescription: `
-<p class="text-base font-medium">Dans le cadre de cette mission freelance, j'ai mené la refonte complète d'un site e-commerce pour la marque Delta.</p>
+<p class="text-base font-medium">En 2024, j’ai entrepris la création de mon propre portfolio pour mettre en avant mon expertise en design UX/UI et en développement front-end.</p>
 <br />
 
 <p class="text-lg font-bold">Rôle UX/UI Designer :</p>
 <br />
-<p><span class="text-primary font-semibold">• Refonte de la charte graphique :</span> Modernisation de l'identité visuelle en accord avec les valeurs de la marque.</p>
-<br />
-<p><span class="text-tertiary font-semibold">• Choix des typographies et des couleurs :</span> Sélection de typographies et de couleurs adaptées pour un design épuré et cohérent.</p>
-<br />
-<p><span class="text-primary font-semibold">• Création d'un design système :</span> Développement d'un design système pour assurer la cohérence visuelle à travers toutes les pages.</p>
-<br />
-<p><span class="text-tertiary font-semibold">• Création des différentes pages :</span> Conception des pages clés du site, incluant la page d'accueil, la page articles, la page de recherche, la page panier, et une page personnalisée pour la broderie de vêtements.</p>
+<p><span class="text-primary font-semibold">• Design UX/UI :</span> Conception des maquettes de l’interface utilisateur en utilisant <span class="text-tertiary font-semibold">Figma</span>, en veillant à créer une expérience utilisateur fluide et intuitive.</p>
 <br />
 
 <p class="text-lg font-bold">Rôle Développeur front-end :</p>
 <br />
-<p><span class="text-primary font-semibold">• Intégration des pages :</span> Développement des différentes pages en utilisant <span class="text-tertiary font-semibold">Next.js 3</span> pour un rendu moderne et performant.</p>
+<p><span class="text-primary font-semibold">• Développement Front-end :</span> Utilisation de <span class="text-tertiary font-semibold">Vue.js</span> pour garantir des performances optimales et une grande réactivité. Intégration des animations dynamiques en utilisant <span class="text-tertiary font-semibold">GSAP</span>.</p>
 <br />
-<p><span class="text-primary font-semibold">• Communication avec Shopify :</span> Intégration de modules de communication avec <span class="text-tertiary font-semibold">GraphQL</span> pour interagir avec <span class="text-primary font-semibold">Shopify</span> de manière fluide.</p>
+<p><span class="text-primary font-semibold">• Éléments interactifs :</span> Mise en place d’animations SVG et utilisation des filtres <span class="text-tertiary font-semibold">feTurbulence</span> pour des effets visuels uniques.</p>
 <br />
-<p><span class="text-tertiary font-semibold">• Personnalisation du back-office :</span> Personnalisation du back-office de <span class="text-primary font-semibold">Shopify</span> pour faciliter la gestion des contenus par le client.</p>
-<br />
-<p><span class="text-primary font-semibold">• Développement de composants React :</span> Création de composants interactifs tels que <span class="text-tertiary font-semibold">carrousel</span>, <span class="text-primary font-semibold">navbar</span>, et éléments de <span class="text-tertiary font-semibold">navigation</span>.</p>
-<br />
+<p>Ce projet reflète mon approche multi-casquette, combinant un design soigné et une technologie de pointe pour créer une plateforme qui incarne mon parcours professionnel et mes compétences techniques.</p>
 `,
     imgSrc: `/portfolio-image.jpg`,
     year: 2024,
-    computerImg: '/computer-delta.png',
+    computerImg: `/computer-portfolio.png`,
     viewMode: 'galerie-images',
-    medias: [
-      {
-        title: 'page Article',
-        img: '/delta-visuel-1.png',
-        thumbnail: '/team-product.png'
-      },
-      {
-        title: 'Visuel Carrouselle',
-        img: '/delta-visuel-2.png',
-        thumbnail: '/team-product.png'
-      },
-      {
-        title: ``,
-        img: '/delta-visuel-3.png',
-        thumbnail: '/team-product.png'
-      },
-      {
-        title: `Page recherche d'articles`,
-        img: '/delta-visuel-4.png',
-        thumbnail: '/team-product.png'
-      }
-    ],
     technologies: [
-      { img: '/nextjs-logo.svg', name: 'Next.js' },
-      { img: '/graphql-logo.svg', name: 'GraphQL' },
-      { img: '/shopify-logo.svg', name: 'Shopify' },
-      { img: '/react-logo.svg', name: 'React' },
-      { img: '/figma-logo.svg', name: 'Figma' }
+      { img: '/vue.js-logo-2.svg', name: 'Vue.js' },
+      { img: '/gsap-logo.svg', name: 'GSAP' },
+      { img: '/figma-logo.svg', name: 'Figma' },
+      { img: '/svg-logo.svg', name: 'SVG' }
     ]
   }
 ]

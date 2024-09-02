@@ -1,8 +1,10 @@
 <template>
   <div class="relative bg-black">
     <Modal />
-    <AppHeader v-if="$route.name != 'home'"/>
-    <AppMain  />
+    <div>
+      <AppHeader v-if="$route.name != 'home'" />
+    </div>
+    <AppMain />
   </div>
 </template>
 

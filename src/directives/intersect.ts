@@ -1,3 +1,5 @@
+import { ref } from 'vue';
+
 interface IntersectOptions {
   observerOptions?: IntersectionObserverInit;
   true?: string[] | { [prop: string]: any };
@@ -5,8 +7,8 @@ interface IntersectOptions {
   onChange?: (isIntersecting: boolean, el: HTMLElement, options: IntersectOptions) => void;
   disposeWhen?: boolean;
   delay?: number;
-  onTrue?: () => void; // Nouveau paramètre pour déclencher une animation une seule fois à l'entrée
-  onFalse?: () => void; // Nouveau paramètre pour déclencher une animation une seule fois à la sortie
+  onceTrue?: boolean; // Booléen indiquant si l'action doit se lancer une seule fois lors de l'entrée
+  onceFalse?: boolean; // Booléen indiquant si l'action doit se lancer une seule fois lors de la sortie
 }
 
 class Intersect {
@@ -15,8 +17,6 @@ class Intersect {
   private options!: IntersectOptions;
   private callback!: (isIntersecting: boolean, el: HTMLElement, options: IntersectOptions) => void;
   private timeoutId?: number;
-  private hasTriggeredTrue: boolean = false; // Indicateur pour onTrue
-  private hasTriggeredFalse: boolean = false; // Indicateur pour onFalse
 
   constructor(private vm: any) {}
 
@@ -34,8 +34,8 @@ class Intersect {
       false: binding.value.false,
       disposeWhen: binding.value.disposeWhen,
       delay: binding.value.delay || 0,
-      onTrue: binding.value.onTrue,
-      onFalse: binding.value.onFalse,
+      onceTrue: binding.value.onceTrue || false,
+      onceFalse: binding.value.onceFalse || false,
     };
     this.callback = binding.value.onChange;
   }
@@ -55,26 +55,35 @@ class Intersect {
 
     const isIntersecting = entry.isIntersecting;
 
-    // Gère le délai avant d'ajouter ou de retirer les classes/styles
     if (this.options.delay) {
       if (this.timeoutId) {
         clearTimeout(this.timeoutId);
       }
       this.timeoutId = window.setTimeout(() => {
-        this.applyChanges(isIntersecting);
+        this.handleIntersection(isIntersecting);
       }, this.options.delay);
     } else {
-      this.applyChanges(isIntersecting);
+      this.handleIntersection(isIntersecting);
+    }
+  }
+
+  private handleIntersection(isIntersecting: boolean) {
+    // Gestion de onceTrue
+    if (isIntersecting && this.options.onceTrue) {
+      this.applyChanges(true); // Appliquer les classes/ajustements pour `true`
+      this.disconnect(); // Déconnecter l'observateur
+      return;
     }
 
-    // Gestion des animations one-time
-    if (isIntersecting && this.options.onTrue && !this.hasTriggeredTrue) {
-      this.options.onTrue();
-      this.hasTriggeredTrue = true;
-    } else if (!isIntersecting && this.options.onFalse && !this.hasTriggeredFalse) {
-      this.options.onFalse();
-      this.hasTriggeredFalse = true;
+    // Gestion de onceFalse
+    if (!isIntersecting && this.options.onceFalse) {
+      this.applyChanges(false); // Appliquer les classes/ajustements pour `false`
+      this.disconnect(); // Déconnecter l'observateur
+      return;
     }
+
+    // Si neither onceTrue nor onceFalse sont actifs, comportement normal
+    this.applyChanges(isIntersecting);
 
     if (this.callback) {
       this.callback(isIntersecting, this.el, this.options);
@@ -84,6 +93,10 @@ class Intersect {
       const shouldDispose = isIntersecting === this.options.disposeWhen;
       if (shouldDispose) this.unbind(this.el);
     }
+  }
+
+  private disconnect() {
+    this.interSectionObserver.disconnect(); // Déconnecte l'observateur pour arrêter toute observation future
   }
 
   private applyChanges(isIntersecting: boolean) {

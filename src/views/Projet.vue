@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import Picture from '../components/galerie/Picture.vue'
-import GalerieImages from "@/components/projet/GalerieImages.vue";
+import GalerieImages from '@/components/projet/GalerieImages.vue'
+import Parallaxy from '@lucien144/vue3-parallaxy'
 
 const props = defineProps({
   project: {
@@ -102,11 +103,16 @@ const openLink = (url: string) => {
               style="filter: url(#wavyGenerique)"
               class="w-[380px] h-[380px] 2xl:w-[500px] 2xl:h-[500px] bg-primary-medium absolute rounded-full top-[-100px] left-[280px]"
             ></div>
-            <img
-              class="hidden lg:block absolute min-w-[837px] min-h-fit left-36"
-              :src="project.computerImg"
-              alt=""
-            />
+            <Parallaxy
+              :speed="115"
+              :animation="(delta: number) => `transform: translate3d(0, ${delta}px, 0);`"
+            >
+              <img
+                class="hidden lg:block absolute min-w-[837px] min-h-fit left-36"
+                :src="project.computerImg"
+                alt=""
+              />
+            </Parallaxy>
           </div>
         </div>
       </div>
@@ -116,8 +122,14 @@ const openLink = (url: string) => {
           Techno<br />
           <span class="text-primary">utilisées /</span>
         </h2>
-        <ul class="w-[90%] pt-20 sm:pl-6 list-disc lg:text-2xl flex justify-around flex-wrap lg:flex-nowrap lg:pt-40">
-          <li class="py-4 flex flex-col w-6/12 lg:w-fit" v-for="tech in project.technologies" :key="tech">
+        <ul
+          class="w-[90%] pt-20 sm:pl-6 list-disc lg:text-2xl flex justify-around flex-wrap lg:flex-nowrap lg:pt-40"
+        >
+          <li
+            class="py-4 flex flex-col w-6/12 lg:w-fit"
+            v-for="tech in project.technologies"
+            :key="tech"
+          >
             <div class="relative pb-8">
               <img
                 class="h-14 absolute left-[50%] translate-x-[-50%] mx-auto min-w-[160px]"
@@ -156,9 +168,11 @@ const openLink = (url: string) => {
               v-for="media in project.medias"
               class="flex flex-col w-full items-center lg:py-2 lg:max-w-[80%]"
             >
-              <div class="w-full"> <h2 class="pb-20 lg:text-[66px] uppercase font-thin">{{ media.title }}</h2> </div>
+              <div class="w-full">
+                <h2 class="pb-20 lg:text-[66px] uppercase font-thin">{{ media.title }}</h2>
+              </div>
               <!-- hover:bg-[#0600005c] transition-colors -->
-               <GalerieImages :img="media.img" />
+              <GalerieImages :img="media.img" />
             </div>
           </section>
         </div>

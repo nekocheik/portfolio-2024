@@ -35,7 +35,7 @@
             </h1>
           </Motion>
           <Motion :preset="'slideVisibleLeft'" :duration="2000" delay="1000">
-            <h1 class="font-bold lg:pt-20 text-3xl lg:text-[60px] uppercase text text-primary">
+            <h1 class="font-bold lg:pt-10 text-3xl lg:text-[60px] uppercase text text-primary">
               kone Cheik
             </h1>
           </Motion>
@@ -189,6 +189,12 @@ onUnmounted(() => {
 const navigateTo = (route) => {
   router.push({ name: route })
 }
+
+
+const openLink = (url) => {
+  window.open(url)
+}
+
 </script>
 
 <style lang="scss" scope>

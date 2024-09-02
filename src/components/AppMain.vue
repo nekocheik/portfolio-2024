@@ -4,7 +4,7 @@
       class="relative font-body bg-100-auto overflow-y-hidden max-w-[100vw] overflow-hidden cursor-none"
       :style="mainStyle"
     >
-      <svg class="absolute">
+      <svg v-if="!isSafari()" class="absolute">
         <filter id="wavyBackground">
           <feTurbulence
             id="turbulence1"
@@ -35,12 +35,12 @@
         alt=""
       />
       <section class="h-[100vh] w-[100vw] absolute top-0">
-        <CanvasContainer ref="canvasContainer" />
+        <CanvasContainer v-if="!isSafari()" ref="canvasContainer" />
         <div
           ref="transitionContainer"
           class="transition-all duration-[1400ms] w-[100vw] h-[88vh] bg-black absolute left-0 right-0 mx-auto my-auto top-0 bottom-0 flex justify-center items-center overflow-hidden"
           :class="{
-            'w-[82vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:min-w-[1140px] lg:h-[64vh] lg:max-h-[600px] lg:max-w-[1200px]':
+            'w-[82vw] left-0 lg:ml-0 rounded-3xl lg:rounded-l-none lg:w-[90vw] lg:h-[64vh] lg:max-h-[600px] lg:max-w-[1200px] 2xl:max-w-[1400px]':
               isMode2,
             '!h-[100vh] !w-[100vw]': isMode3,
             'translate-x-[-100vw]': isMode4
@@ -49,12 +49,30 @@
           <SecondCanvasContainer ref="secondCanvasContainer" />
         </div>
       </section>
+      <section class="hidden lg:block">
+        <div
+          :style="{
+            transform: `translate3d(calc(${cursor.x}px - 50%), calc(${cursor.y}px - 50%), 0)`,
+            borderColor: cursor.isHovering
+              ? 'rgba(253, 235, 206, 0.9)'
+              : 'rgba(253, 235, 206, 0.748)',
+            transition: isSafari() ? 'none' : 'transform 200ms ease-out',
+            width: cursor.isHovering ? '90px' : '68px',
+            height: cursor.isHovering ? '90px' : '68px'
+          }"
+          class="cursor z-[1000]"
+        ></div>
+        <div
+          :style="{
+            left: `${cursor.x}px`,
+            top: `${cursor.y}px`,
+            backgroundColor: cursor.isClicking ? 'rgba(255, 180, 206, 0.7)' : 'rgb(206, 180, 255)'
+          }"
+          class="cursor2 z-[1000]"
+        ></div>
+      </section>
       <ScrollView root :duration="1.4">
         <div ref="view" class="min-w-[100%] max-w-[100vw] overflow-hidden min-h-[100vh] table">
-          <section class="hidden lg:block">
-            <div :class="{ 'w-[90px] h-[90px]': mouse.isHover }" class="cursor z-[1000]"></div>
-            <div class="cursor2 z-[1000]"></div>
-          </section>
           <ScrollComponent :speed="0.1">
             <RouterView />
           </ScrollComponent>
@@ -65,6 +83,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref, reactive, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import CanvasContainer from '@/components/CanvasContainer.vue'
 import SecondCanvasContainer from '@/components/SecondCanvasContainer.vue'
@@ -81,61 +100,75 @@ const isMode3 = computed(() => /\/projets\/[{0-9}]+/.test(route.path))
 const isMode4 = computed(() => route.path === '/who-i-am')
 const windowTop = ref(0)
 
-const transitionContainer = ref(null)
+const cursor = reactive({
+  x: 0,
+  y: 0,
+  isClicking: false,
+  isHovering: false
+})
 
-const mainStyle = computed(() => ({
-  'background-image': isMode2.value || isMode3.value || isMode4.value ? '' : '',
-  height: `${viewSize.value}px`
-}))
-
-const onScroll = () => {
-  windowTop.value = window.top.scrollY
+const updateCursorPosition = (e: MouseEvent) => {
+  cursor.x = e.clientX
+  cursor.y = e.clientY
 }
 
-let invervalWatchClient: any
+const setClicking = (isClicking: boolean) => {
+  cursor.isClicking = isClicking
+}
+
+const setHovering = (isHovering: boolean) => {
+  cursor.isHovering = isHovering
+}
+
+const isSafari = () => {
+  const userAgent = navigator.userAgent.toLowerCase()
+  return (
+    userAgent.includes('safari') && !userAgent.includes('chrome') && !userAgent.includes('android')
+  )
+}
+
+const mainStyle = computed(() => {
+  let backgroundImage = ''
+  if (isMode2.value || isMode3.value || isMode4.value) {
+    backgroundImage = '' // Ajoutez l'image de fond que vous souhaitez ici
+  }
+  return {
+    backgroundImage,
+    height: `${viewSize.value}px`
+  }
+})
+
+const onScroll = () => {
+  windowTop.value = window.scrollY
+}
+
+let intervalWatchClient: any
 
 onMounted(() => {
-  invervalWatchClient = setInterval(() => {
+  intervalWatchClient = setInterval(() => {
     if (view.value) {
       viewSize.value = view.value.clientHeight
     }
   }, 100)
+
   window.addEventListener('scroll', onScroll)
+  document.addEventListener('mousemove', updateCursorPosition)
+  document.addEventListener('mousedown', () => setClicking(true))
+  document.addEventListener('mouseup', () => setClicking(false))
 
-  var cursor = document.querySelector('.cursor')
-  var cursorinner = document.querySelector('.cursor2')
-  var a = document.querySelectorAll('a')
-
-  document.addEventListener('mousemove', function (e) {
-    cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
-    cursorinner.style.left = e.clientX + 'px'
-    cursorinner.style.top = e.clientY + 'px'
-  })
-
-  document.addEventListener('mousedown', function () {
-    cursor.classList.add('click')
-    cursorinner.classList.add('cursorinnerhover')
-  })
-
-  document.addEventListener('mouseup', function () {
-    cursor.classList.remove('click')
-    cursorinner.classList.remove('cursorinnerhover')
-  })
-
-  a.forEach((item) => {
-    item.addEventListener('mouseover', () => {
-      cursor.classList.add('hover')
-    })
-    item.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hover')
-    })
+  const links = document.querySelectorAll('a')
+  links.forEach((item) => {
+    item.addEventListener('mouseover', () => setHovering(true))
+    item.addEventListener('mouseleave', () => setHovering(false))
   })
 })
 
 onUnmounted(() => {
-  clearInterval(checkCursorInterval)
-  clearInterval(invervalWatchClient)
+  clearInterval(intervalWatchClient)
   window.removeEventListener('scroll', onScroll)
+  document.removeEventListener('mousemove', updateCursorPosition)
+  document.removeEventListener('mousedown', () => setClicking(true))
+  document.removeEventListener('mouseup', () => setClicking(false))
 })
 </script>
 
@@ -145,7 +178,7 @@ onUnmounted(() => {
   height: 68px;
   border-radius: 100%;
   border: 1px solid rgba(253, 235, 206, 0.748);
-  transition: all 200ms ease-out;
+  transition: transform 200ms ease-out;
   position: fixed;
   pointer-events: none;
   left: 0;

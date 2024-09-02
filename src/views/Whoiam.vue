@@ -1,6 +1,6 @@
 <template>
   <div class="text-white mx-4 max-w-[96vw]">
-    <svg class="absolute">
+    <svg class="absolute" v-if="!isSafari()">
       <filter id="wavyGenerique">
         <feTurbulence id="turbulence2" type="turbulence" numOctaves="10" result="NOISE1"></feTurbulence>
         <feDisplacementMap in="SourceGraphic" in2="NOISE1" scale="100"></feDisplacementMap>
@@ -15,11 +15,11 @@
           <p class="pt-2 text-4xl font-kiona text-primary-light lg:text-[80px] font-bold py-10 xl:top-16">
             Hello !!
           </p>
-          <section class="text-sm lg:text-base leading-8">
+          <section class="text-sm lg:text-base xl:text-xl leading-8">
             <div class="relative flex items-center">
               <p class="pt-4 lg:pt-20 lg:pr-20">
                 Je suis un développeur <span class="text-tertiary">multi-casquette</span>, <span
-                  class="text-primary">développeur <span class="text-primary-ligh text-bold">Vue.js</span> depuis 5
+                  class="text-primary">développeur <span class="text-primary text-bold">Vue.js</span> depuis 5
                   ans</span> et
                 ayant une bonne connaissance en React.<br /> Mon expertise s'étend également au <span
                   class="text-tertiary">back-end</span>
@@ -47,7 +47,7 @@
                 <div :duration="1200" v-motion-fade style="filter: url(#wavyGenerique)"
                   class="w-[380px] h-[380px] 2xl:w-[500px] 2xl:h-[500px] bg-tertiary absolute rounded-full top-[30px] left-[30px]">
                 </div>
-                <img :enter="{ x: 900 }" :duration="1200" :delay="1000" v-motion-slide-visible-right
+                <img 
                   class="min-w-[380px] 2xl:min-w-[500px] z-20" src="/photo-cheik-kone.png" alt="" />
               </div>
             </div>
@@ -145,7 +145,7 @@
             </div>
           </div>
         </section>
-        <div class="list-disc lg:left-[-200px]">
+        <div class="list-disc sm:right-20 2xl:left-[-200px]">
           <p class="pt-8 text-4xl font-kiona font-semibold text-tertiary">Hobies</p>
           <div class="pt-10 text-xl pl-6">
             <ul class="list-disc lg:leading-[46px]">
@@ -189,5 +189,12 @@
 <script setup lang="ts">
 const openLink = (url: string) => {
   window.open(url)
+}
+
+const isSafari = () => {
+  const userAgent = navigator.userAgent.toLowerCase()
+  return (
+    userAgent.includes('safari') && !userAgent.includes('chrome') && !userAgent.includes('android')
+  )
 }
 </script>

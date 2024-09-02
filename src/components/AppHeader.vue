@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="relative">
     <div
       class="hidden lg:block fixed w-screen h-24 bg-black top-0 z-[100]"
       style="
@@ -11,7 +11,7 @@
         );
       "
     ></div>
-    <div
+    <!-- <div
       class="back-button fixed top-10 left-10 z-50"
       @click="router.push({ name: 'projets', params: { id: 'default' } })"
     >
@@ -39,7 +39,17 @@
           />
         </svg>
       </div>
+    </div> -->
+    <div class="text-white fixed top-8 left-8 z-[200] text-xl">
+      <p z-mouses>< Retour</p>
     </div>
+    <img
+      src="/white-logo-cheik-kone.svg"
+      alt="logo"
+      @click="router.push({ name: 'home' })"
+      z-mouse
+      class="fixed z-[200] w-40 top-10 left-0 right-0 mx-auto opacity-80 hover:opacity-100 transition-all"
+    />
     <nav class="hidden lg:flex fixed top-10 right-20 z-[100] w-4/12 justify-around">
       <NavigationButton
         v-mouse
