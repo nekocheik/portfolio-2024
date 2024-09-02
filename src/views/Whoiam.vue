@@ -17,7 +17,7 @@
           </p>
           <section class="text-sm lg:text-base xl:text-xl leading-8">
             <div class="relative flex items-center">
-              <p class="pt-4 lg:pt-20 lg:pr-20">
+              <p class="pt-4 lg:pt-20 lg:pr-20 text-display">
                 Je suis un développeur <span class="text-tertiary">multi-casquette</span>, <span
                   class="text-primary">développeur <span class="text-primary text-bold">Vue.js</span> depuis 5
                   ans</span> et
@@ -111,7 +111,6 @@
                   <p class="pr-4">Next</p>
                   <p class="pr-4">Cypress</p>
                   <p class="pr-4">Jest</p>
-                  <p>Next.js</p>
                 </div>
                 <li class="uppercase py-3 text-xl">back-end</li>
                 <div class="text-base">

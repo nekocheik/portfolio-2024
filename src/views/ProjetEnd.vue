@@ -1,79 +1,58 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
-import projetInformations from '@/helpers/projetInformation.js'
-
-const route = useRoute()
-const router = useRouter()
-
-const isMode3 = computed(() => false)
-
-const toggleMode = () => {
-  if (isMode3.value) {
-    router.replace({
-      name: 'projets',
-      params: {
-        id: 'default'
-      }
-    })
-  } else {
-    router.replace({
-      name: 'projets',
-      params: {
-        id: `${currentProjectIndex.value}`
-      }
-    })
+const { project, index } = defineProps({
+  project: {
+    type: Object,
+    required: true
+  },
+  index: {
+    type: Number,
+    required: true
   }
-}
-
-// Références pour les éléments à animer
-const imgRef = ref(null)
-const textRef = ref(null)
-const containerRef = ref(null)
-
-// Projets mock
-const projects = ref(projetInformations)
-const currentProjectIndex = ref(0)
-const currentProject = computed(() => projects.value[currentProjectIndex.value])
-const indicatorOnTransion = ref(false)
-let interIndicator = null
-
-const changeProject = (index: Number) => {
-  indicatorOnTransion.value = true
-
-  setTimeout(() => {
-    currentProjectIndex.value = index
-  }, 450)
-
-  if (interIndicator) {
-    clearInterval(interIndicator)
-  }
-
-  interIndicator = setTimeout(() => {
-    indicatorOnTransion.value = false
-  }, 600)
-}
-
-const openLink = (index: string) => {
-  window.open(projects.value[index].link)
-}
-
-
-const viewSize = ref({ height: 0, width: 0 })
-let invervalWatchClient: any
-
-onMounted(() => {
-  invervalWatchClient = setInterval(() => {
-    viewSize.value.height = window.innerHeight
-    viewSize.value.width = window.innerWidth
-  }, 100)
 })
-
-onUnmounted(() => {
-  clearInterval(invervalWatchClient)
-})
-
 </script>
 
 <template>
-  <div class="h-[70vh] w-[100vw] bg-white relative"></div>
+  <div class="relative">
+    <section class="text-white pt-50 sm:pt-80 lg:pt-32 px-6 sm:px-28">
+      <h1 class="font-kiona text-2xl lg:text-[65px] leading-snug text-center pb-12">
+        Projet suivant
+      </h1>
+    </section>
+    <div class="relative h-[33vh] w-full flex justify-center">
+      <img
+        ref="imgRef"
+        :src="project.imgSrc"
+        :class="[
+          'h-[100%] object-cover absolute left-0 right-0 mx-auto transition-all duration-500'
+        ]"
+        alt=""
+      />
+      <div
+        ref="textRef"
+        :class="[
+          'text-white lg:text-3xl z-40 font-display uppercase absolute top-0 bottom-0 my-auto flex flex-col justify-center transition-all delay-1000 duration-1000 mx-auto pointer-events-none'
+        ]"
+      >
+        <p class="font-bold">{{ project.title }}</p>
+      </div>
+    </div>
+    <div class="flex justify-center pt-12">
+      <AButton
+        @click="
+          $router.replace({
+            name: 'projets',
+            query: {
+              default: index
+            },
+            params: {
+              id: 'default'
+            }
+          })
+        "
+        v-mouse
+      >
+        Prochain projet
+      </AButton>
+    </div>
+  </div>
 </template>

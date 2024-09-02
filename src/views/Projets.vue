@@ -43,10 +43,28 @@ const scrollDown = () => {
 
 // Projets mock
 const projects = ref(projetInformations)
-const currentProjectIndex = ref(route.params.id !== 'default' ? route.params.id : 0)
+const currentProjectIndex = ref<number>(route.params.id !== 'default' ? Number(route.params.id) : 0)
 const currentProject = computed(() => projects.value[currentProjectIndex.value])
 const indicatorOnTransion = ref(false)
 let interIndicator = null
+
+if (route.query.default) {
+  currentProjectIndex.value = Number(route.query.default)
+  window.log(currentProjectIndex.value)
+}
+
+onMounted(() => {
+  if (route.query.default) {
+    currentProjectIndex.value = Number(route.query.default)
+  }
+})
+
+watch(route, () => {
+  if (route.query.default) {
+    currentProjectIndex.value = Number(route.query.default)
+    console.log('ici --', currentProjectIndex.value)
+  }
+})
 
 const changeProject = (index: Number) => {
   indicatorOnTransion.value = true
@@ -175,7 +193,11 @@ const openLink = (index: string) => {
     </div>
 
     <Projet v-if="isMode3" :project="currentProject" />
-    <ProjetEnd v-if="isMode3" :project="currentProject" />
+    <ProjetEnd
+      v-if="isMode3 && projects[Number(currentProjectIndex) + 1]"
+      :index="Number(currentProjectIndex) + 1"
+      :project="projects[Number(currentProjectIndex) + 1]"
+    />
   </section>
 </template>
 

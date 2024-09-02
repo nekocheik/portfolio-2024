@@ -156,8 +156,6 @@ export const projetInformations = [
 <br />
 <p><span class="text-primary font-semibold">• Développement Front-end :</span> Utilisation de <span class="text-tertiary font-semibold">Vue.js</span> pour garantir des performances optimales et une grande réactivité. Intégration des animations dynamiques en utilisant <span class="text-tertiary font-semibold">GSAP</span>.</p>
 <br />
-<p><span class="text-primary font-semibold">• Éléments interactifs :</span> Mise en place d’animations SVG et utilisation des filtres <span class="text-tertiary font-semibold">feTurbulence</span> pour des effets visuels uniques.</p>
-<br />
 <p>Ce projet reflète mon approche multi-casquette, combinant un design soigné et une technologie de pointe pour créer une plateforme qui incarne mon parcours professionnel et mes compétences techniques.</p>
 `,
     imgSrc: `/portfolio-image.jpg`,
@@ -166,9 +164,8 @@ export const projetInformations = [
     viewMode: 'galerie-images',
     technologies: [
       { img: '/vue.js-logo-2.svg', name: 'Vue.js' },
-      { img: '/gsap-logo.svg', name: 'GSAP' },
+      { img: '/GSAP_2023.svg', name: 'GSAP' },
       { img: '/figma-logo.svg', name: 'Figma' },
-      { img: '/svg-logo.svg', name: 'SVG' }
     ]
   }
 ]

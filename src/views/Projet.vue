@@ -144,7 +144,7 @@ const openLink = (url: string) => {
       </div>
 
       <div class="flex justify-center pt-24">
-        <AButton v-mouse @click="openLink(project.link)">Voir le site</AButton>
+        <AButton v-show="project.link" v-mouse @click="openLink(project.link)">Voir le site</AButton>
       </div>
 
       <div>
