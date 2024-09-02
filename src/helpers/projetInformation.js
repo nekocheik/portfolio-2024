@@ -103,7 +103,7 @@ export const projetInformations = [
 <p><span class="text-primary font-semibold">• Développement de composants React :</span> Création de composants interactifs tels que <span class="text-tertiary font-semibold">carrousel</span>, <span class="text-primary font-semibold">navbar</span>, et éléments de <span class="text-tertiary font-semibold">navigation</span>.</p>
 <br />
 `,
-    imgSrc: `https://frequent-tomato-c8c.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F408df6d2-2c5a-460a-a1fe-1e60d97fd7f9%2F7132f48e-ef9c-44a0-819d-7258badcd39c%2Fdelta-image.png?id=4f76c198-178b-47a0-bfe8-493eb7f0aa13&table=block&spaceId=408df6d2-2c5a-460a-a1fe-1e60d97fd7f9&width=2000&userId=&cache=v2`,
+    imgSrc: `/delta-image.jpg`,
     year: 2024,
     computerImg: '/computer-delta.png',
     viewMode: 'galerie-images',
@@ -138,16 +138,70 @@ export const projetInformations = [
     ]
   },
   {
-    id: 'three',
-    title: 'Innovating for the future',
-    role: 'Front-end',
-    link: 'https://656bf3d4.frontend-preproduction-29946.pages.dev/',
-    description:
-      'Aliquam erat volutpat. Nullam ac diam at lacus euismod fermentum. Etiam pharetra augue non turpis vehicula, nec malesuada...',
-    bigDescription: '',
-    imgSrc: 'https://picsum.photos/600/400?random=3',
-    year: 2021,
-    technologies: []
+    id: 'tree',
+    title: 'Portfolio',
+    link: 'https://delta-fraternite.vercel.app/',
+    role: 'UI/UX Designer & Développeur front-end',
+    description: `J'ai réalisé la refonte d'un site e-commerce dans le cadre d'une mission en freelance. Pour cette mission, j'ai dû endosser une double casquette de développeur front-end et de designer, afin de refondre graphiquement et d'intégrer un site e-commerce.`,
+    bigDescription: `
+<p class="text-base font-medium">Dans le cadre de cette mission freelance, j'ai mené la refonte complète d'un site e-commerce pour la marque Delta.</p>
+<br />
+
+<p class="text-lg font-bold">Rôle UX/UI Designer :</p>
+<br />
+<p><span class="text-primary font-semibold">• Refonte de la charte graphique :</span> Modernisation de l'identité visuelle en accord avec les valeurs de la marque.</p>
+<br />
+<p><span class="text-tertiary font-semibold">• Choix des typographies et des couleurs :</span> Sélection de typographies et de couleurs adaptées pour un design épuré et cohérent.</p>
+<br />
+<p><span class="text-primary font-semibold">• Création d'un design système :</span> Développement d'un design système pour assurer la cohérence visuelle à travers toutes les pages.</p>
+<br />
+<p><span class="text-tertiary font-semibold">• Création des différentes pages :</span> Conception des pages clés du site, incluant la page d'accueil, la page articles, la page de recherche, la page panier, et une page personnalisée pour la broderie de vêtements.</p>
+<br />
+
+<p class="text-lg font-bold">Rôle Développeur front-end :</p>
+<br />
+<p><span class="text-primary font-semibold">• Intégration des pages :</span> Développement des différentes pages en utilisant <span class="text-tertiary font-semibold">Next.js 3</span> pour un rendu moderne et performant.</p>
+<br />
+<p><span class="text-primary font-semibold">• Communication avec Shopify :</span> Intégration de modules de communication avec <span class="text-tertiary font-semibold">GraphQL</span> pour interagir avec <span class="text-primary font-semibold">Shopify</span> de manière fluide.</p>
+<br />
+<p><span class="text-tertiary font-semibold">• Personnalisation du back-office :</span> Personnalisation du back-office de <span class="text-primary font-semibold">Shopify</span> pour faciliter la gestion des contenus par le client.</p>
+<br />
+<p><span class="text-primary font-semibold">• Développement de composants React :</span> Création de composants interactifs tels que <span class="text-tertiary font-semibold">carrousel</span>, <span class="text-primary font-semibold">navbar</span>, et éléments de <span class="text-tertiary font-semibold">navigation</span>.</p>
+<br />
+`,
+    imgSrc: `/portfolio-image.jpg`,
+    year: 2024,
+    computerImg: '/computer-delta.png',
+    viewMode: 'galerie-images',
+    medias: [
+      {
+        title: 'page Article',
+        img: '/delta-visuel-1.png',
+        thumbnail: '/team-product.png'
+      },
+      {
+        title: 'Visuel Carrouselle',
+        img: '/delta-visuel-2.png',
+        thumbnail: '/team-product.png'
+      },
+      {
+        title: ``,
+        img: '/delta-visuel-3.png',
+        thumbnail: '/team-product.png'
+      },
+      {
+        title: `Page recherche d'articles`,
+        img: '/delta-visuel-4.png',
+        thumbnail: '/team-product.png'
+      }
+    ],
+    technologies: [
+      { img: '/nextjs-logo.svg', name: 'Next.js' },
+      { img: '/graphql-logo.svg', name: 'GraphQL' },
+      { img: '/shopify-logo.svg', name: 'Shopify' },
+      { img: '/react-logo.svg', name: 'React' },
+      { img: '/figma-logo.svg', name: 'Figma' }
+    ]
   }
 ]
 

@@ -69,7 +69,7 @@
             <a target="_blank" v-mouse class="font-bold" href="https://github.com/nekocheik">Git</a>
           </div>
         </div>
-        <div class="flex pt-8 lg:pt-20 justify-between w-60">
+        <div class="flex pt-8 lg:pt-20 justify-between w-60 lg:w-4/12 max-w-sm">
           <button
             class="text-white font-normal text-lg"
             v-mouse
@@ -78,7 +78,7 @@
             Projets
           </button>
           <button class="text-white font-normal text-lg" v-mouse @click="navigateTo('whoiam')">
-            Who I Am
+            Qui je suis ?
           </button>
           <button class="text-white font-normal text-lg" v-mouse @click="contactMode = true">
             Contact
@@ -91,21 +91,28 @@
           class="text-white transition-generericAnimation duration-1000"
         >
           <div>
-            <p class="pt-8 text-lg text-tertiary-light hover:text-white transition-colors" @click="contactMode = false">< <span v-mouse>Retour</span></p>
+            <p
+              class="pt-8 text-lg text-tertiary-light hover:text-white transition-colors lg:pt-32"
+              @click="contactMode = false"
+            >
+              < <span v-mouse>Retour</span>
+            </p>
           </div>
           <section class="text-white">
-            <h2 class="lg:text-5xl font-bold font-kiona lg:pt-20">< Contactez-<span class="text-primary-ligh">moi</span> !!</h2>
+            <h2 class="lg:text-5xl font-bold font-kiona lg:pt-20">
+              < Contactez-<span class="text-primary-ligh">moi</span> !!
+            </h2>
             <p class="py-5">
               Pour toute question ou opportunité de collaboration, n'hésitez pas à me contacter :
             </p>
             <div class="contact-info lg:text-base leading-8">
               <p class="pt-4">
                 Email:
-                <a href="mailto:cheikkone49@gmail.com" class="text-primary"
+                <a href="mailto:cheikkone49@gmail.com" class="text-primary lg:text-xl"
                   >cheikkone49@gmail.com</a
                 >
               </p>
-              <p>Téléphone: <a href="tel:+330603819428" class="text-primary">06 03 81 94 28</a></p>
+              <!-- <p>Téléphone: <a href="tel:+330603819428" class="text-primary">06 03 81 94 28</a></p> -->
               <div class="flex pt-10">
                 <a @click="openLink('https://www.linkedin.com/in/cheik-kone')" class="pr-20">
                   <img src="/linkedin-logo.svg" alt="LinkedIn" />
@@ -132,7 +139,7 @@ const currentIndexAnimation = ref(0)
 const onTransition = ref(false)
 const textAnimation = ['front-end', 'back-end', 'creatif']
 const animationScale = ref(0)
-const contactMode = ref(true)
+const contactMode = ref(false)
 
 function startAnimationScale() {
   let animationOpen = true
