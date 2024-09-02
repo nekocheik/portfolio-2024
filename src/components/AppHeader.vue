@@ -40,7 +40,7 @@
         </svg>
       </div>
     </div> -->
-    <div class="text-white fixed top-8 left-8 z-[200] text-xl">
+    <div class="text-white fixed top-8 left-8 z-[200] text-xl font-kiona" >
       <button
         @click="router.push({ name: 'projets', params: { id: 'default' } })"
         v-if="$route.name == 'projets' && $route.params.id != 'default'"
