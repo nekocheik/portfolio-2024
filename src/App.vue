@@ -4,7 +4,7 @@
     <div>
       <AppHeader v-if="$route.name != 'home'" />
     </div>
-    <div :class="{ '!translate-x-0' : layerTransition.isVisible  }" class="w-[100vw] h-[100vh] bg-[#0c0411] absolute z-[100] transition-transform duration-1000 translate-x-[120vw]"></div>
+    <div :class="{ '!translate-x-0' : layerTransition.isVisible  }" class="w-[100vw] h-[100vh] bg-[#0c0411] fixed top-0 z-[100] transition-transform duration-1000 translate-x-[120vw]"></div>
     <AppMain />
   </div>
 </template>

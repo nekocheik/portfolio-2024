@@ -31,7 +31,7 @@
         }"
         src="/background-image.jpg"
         :class="{ 'opacity-100': isMode3 || isMode2 || isMode4 }"
-        class="hidde sm:block w-full absolute scale-110 transition-opacity duration-700 opacity-0"
+        class="hidden sm:block w-full absolute scale-110 transition-opacity duration-700 opacity-0"
         alt=""
       />
       <section class="h-[100vh] w-[100vw] absolute top-0">
