@@ -61,11 +61,11 @@
           <div class="list-disc lg:pl-6">
             <div class="pt-10 text-2xl">
               <ul class="list-disc">
-                <li class="uppercase font-bold">Design</li>
+                <li class="uppercase font-bold font-kiona">Design</li>
               </ul>
               <ul class="list-disc pl-8 pt-3">
                 <div class="pl-4">
-                  <li class="text-base">UX/UI</li>
+                  <li class="text-base font-kiona">UX/UI</li>
                   <p class="max-w-[400px] text-base lg:pb-10">
                     Utilisation régulière des outils de design, avec une maîtrise de niveau
                     intermédiaire de Figma. Mes connaissances des règles de base en UX/UI me
