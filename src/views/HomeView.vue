@@ -85,7 +85,7 @@
           </button>
         </div>
       </section>
-      <div class="translate-y-[20vh]">
+      <div class="translate-y-[33vh]">
         <section
           :class="{ '-translate-y-[90vh]': contactMode, 'opacity-0': !contactMode }"
           class="text-white transition-generericAnimation duration-1000"

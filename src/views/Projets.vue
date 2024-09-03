@@ -88,7 +88,7 @@ const openLink = (index: string) => {
 </script>
 
 <template>
-  <section class="pb-20">
+  <section class="lg:pb-20">
     <div class="relative">
       <h1
         class="hidden lg:block z-30 pt-16 pl-32 text-tertiary text-5xl lg:text-[80px] font-thin font-display italic duration-1000 transition-generericAnimation -translate-x-96 opacity-0"
@@ -103,7 +103,7 @@ const openLink = (index: string) => {
           @click="() => toggleMode()"
           ref="containerRef"
           :class="[
-            'lg:z-50 bg-white absolute top-0 left-0 right-0 mx-auto my-auto bottom-0 rounded-lg transition-all duration-700 cursor-pointer overflow-hidden',
+            'lg:z-50 bg-white absolute top-0 left-0 right-0 mx-auto my-auto bottom-0 rounded-lg transition-all duration-700 cursor-pointer overflow-hidden max-h-64 sm:max-h-none',
             indicatorOnTransion ? 'lg:-translate-x-[200%]' : '',
             isMode3 ? 'w-[80vw] h-[509px]' : 'w-[74vw] h-[60vh] lg:h-72 lg:w-[400px] lg:ml-32'
           ]"
@@ -151,7 +151,7 @@ const openLink = (index: string) => {
               </p>
             </div>
 
-            <AButton @click="toggleMode()" class="mx-auto mt-[60vh] lg:relative lg:mt-10 lg:mr-32">
+            <AButton @click="toggleMode()" class="mx-auto mt-[55vh] lg:relative lg:mt-10 lg:mr-32 z-[100] hidden lg:block">
               En voir plus
             </AButton>
           </div>
@@ -161,7 +161,7 @@ const openLink = (index: string) => {
         :class="{ 'translate-y-96 opacity-0': isMode3 }"
         class="transition-[translate opacity] duration-1000"
       >
-        <div class="lg:pl-10 flex justify-center pt-28 lg:pt-14 2xl:pt-20">
+        <div class="lg:pl-10 flex justify-center pt-24 lg:pt-14 2xl:pt-20">
           <div class="relative flex w-60 justify-around">
             <div
               v-for="(project, index) in projects"
