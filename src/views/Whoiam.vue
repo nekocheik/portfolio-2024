@@ -139,6 +139,12 @@
                     (GCP)</span> pour le hosting et l'utilisation des services GCP, ce qui me permet de
                     déployer et de gérer des applications de manière efficace et sécurisée.
                   </p>
+                  <div class="flex text-base py-6">
+                    <p class="pr-4">Node</p>
+                    <p class="pr-4">Express</p>
+                    <p class="pr-4">MongoDB</p>
+                    <p class="pr-4">Sql</p>
+                  </div>
                 </div>
               </ul>
             </div>
