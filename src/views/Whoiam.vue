@@ -15,7 +15,7 @@
           <p class="pt-2 text-4xl font-kiona text-primary-light lg:text-[80px] font-bold py-10 xl:top-16">
             Hello !!
           </p>
-          <section class="text-sm lg:text-base xl:text-xl leading-8">
+          <section class="text-[16.5px] leading-8">
             <div class="relative flex items-center">
               <p class="pt-4 lg:pt-20 lg:pr-20 text-display">
                 Je suis un développeur <span class="text-tertiary">multi-casquette</span>, <span
