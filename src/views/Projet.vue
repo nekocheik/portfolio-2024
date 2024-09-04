@@ -123,7 +123,7 @@ const openLink = (url: string) => {
           <span class="text-primary">utilisées /</span>
         </h2>
         <ul
-          class="w-[90%] pt-20 sm:pl-6 list-disc lg:text-2xl flex justify-around flex-wrap lg:flex-nowrap lg:pt-40"
+          class="w-[90%] pt-20 sm:pl-6 list-disc lg:text-2xl flex justify-around flex-wrap lg:flex-nowrap lg:pt-40 mx-auto"
         >
           <li
             class="py-4 flex flex-col w-6/12 lg:w-fit"

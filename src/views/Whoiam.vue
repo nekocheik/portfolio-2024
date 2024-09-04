@@ -150,7 +150,7 @@
             </div>
           </div>
         </section>
-        <div class="list-disc sm:right-20 2xl:left-[-200px]">
+        <div class="list-disc lg:right-20 2xl:left-[-200px]">
           <p class="pt-8 text-4xl font-kiona font-semibold text-tertiary">Hobies</p>
           <div class="pt-10 text-xl pl-6">
             <ul class="list-disc lg:leading-[46px]">
@@ -166,7 +166,7 @@
           <h2 class="pt-20 text-primary text-4xl uppercase font-thin lg:pt-40 2xl:pt-8">
             Ou me suivre ?
           </h2>
-          <section class="flex items-end justify-center pt-5">
+          <section class="flex items-end justify-center pt-5 pb-14">
             <div class="pr-20" v-mouse role="a" @click="openLink('https://github.com/nekocheik')">
               <img src="/github-logo.svg" alt="" />
               <p class="pt-4">Github</p>

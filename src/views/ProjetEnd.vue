@@ -36,7 +36,7 @@ const { project, index } = defineProps({
         <p class="font-bold">{{ project.title }}</p>
       </div>
     </div>
-    <div class="flex justify-center pt-12">
+    <div class="flex justify-center pt-12 pb-20">
       <AButton
         @click="
           $router.replace({
