@@ -189,7 +189,7 @@ const openLink = (index: number) => {
       </section>
     </div>
     <div v-show="isMode3" @click="scrollDown" class="h-11">
-      <div ref="arrowRef" class="hidden lg:flex justify-center pt-8 arrow-down-animation">
+      <div ref="arrowRef" class="flex justify-center pt-8 arrow-down-animation">
         <ArrowDown />
       </div>
     </div>
