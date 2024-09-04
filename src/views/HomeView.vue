@@ -30,7 +30,7 @@
       >
         <div class="font-display text-4xl tracking-[10px]">
           <Motion :preset="'slideVisibleLeft'" :duration="2000">
-            <h1 class="font-bold pt-20 text-4xl lg:text-[50px] uppercase italic text text-tertiary">
+            <h1 class="font-bold pt-10 text-4xl lg:text-[50px] uppercase italic text text-tertiary">
               welcome !
             </h1>
           </Motion>
@@ -40,13 +40,13 @@
             </h1>
           </Motion>
           <div
-            class="lg:pt-32 pt-20 pb-20 transition-all duration-1000"
+            class="lg:pt-10 pt-20 pb-20 transition-all duration-1000"
             :class="{ 'blur-[2px]': onTransition }"
           >
             <h1
               v-for="(text, index) in textAnimation"
               :class="{ 'opacity-100': currentIndexAnimation === index }"
-              class="font-semibold lg:text-[98px] uppercase text-4xl text-white absolute opacity-0 transition-all duration-1000 onWaveAnimation"
+              class="font-semibold lg:text-[60px] uppercase text-xl text-white absolute opacity-0 transition-all duration-1000 onWaveAnimation"
             >
               {{ text }}
             </h1>
@@ -69,7 +69,7 @@
             <a target="_blank" v-mouse class="font-bold" href="https://github.com/nekocheik">Git</a>
           </div>
         </div>
-        <div class="flex pt-8 lg:pt-20 justify-between w-60 lg:w-4/12 max-w-sm">
+        <div class="flex pt-8 lg:pt-10 justify-between w-60 lg:w-4/12 max-w-sm">
           <button
             class="text-white font-normal text-lg"
             v-mouse
