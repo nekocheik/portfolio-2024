@@ -56,7 +56,7 @@
       z-mouse
       class="fixed z-[200] w-40 top-8 left-0 right-0 mx-auto opacity-80 hover:opacity-100 transition-all"
     />
-    <nav class="bottom-6 w-10/12 justify-around fixed flex sm:bottom-[initial] sm:top-10 lg:right-20 z-[100] lg:w-4/12">
+    <nav class="bottom-6 w-10/12 justify-around fixed flex lg:bottom-[initial] lg:top-10 lg:right-20 z-[100] lg:w-4/12">
       <NavigationButton
         v-mouse
         :label="$t('nav.home')"
@@ -139,7 +139,7 @@ const navigateTo = (route: string) => router.push({ name: route })
 }
 
 .progress-ring__circle {
-  transition: stroke-dashoffset 0.3s; /* Smooth transition for the dash offset */
-  stroke-dasharray: 62.8319; /* Circumference of the circle, C = 2πr, r = 10 */
+  transition: stroke-dashoffset 0.3s; 
+  stroke-dasharray: 62.8319; 
 }
 </style>

@@ -97,7 +97,7 @@ const openLink = (index: string) => {
         Projets
       </h1>
       <div
-        class="relative h-[70vh] max-h-[600px] top-[7vh] lg:h-[63vh] lg:top-10 z-50 2xl:top-[80px]"
+        class="relative h-[70vh] sm:pl-32 lg:pl-0 max-h-[600px] top-[7vh] lg:h-[63vh] lg:top-10 z-50 2xl:top-[80px]"
       >
         <div
           @click="() => toggleMode()"
