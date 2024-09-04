@@ -99,7 +99,7 @@ const openLink = (index: number) => {
         Projets
       </h1>
       <div
-        class="relative h-[70vh] sm:pl-32 lg:pl-0 max-h-[600px] top-[7vh] lg:h-[63vh] lg:top-10 z-50 2xl:top-[80px]"
+        class="relative h-[30vh] mt-40  sm:pl-32 lg:pl-0 max-h-[600px] top-[7vh] lg:mt-0 lg:h-[63vh] lg:top-10 z-50 2xl:top-[80px]"
       >
         <div
           @click="() => toggleMode()"
@@ -139,7 +139,7 @@ const openLink = (index: number) => {
             class="text-white lg:w-[77vw] w-[88vw] lg:max-w-[1450px] absolute top-0 right-0 lg:right-auto my-auto bottom-0 flex flex-col items-end pr-14 transition-all duration-1000"
             :class="{ 'translate-x-[100vw]': isMode3 }"
           >
-            <section class="hidden lg:block absolute bottom-[-21px] text-5xl font-bold right-12">
+            <section class="absolute -top-20 bottom-[-21px] text-5xl font-bold right-12 -rotate-12 lg:top-0 sm:-rotate-0">
               <p>{{ currentProjectIndex + 1 }}</p>
               <p class="pt-4">{{ projects.length }}</p>
             </section>
@@ -163,7 +163,7 @@ const openLink = (index: number) => {
         :class="{ 'translate-y-96 opacity-0': isMode3 }"
         class="transition-[translate opacity] duration-1000"
       >
-        <div class="lg:pl-10 flex justify-center pt-28 lg:pt-14 2xl:pt-20">
+        <div class="lg:pl-10 flex justify-center sm:pt-60 pt-28 lg:pt-14 2xl:pt-20">
           <div class="relative flex w-60 justify-around">
             <div
               v-for="(project, index) in projects"
