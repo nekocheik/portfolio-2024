@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, computed, onMounted, watch } from 'vue'
 import ArrowDown from '@/components/icons/ArrowDown.vue'
 import Projet from '@/views/Projet.vue'
 import ProjetEnd from '@/views/ProjetEnd.vue'
@@ -8,7 +9,8 @@ import projetInformations from '@/helpers/projetInformation.js'
 const route = useRoute()
 const router = useRouter()
 
-const isMode3 = computed(() => /\/projets\/[{0-9}]+/.test(route.path))
+// Correction du type pour `isMode3`
+const isMode3 = computed(() => /\/projets\/\d+/.test(route.path))
 
 const toggleMode = () => {
   if (isMode3.value) {
@@ -28,13 +30,12 @@ const toggleMode = () => {
   }
 }
 
-// Références pour les éléments à animer
-const imgRef = ref(null)
-const textRef = ref(null)
-const containerRef = ref(null)
-const arrowRef = ref(null) // Référence pour ArrowDown
-const transitionXIndicator = ref(null)
-const indicators = ref()
+const imgRef = ref<HTMLElement | null>(null)
+const textRef = ref<HTMLElement | null>(null)
+const containerRef = ref<HTMLElement | null>(null)
+const arrowRef = ref<HTMLElement | null>(null) 
+const transitionXIndicator = ref<number | null>(null)
+const indicators = ref<HTMLElement | null>(null)
 
 // Fonction de défilement
 const scrollDown = () => {
@@ -42,11 +43,11 @@ const scrollDown = () => {
 }
 
 // Projets mock
-const projects = ref(projetInformations)
+const projects = ref<typeof projetInformations>(projetInformations)
 const currentProjectIndex = ref<number>(route.params.id !== 'default' ? Number(route.params.id) : 0)
 const currentProject = computed(() => projects.value[currentProjectIndex.value])
 const indicatorOnTransion = ref(false)
-let interIndicator = null
+let interIndicator: ReturnType<typeof setTimeout> | null = null
 
 if (route.query.default) {
   currentProjectIndex.value = Number(route.query.default)
@@ -66,7 +67,7 @@ watch(route, () => {
   }
 })
 
-const changeProject = (index: Number) => {
+const changeProject = (index: number) => {
   indicatorOnTransion.value = true
 
   setTimeout(() => {
@@ -82,10 +83,11 @@ const changeProject = (index: Number) => {
   }, 600)
 }
 
-const openLink = (index: string) => {
+const openLink = (index: number) => {
   window.open(projects.value[index].link)
 }
 </script>
+
 
 <template>
   <section class="lg:pb-20">
