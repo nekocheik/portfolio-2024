@@ -97,7 +97,7 @@ const openLink = (index: string) => {
         Projets
       </h1>
       <div
-        class="relative h-[70vh] max-h-[600px] top-[15vh] lg:h-[63vh] lg:top-10 z-50 2xl:top-[80px]"
+        class="relative h-[70vh] max-h-[600px] top-[7vh] lg:h-[63vh] lg:top-10 z-50 2xl:top-[80px]"
       >
         <div
           @click="() => toggleMode()"
@@ -161,7 +161,7 @@ const openLink = (index: string) => {
         :class="{ 'translate-y-96 opacity-0': isMode3 }"
         class="transition-[translate opacity] duration-1000"
       >
-        <div class="lg:pl-10 flex justify-center pt-24 lg:pt-14 2xl:pt-20">
+        <div class="lg:pl-10 flex justify-center pt-28 lg:pt-14 2xl:pt-20">
           <div class="relative flex w-60 justify-around">
             <div
               v-for="(project, index) in projects"
