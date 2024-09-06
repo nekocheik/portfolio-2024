@@ -147,7 +147,7 @@ const openLink = (index: number) => {
               <strong class="text-primary">Role</strong> / {{ currentProject.role }}
             </p>
 
-            <div class="hidden lg:block w-5/12 text-right pt-10 lg:text-base lg:min-h-[230px]">
+            <div class="hidden lg:block w-5/12 text-right pt-10 lg:text-sm lg:min-h-[160px] xl:text-base xl:min-h-[230]">
               <p>
                 {{ currentProject.description }}
               </p>
