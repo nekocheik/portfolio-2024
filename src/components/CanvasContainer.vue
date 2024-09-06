@@ -68,12 +68,17 @@ const onWindowResize = () => {
   }
 }
 
+let intervalResize
 onMounted(() => {
   initFirstCanvas()
   window.addEventListener('resize', onWindowResize)
+  setInterval(()=> {
+    intervalResize = onWindowResize()
+  }, 1000)
 })
 
 onBeforeUnmount(() => {
+  clearInterval(intervalResize)
   window.removeEventListener('resize', onWindowResize)
 })
 </script>
