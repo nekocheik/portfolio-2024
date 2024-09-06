@@ -92,7 +92,7 @@
         >
           <div>
             <p
-              class="pt-8 text-lg text-tertiary-light hover:text-white transition-colors lg:pt-32"
+              class="pt-8 text-lg text-tertiary-light hover:text-white transition-colors"
               @click="contactMode = false"
             >
               < <span v-mouse>Retour</span>
