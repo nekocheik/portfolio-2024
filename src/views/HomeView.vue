@@ -23,7 +23,7 @@
         ></animate>
       </filter>
     </svg>
-    <div class="transition-generericAnimation" :class="{ '-translate-y-[90vh]': contactMode }">
+    <div class="transition-generericAnimation duration-1000" :class="{ '-translate-y-[90vh]': contactMode }">
       <section class="transition-generericAnimation duration-1000 opacity-100 h-[90vh]">
         <div class="font-display text-4xl tracking-[10px]">
           <Motion :preset="'slideVisibleLeft'" :duration="2000">
@@ -37,13 +37,13 @@
             </h1>
           </Motion>
           <div
-            class="lg:pt-10 pt-20 pb-20 transition-all duration-1000"
+            class="lg:pt-10 pt-20 pb-20 transition-all duration-1000 2xl:pt-32 2xl:pb-20"
             :class="{ 'blur-[2px]': onTransition }"
           >
             <h1
               v-for="(text, index) in textAnimation"
               :class="{ 'opacity-100': currentIndexAnimation === index }"
-              class="font-semibold lg:text-[60px] uppercase text-xl text-white absolute opacity-0 transition-all duration-1000 onWaveAnimation"
+              class="font-semibold lg:text-[80px] uppercase text-xl text-white absolute opacity-0 transition-all duration-1000 onWaveAnimation"
             >
               {{ text }}
             </h1>
