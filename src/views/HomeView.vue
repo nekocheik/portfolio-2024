@@ -23,11 +23,8 @@
         ></animate>
       </filter>
     </svg>
-    <div class="">
-      <section
-        class="transition-generericAnimation duration-1000 opacity-100"
-        :class="{ '-translate-y-[70vh] opacity-25': contactMode }"
-      >
+    <div class="transition-generericAnimation" :class="{ '-translate-y-[90vh]': contactMode }">
+      <section class="transition-generericAnimation duration-1000 opacity-100 h-[90vh]">
         <div class="font-display text-4xl tracking-[10px]">
           <Motion :preset="'slideVisibleLeft'" :duration="2000">
             <h1 class="font-bold pt-10 text-4xl lg:text-[50px] uppercase italic text text-tertiary">
@@ -85,14 +82,11 @@
           </button>
         </div>
       </section>
-      <div class="translate-y-[33vh]">
-        <section
-          :class="{ '-translate-y-[90vh]': contactMode, 'opacity-0': !contactMode }"
-          class="text-white transition-generericAnimation duration-1000"
-        >
+      <div>
+        <section class="text-white transition-generericAnimation duration-1000">
           <div>
             <p
-              class="pt-8 text-lg text-tertiary-light hover:text-white transition-colors"
+              class="pt-8 text-lg text-tertiary-light hover:text-white transition-colors lg:pt-32"
               @click="contactMode = false"
             >
               < <span v-mouse>Retour</span>
@@ -190,11 +184,9 @@ const navigateTo = (route) => {
   router.push({ name: route })
 }
 
-
 const openLink = (url) => {
   window.open(url)
 }
-
 </script>
 
 <style lang="scss" scope>
